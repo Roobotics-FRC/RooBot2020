@@ -1,0 +1,134 @@
+import org.gradle.internal.os.OperatingSystem
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+plugins {
+    id "java"
+    id "checkstyle"
+    id "edu.wpi.first.GradleRIO" version "2019.4.1"
+    id "idea"
+    id "com.github.spotbugs" version "1.6.9"
+}
+
+repositories {
+    mavenCentral()
+}
+
+checkstyle {
+    //noinspection GroovyAssignabilityCheck
+    configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+    toolVersion = '7.1.2'
+}
+
+spotbugs {
+    toolVersion = '3.1.11'
+    effort = 'max'
+    reportLevel = 'low'
+    sourceSets = []
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+task roospotbugs(type: GradleBuild) {
+    tasks = ['clean', 'build', 'spotbugsMain']
+}
+
+def ROBOT_MAIN_CLASS = "frc.team4373.robot.Main"
+
+ext.isMacOS = OperatingSystem.current().isMacOsX()
+ext.network = ''
+
+task switchTo4373 {
+    doLast {
+        if (isMacOS) {
+            Process curNetProc = Runtime.getRuntime().exec('networksetup -getairportnetwork en0')
+            BufferedReader stdInput = new BufferedReader(new InputStreamReader(curNetProc.getInputStream()))
+            String res = stdInput.readLine()
+            network = res.substring(23)
+            curNetProc.waitFor()
+            if (network != '4373') {
+                println 'Connecting to 4373…'
+                Process setProc = Runtime.getRuntime().exec('networksetup -setairportnetwork en0 4373 && sleep 3')
+                setProc.waitFor()
+                println 'Connected to 4373'
+            } else {
+                println 'Already connected to 4373'
+            }
+        }
+    }
+}
+
+task switchBack {
+    doLast {
+        if (isMacOS && network != '4373') {
+            println 'Reconnecting to ' + network + '…'
+            Process resetProc = Runtime.getRuntime().exec('sleep 5 && networksetup -setairportnetwork en0 ' + network)
+            resetProc.waitFor()
+            println 'Reconnected to ' + network
+        }
+    }
+}
+
+task roodeploy(type: GradleBuild) {
+    tasks = ['switchTo4373', 'deploy', 'switchBack']
+}
+
+// Define my targets (RoboRIO) and artifacts (deployable files)
+// This is added by GradleRIO's backing project EmbeddedTools.
+deploy {
+    targets {
+        roboRIO("roborio") {
+            // Team number is loaded either from the .wpilib/wpilib_preferences.json
+            // or from command line. If not found an exception will be thrown.
+            // You can use getTeamOrDefault(team) instead of getTeamNumber if you
+            // want to store a team number in this file.
+            team = frc.getTeamNumber()
+        }
+    }
+    artifacts {
+        frcJavaArtifact('frcJava') {
+            targets << "roborio"
+            // Debug can be overridden by command line, for use with VSCode
+            debug = frc.getDebugOrDefault(false)
+        }
+        // Built in artifact to deploy arbitrary files to the roboRIO.
+        fileTreeArtifact('frcStaticFileDeploy') {
+            // The directory below is the local directory to deploy
+            files = fileTree(dir: 'src/main/deploy')
+            // Deploy to RoboRIO target, into /home/lvuser/deploy
+            targets << "roborio"
+            directory = '/home/lvuser/deploy'
+        }
+    }
+}
+
+// Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
+// Also defines JUnit 4.
+dependencies {
+    compile wpi.deps.wpilib()
+    compile wpi.deps.vendor.java()
+    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
+    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+//    testCompile 'junit:junit:4.12'
+}
+
+// Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
+// in order to make them all available at runtime. Also adding the manifest so WPILib
+// knows where to look for our Robot Class.
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
+}
+
+wrapper {
+    gradleVersion = '5.0'
+}
