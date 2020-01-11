@@ -11,7 +11,7 @@ plugins {
     id "checkstyle"
     id "edu.wpi.first.GradleRIO" version "2020.1.2"
     id "idea"
-    id "com.github.spotbugs" version "1.6.9"
+//    id "com.github.spotbugs" version "1.6.9"
 }
 
 repositories {
@@ -24,23 +24,23 @@ checkstyle {
     toolVersion = '7.1.2'
 }
 
-spotbugs {
-    toolVersion = '3.1.11'
-    effort = 'max'
-    reportLevel = 'low'
-    sourceSets = []
-}
+//spotbugs {
+//    toolVersion = '3.1.11'
+//    effort = 'max'
+//    reportLevel = 'low'
+//    sourceSets = []
+//}
+//
+//tasks.withType(com.github.spotbugs.SpotBugsTask) {
+//    reports {
+//        xml.enabled = false
+//        html.enabled = true
+//    }
+//}
 
-tasks.withType(com.github.spotbugs.SpotBugsTask) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-task roospotbugs(type: GradleBuild) {
-    tasks = ['clean', 'build', 'spotbugsMain']
-}
+//task roospotbugs(type: GradleBuild) {
+//    tasks = ['clean', 'build', 'spotbugsMain']
+//}
 
 def ROBOT_MAIN_CLASS = "frc.team4373.robot.Main"
 
