@@ -12,6 +12,14 @@ public class RobotMap {
     public static final int OPERATOR_JOYSTICK_PORT = 1;
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
 
+    // Motor configurations
+    public static final MotorConfig SHOOTER_CONFIG =
+            new MotorConfig(21, false, NeutralMode.Brake, true,
+                    new PID(0, 0, 0,0));
+
+    //Talon constants
+    public static final int PID_IDX = 0;
+
     // Utility classes
     public static final class MotorConfig {
         public final int id;
@@ -19,6 +27,7 @@ public class RobotMap {
         public final NeutralMode neutralMode;
         public final boolean encoderPhase;
         public final PID gains;
+
 
         /**
          * Constructs a new MotorConfig for a motor using closed-loop control.
