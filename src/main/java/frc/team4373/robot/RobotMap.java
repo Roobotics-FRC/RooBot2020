@@ -12,6 +12,18 @@ public class RobotMap {
     public static final int OPERATOR_JOYSTICK_PORT = 1;
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
 
+    // Motor configurations
+    public static final MotorConfig CLIMB_LIFT_1_CONFIG =
+            new MotorConfig(41, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_WINCH_1_CONFIG =
+            new MotorConfig(42, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_LIFT_2_CONFIG =
+            new MotorConfig(43, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_WINCH_2_CONFIG =
+            new MotorConfig(44, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_TROLLEY_CONFIG =
+            new MotorConfig(45, false, NeutralMode.Brake);
+
     // Utility classes
     public static final class MotorConfig {
         public final int id;
