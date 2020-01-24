@@ -16,8 +16,18 @@ public class RobotMap {
     public static final MotorConfig SHOOTER_CONFIG =
             new MotorConfig(21, false, NeutralMode.Brake, true,
                     new PID(0, 0, 0,0));
+    public static final MotorConfig CLIMB_LIFT_1_CONFIG =
+            new MotorConfig(41, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_WINCH_1_CONFIG =
+            new MotorConfig(42, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_LIFT_2_CONFIG =
+            new MotorConfig(43, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_WINCH_2_CONFIG =
+            new MotorConfig(44, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_TROLLEY_CONFIG =
+            new MotorConfig(45, false, NeutralMode.Brake);
 
-    //Talon constants
+    // Talon constants
     public static final int PID_IDX = 0;
 
     // Utility classes
