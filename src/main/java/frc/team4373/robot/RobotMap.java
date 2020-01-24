@@ -25,6 +25,8 @@ public class RobotMap {
          * @param id the CAN ID of the motor.
          * @param inverted whether to invert motor output values.
          * @param neutralMode the motor's neutral mode.
+         * @param encoderPhase whether the motor is out of phase with its sensor.
+         * @param gains the PID gains for this motor's closed-loop control.
          */
         public MotorConfig(int id, boolean inverted,
                            NeutralMode neutralMode, boolean encoderPhase, PID gains) {
