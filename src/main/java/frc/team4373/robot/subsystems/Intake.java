@@ -10,7 +10,10 @@ import frc.team4373.robot.RobotMap;
 public class Intake extends Subsystem {
     private static volatile Intake instance;
 
-
+    /**
+     * The getter for the Intake class.
+     * @return the singleton Intake object.
+     */
     public static Intake getInstance() {
         if (instance == null) {
             synchronized (Intake.class) {
@@ -36,18 +39,32 @@ public class Intake extends Subsystem {
         this.servo = new Servo(RobotMap.RELEASE_BALL_SERVO_PORT);
     }
 
+    /**
+     * Sets the percent output of the ground intake motor.
+     * @param speed the percent output of the motor.
+     */
     public void setGroundIntakeMotor(double speed) {
         groundIntake.set(ControlMode.PercentOutput, speed);
     }
 
+    /**
+     * Sets the percent output of the ground intake motor.
+     * @param speed the percent output of the motor.
+     */
     public void setUptakeIntakeMotor(double speed) {
         uptakeIntake.set(ControlMode.PercentOutput, speed);
     }
 
+    /**
+     * Sets the servo to the ball release angle.
+     */
     public void releaseBall() {
         servo.set(RobotMap.BALL_RELEASE_SERVO_ANGLE);
     }
 
+    /**
+     * Sets the servo to the ball lock angle.
+     */
     public void lockBall() {
         servo.set(RobotMap.BALL_LOCK_SERVO_ANGLE);
     }
