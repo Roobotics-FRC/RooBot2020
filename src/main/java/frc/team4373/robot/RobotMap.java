@@ -1,5 +1,6 @@
 package frc.team4373.robot;
 
+import edu.wpi.first.wpilibj.I2C;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 /**
@@ -11,6 +12,8 @@ public class RobotMap {
     public static final int DRIVE_JOYSTICK_PORT = 0;
     public static final int OPERATOR_JOYSTICK_PORT = 1;
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
+
+    public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_CONFIG =

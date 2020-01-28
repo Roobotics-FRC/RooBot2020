@@ -1,8 +1,13 @@
 package frc.team4373.robot;
 
+import com.revrobotics.*;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj.util.Color8Bit;
+
+import java.util.Arrays;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -12,12 +17,17 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * project.
  */
 public class Robot extends TimedRobot {
+
+    ColorSensorV3 sensor = new ColorSensorV3(RobotMap.COLOR_SENSOR_PORT);
+    ColorMatch matcher = new ColorMatch();
     /**
      * Constructor for the Robot class. Variable initialization occurs here;
      * WPILib-related setup should occur in {@link #robotInit}.
      */
     public Robot() {
     }
+
+    Color myColor = ColorMatch.makeColor(0.1, 0.5, 0.4);
 
     /**
      * This function is run when the robot is first started up and should be
@@ -27,6 +37,10 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
+        matcher.addColorMatch(Color.kBlue);
+        // matcher.addColorMatch(Color.kRed);
+        // matcher.addColorMatch(Color.kGreen);
+        matcher.addColorMatch(myColor);
     }
 
     /**
@@ -69,6 +83,16 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Color c = sensor.getColor();
+        SmartDashboard.putString("color", ctos(c));
+        ColorMatchResult match = matcher.matchClosestColor(c);
+        SmartDashboard.putString("closest color match", ctos(match.color));
+        SmartDashboard.putNumber("match confidence", match.confidence);
+    }
+
+    private String ctos(Color c) {
+        return c == Color.kBlue ? "BLUE" : c == myColor ? "CUSTOM" : "AAAAACK";
+        // return Arrays.toString(new double[] {c.red, c.green, c.blue});
     }
 
     /**
