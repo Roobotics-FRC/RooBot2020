@@ -12,6 +12,13 @@ public class RobotMap {
     public static final int OPERATOR_JOYSTICK_PORT = 1;
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
 
+    public static final int GROUND_INTAKE_MOTOR_PORT = 31;
+    public static final int UPTAKE_INTAKE_MOTOR_PORT = 32;
+    public static final int RELEASE_BALL_SERVO_PORT = 1;
+
+    public static final double BALL_RELEASE_SERVO_ANGLE = 0;
+    public static final double BALL_LOCK_SERVO_ANGLE = 0;
+
     // Motor configurations
     public static final MotorConfig SHOOTER_CONFIG =
             new MotorConfig(21, false, NeutralMode.Brake, true,
