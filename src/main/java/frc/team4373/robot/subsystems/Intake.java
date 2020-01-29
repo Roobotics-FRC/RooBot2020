@@ -1,7 +1,6 @@
 package frc.team4373.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -30,20 +29,53 @@ public class Intake extends Subsystem {
     private Servo servo;
 
     private Intake() {
-        this.groundIntake = new WPI_TalonSRX(RobotMap.GROUND_INTAKE_MOTOR_PORT);
-        this.uptakeIntake = new WPI_TalonSRX(RobotMap.UPTAKE_INTAKE_MOTOR_PORT);
-        this.uptakeIntake.setInverted(false);
-        this.groundIntake.setInverted(false);
-        this.groundIntake.setNeutralMode(NeutralMode.Brake);
-        this.uptakeIntake.setNeutralMode(NeutralMode.Brake);
-        this.servo = new Servo(RobotMap.RELEASE_BALL_SERVO_PORT);
+        this.groundIntake = new WPI_TalonSRX(RobotMap.INTAKE_GROUND_MOTOR.id);
+        this.uptakeIntake = new WPI_TalonSRX(RobotMap.INTAKE_UPTAKE_MOTOR.id);
+
+        this.uptakeIntake.setInverted(RobotMap.INTAKE_GROUND_MOTOR.inverted);
+        this.groundIntake.setInverted(RobotMap.INTAKE_UPTAKE_MOTOR.inverted);
+
+        this.groundIntake.setNeutralMode(RobotMap.INTAKE_GROUND_MOTOR.neutralMode);
+        this.uptakeIntake.setNeutralMode(RobotMap.INTAKE_UPTAKE_MOTOR.neutralMode);
+
+        this.servo = new Servo(RobotMap.INTAKE_RELEASE_SERVO_PORT);
+    }
+
+    /**
+     * Intakes a ball from the ground by running the ground and uptake motors.
+     */
+    public void intake() {
+        this.setGroundIntakeMotor(RobotMap.INTAKE_GROUND_SPEED);
+        this.setUptakeIntakeMotor(RobotMap.INTAKE_UPTAKE_SPEED);
+    }
+
+    /**
+     * Stops all (ground and uptake) intake motors.
+     */
+    public void stop() {
+        this.groundIntake.stopMotor();
+        this.uptakeIntake.stopMotor();
+    }
+
+    /**
+     * Sets the servo to the ball-release angle.
+     */
+    public void releaseBall() {
+        servo.set(RobotMap.INTAKE_SERVO_RELEASE_ANGLE);
+    }
+
+    /**
+     * Sets the servo to the ball-retention angle.
+     */
+    public void retainBall() {
+        servo.set(RobotMap.INTAKE_SERVO_RETAIN_ANGLE);
     }
 
     /**
      * Sets the percent output of the ground intake motor.
      * @param speed the percent output of the motor.
      */
-    public void setGroundIntakeMotor(double speed) {
+    private void setGroundIntakeMotor(double speed) {
         groundIntake.set(ControlMode.PercentOutput, speed);
     }
 
@@ -51,22 +83,8 @@ public class Intake extends Subsystem {
      * Sets the percent output of the ground intake motor.
      * @param speed the percent output of the motor.
      */
-    public void setUptakeIntakeMotor(double speed) {
+    private void setUptakeIntakeMotor(double speed) {
         uptakeIntake.set(ControlMode.PercentOutput, speed);
-    }
-
-    /**
-     * Sets the servo to the ball release angle.
-     */
-    public void releaseBall() {
-        servo.set(RobotMap.BALL_RELEASE_SERVO_ANGLE);
-    }
-
-    /**
-     * Sets the servo to the ball lock angle.
-     */
-    public void lockBall() {
-        servo.set(RobotMap.BALL_LOCK_SERVO_ANGLE);
     }
 
     @Override

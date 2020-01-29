@@ -12,12 +12,14 @@ public class RobotMap {
     public static final int OPERATOR_JOYSTICK_PORT = 1;
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
 
-    public static final int GROUND_INTAKE_MOTOR_PORT = 31;
-    public static final int UPTAKE_INTAKE_MOTOR_PORT = 32;
-    public static final int RELEASE_BALL_SERVO_PORT = 1;
+    // Non-motor devices
+    public static final int INTAKE_RELEASE_SERVO_PORT = 1;
 
-    public static final double BALL_RELEASE_SERVO_ANGLE = 0;
-    public static final double BALL_LOCK_SERVO_ANGLE = 0;
+    // Physical state constants
+    public static final double INTAKE_SERVO_RELEASE_ANGLE = 1;
+    public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
+    public static final double INTAKE_GROUND_SPEED = 1;
+    public static final double INTAKE_UPTAKE_SPEED = 1;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_CONFIG =
@@ -33,6 +35,10 @@ public class RobotMap {
             new MotorConfig(44, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_TROLLEY_CONFIG =
             new MotorConfig(45, false, NeutralMode.Brake);
+    public static final MotorConfig INTAKE_GROUND_MOTOR =
+            new MotorConfig(31, false, NeutralMode.Coast);
+    public static final MotorConfig INTAKE_UPTAKE_MOTOR =
+            new MotorConfig(32, false, NeutralMode.Brake);
 
     // Talon constants
     public static final int PID_IDX = 0;
