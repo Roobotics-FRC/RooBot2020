@@ -16,7 +16,7 @@ public class RobotMap {
     public static final int OPER_INTAKE_BUTTON = 6;
 
     // Non-motor devices
-    public static final int INTAKE_RELEASE_SERVO_PORT = 1;
+    public static final int SHOOTER_RELEASE_SERVO_PORT = 1;
 
     // Physical state constants
     public static final double INTAKE_SERVO_RELEASE_ANGLE = 1;
