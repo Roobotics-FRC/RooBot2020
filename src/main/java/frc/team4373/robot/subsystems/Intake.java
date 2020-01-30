@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.StopIntakeCommand;
 
 public class Intake extends Subsystem {
     private static volatile Intake instance;
@@ -89,6 +90,6 @@ public class Intake extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new StopIntakeCommand());
     }
 }

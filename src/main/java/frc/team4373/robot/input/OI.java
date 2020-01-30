@@ -1,6 +1,9 @@
 package frc.team4373.robot.input;
 
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.RunIntakeCommand;
 import frc.team4373.robot.input.filters.LogitechFilter;
 import frc.team4373.robot.input.filters.XboxFilter;
 
@@ -11,6 +14,8 @@ public final class OI {
     private static volatile OI oi = null;
     private RooJoystick driveJoystick;
     private RooJoystick operatorJoystick;
+
+    private Button intakeButton;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -24,6 +29,9 @@ public final class OI {
                 new LogitechFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
         this.operatorJoystick = new RooJoystick(RobotMap.OPERATOR_JOYSTICK_PORT,
                 new XboxFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
+
+        this.intakeButton = new JoystickButton(this.driveJoystick, RobotMap.OPER_INTAKE_BUTTON);
+        this.intakeButton.whileHeld(new RunIntakeCommand());
     }
 
     /**

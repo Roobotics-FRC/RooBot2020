@@ -12,6 +12,9 @@ public class RobotMap {
     public static final int OPERATOR_JOYSTICK_PORT = 1;
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
 
+    // Buttons and axes
+    public static final int OPER_INTAKE_BUTTON = 6;
+
     // Non-motor devices
     public static final int INTAKE_RELEASE_SERVO_PORT = 1;
 
