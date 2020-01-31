@@ -85,7 +85,7 @@ public class RooJoystick extends Joystick {
             if (defaultFilter != null) {
                 return applyDeadzone(defaultFilter.applyFilter(rawAxis), defaultDeadzone);
             }
-            return rawAxis;
+            return applyDeadzone(rawAxis, defaultDeadzone);
         }
         return applyDeadzone(config.filter.applyFilter(rawAxis), config.deadzone);
     }
