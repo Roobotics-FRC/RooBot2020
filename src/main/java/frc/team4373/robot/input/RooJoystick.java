@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * This class extends the WPILib Joystick class to add deadzone and filter functionality.
  */
 public class RooJoystick extends Joystick {
-    private final class AxisConfiguration {
+    private static final class AxisConfiguration {
         DoubleTypeFilter filter;
         double deadzone;
 
