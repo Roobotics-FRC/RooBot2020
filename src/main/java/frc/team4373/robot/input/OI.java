@@ -1,11 +1,11 @@
 package frc.team4373.robot.input;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.commands.RunIntakeCommand;
-import frc.team4373.robot.input.filters.LogitechFilter;
-import frc.team4373.robot.input.filters.XboxFilter;
+import frc.team4373.robot.input.filters.*;
 
 /**
  * OI provides access to operator interface devices.
@@ -27,6 +27,7 @@ public final class OI {
          */
         this.driveJoystick = new RooJoystick(RobotMap.DRIVE_JOYSTICK_PORT,
                 new LogitechFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
+        driveJoystick.configureAxis(Joystick.AxisType.kZ.value, new SwerveTwistFilter(), 0.05);
         this.operatorJoystick = new RooJoystick(RobotMap.OPERATOR_JOYSTICK_PORT,
                 new XboxFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
 

@@ -1,12 +1,61 @@
 package frc.team4373.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.team4373.swerve.SwerveConfig;
 
 /**
  * Holds various mappings and constants.
  */
-
 public class RobotMap {
+    public static SwerveConfig getSwerveConfig() {
+        return new SwerveConfig(
+                new SwerveConfig.RobotDimensions(30, 30),
+                new SwerveConfig.WheelsConfig(
+                        new SwerveConfig.MotorConfig(17,
+                                true,
+                                NeutralMode.Brake,
+                                true,
+                                new SwerveConfig.PID(0, 0.4, 0, 0)),
+                        new SwerveConfig.MotorConfig(18,
+                                false,
+                                NeutralMode.Brake,
+                                true,
+                                new SwerveConfig.PID(0, 3.5, 0, 3)),
+                        new SwerveConfig.MotorConfig(13,
+                                false,
+                                NeutralMode.Brake,
+                                true,
+                                new SwerveConfig.PID(0, 0.4, 0, 0)),
+                        new SwerveConfig.MotorConfig(14,
+                                false,
+                                NeutralMode.Brake,
+                                true,//FIXME: maybe false, was oscillating
+                                new SwerveConfig.PID(0, 3.5, 0, 3)),
+                        new SwerveConfig.MotorConfig(15,
+                                true,
+                                NeutralMode.Brake,
+                                true,
+                                new SwerveConfig.PID(0, 0.4, 0, 0)),
+                        new SwerveConfig.MotorConfig(16,
+                                false,
+                                NeutralMode.Brake,
+                                true,//FIXME: maybe false, was oscillating
+                                new SwerveConfig.PID(0, 3.5, 0, 3)),
+                        new SwerveConfig.MotorConfig(11,
+                                false,
+                                NeutralMode.Brake,
+                                true,
+                                new SwerveConfig.PID(0, 0.4, 0, 0)),
+                        new SwerveConfig.MotorConfig(12,
+                                false,
+                                NeutralMode.Brake,
+                                true,
+                                new SwerveConfig.PID(0, 3.5, 0, 3)),
+                        8400,
+                        40),
+                19);
+    }
+
     // OI devices
     public static final int DRIVE_JOYSTICK_PORT = 0;
     public static final int OPERATOR_JOYSTICK_PORT = 1;
@@ -48,7 +97,7 @@ public class RobotMap {
 
     // Utility classes
     public static final class MotorConfig {
-        public final int id;
+        public final int ID;
         public final boolean inverted;
         public final NeutralMode neutralMode;
         public final boolean encoderPhase;
@@ -57,15 +106,15 @@ public class RobotMap {
 
         /**
          * Constructs a new MotorConfig for a motor using closed-loop control.
-         * @param id the CAN ID of the motor.
+         * @param ID the CAN ID of the motor.
          * @param inverted whether to invert motor output values.
          * @param neutralMode the motor's neutral mode.
          * @param encoderPhase whether the motor is out of phase with its sensor.
          * @param gains the PID gains for this motor's closed-loop control.
          */
-        public MotorConfig(int id, boolean inverted,
+        public MotorConfig(int ID, boolean inverted,
                            NeutralMode neutralMode, boolean encoderPhase, PID gains) {
-            this.id = id;
+            this.ID = ID;
             this.inverted = inverted;
             this.neutralMode = neutralMode;
             this.encoderPhase = encoderPhase;
@@ -74,12 +123,12 @@ public class RobotMap {
 
         /**
          * Constructs a new MotorConfig for a motor not under closed-loop control.
-         * @param id the CAN ID of the motor.
+         * @param ID the CAN ID of the motor.
          * @param inverted whether to invert motor output values.
          * @param neutralMode the motor's neutral mode.
          */
-        public MotorConfig(int id, boolean inverted, NeutralMode neutralMode) {
-            this.id = id;
+        public MotorConfig(int ID, boolean inverted, NeutralMode neutralMode) {
+            this.ID = ID;
             this.inverted = inverted;
             this.neutralMode = neutralMode;
 

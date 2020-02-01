@@ -16,6 +16,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven { url 'https://raw.githubusercontent.com/Roobotics-FRC/RooMaven/master' }
 }
 
 checkstyle {
@@ -117,6 +118,7 @@ dependencies {
     implementation wpi.deps.wpilib()
     nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
+    implementation 'frc.team4373:rooswerve:1.0.0'
 
 
     implementation wpi.deps.vendor.java()
