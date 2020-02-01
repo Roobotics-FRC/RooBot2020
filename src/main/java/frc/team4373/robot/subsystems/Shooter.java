@@ -32,7 +32,7 @@ public class Shooter extends Subsystem {
 
     private Shooter() {
         RobotMap.MotorConfig shooterMotorConfig = RobotMap.SHOOTER_CONFIG;
-        this.shooterMotor = new WPI_TalonSRX(shooterMotorConfig.id);
+        this.shooterMotor = new WPI_TalonSRX(shooterMotorConfig.ID);
         this.shooterMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
 
         this.shooterMotor.setInverted(shooterMotorConfig.inverted);

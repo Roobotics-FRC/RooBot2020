@@ -34,11 +34,11 @@ public class Climber extends Subsystem {
      * Constructs a new Climber.
      */
     private Climber() {
-        this.lift1 = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_1_CONFIG.id);
-        this.lift2 = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_2_CONFIG.id);
-        this.winch1 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
-        this.winch2 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
-        this.trolley = new WPI_TalonSRX(RobotMap.CLIMB_TROLLEY_CONFIG.id);
+        this.lift1 = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_1_CONFIG.ID);
+        this.lift2 = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_2_CONFIG.ID);
+        this.winch1 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.ID);
+        this.winch2 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.ID);
+        this.trolley = new WPI_TalonSRX(RobotMap.CLIMB_TROLLEY_CONFIG.ID);
 
         this.lift1.setInverted(RobotMap.CLIMB_LIFT_1_CONFIG.inverted);
         this.lift2.setInverted(RobotMap.CLIMB_LIFT_2_CONFIG.inverted);
