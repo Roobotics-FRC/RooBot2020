@@ -28,8 +28,8 @@ public class Intake extends Subsystem {
     private WPI_TalonSRX uptakeIntake;
 
     private Intake() {
-        this.groundIntake = new WPI_TalonSRX(RobotMap.INTAKE_GROUND_MOTOR.ID);
-        this.uptakeIntake = new WPI_TalonSRX(RobotMap.INTAKE_UPTAKE_MOTOR.ID);
+        this.groundIntake = new WPI_TalonSRX(RobotMap.INTAKE_GROUND_MOTOR.id);
+        this.uptakeIntake = new WPI_TalonSRX(RobotMap.INTAKE_UPTAKE_MOTOR.id);
 
         this.uptakeIntake.setInverted(RobotMap.INTAKE_GROUND_MOTOR.inverted);
         this.groundIntake.setInverted(RobotMap.INTAKE_UPTAKE_MOTOR.inverted);

@@ -77,16 +77,12 @@ public class RobotMap {
     public static final MotorConfig SHOOTER_CONFIG =
             new MotorConfig(21, false, NeutralMode.Brake, true,
                     new PID(0, 0, 0,0));
-    public static final MotorConfig CLIMB_LIFT_1_CONFIG =
+    public static final MotorConfig CLIMB_LIFT_CONFIG =
             new MotorConfig(41, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_WINCH_1_CONFIG =
             new MotorConfig(42, false, NeutralMode.Brake);
-    public static final MotorConfig CLIMB_LIFT_2_CONFIG =
-            new MotorConfig(43, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_WINCH_2_CONFIG =
             new MotorConfig(44, false, NeutralMode.Brake);
-    public static final MotorConfig CLIMB_TROLLEY_CONFIG =
-            new MotorConfig(45, false, NeutralMode.Brake);
     public static final MotorConfig INTAKE_GROUND_MOTOR =
             new MotorConfig(31, false, NeutralMode.Coast);
     public static final MotorConfig INTAKE_UPTAKE_MOTOR =
@@ -97,7 +93,7 @@ public class RobotMap {
 
     // Utility classes
     public static final class MotorConfig {
-        public final int ID;
+        public final int id;
         public final boolean inverted;
         public final NeutralMode neutralMode;
         public final boolean encoderPhase;
@@ -106,15 +102,15 @@ public class RobotMap {
 
         /**
          * Constructs a new MotorConfig for a motor using closed-loop control.
-         * @param ID the CAN ID of the motor.
+         * @param id the CAN ID of the motor.
          * @param inverted whether to invert motor output values.
          * @param neutralMode the motor's neutral mode.
          * @param encoderPhase whether the motor is out of phase with its sensor.
          * @param gains the PID gains for this motor's closed-loop control.
          */
-        public MotorConfig(int ID, boolean inverted,
+        public MotorConfig(int id, boolean inverted,
                            NeutralMode neutralMode, boolean encoderPhase, PID gains) {
-            this.ID = ID;
+            this.id = id;
             this.inverted = inverted;
             this.neutralMode = neutralMode;
             this.encoderPhase = encoderPhase;
@@ -123,12 +119,12 @@ public class RobotMap {
 
         /**
          * Constructs a new MotorConfig for a motor not under closed-loop control.
-         * @param ID the CAN ID of the motor.
+         * @param id the CAN ID of the motor.
          * @param inverted whether to invert motor output values.
          * @param neutralMode the motor's neutral mode.
          */
-        public MotorConfig(int ID, boolean inverted, NeutralMode neutralMode) {
-            this.ID = ID;
+        public MotorConfig(int id, boolean inverted, NeutralMode neutralMode) {
+            this.id = id;
             this.inverted = inverted;
             this.neutralMode = neutralMode;
 

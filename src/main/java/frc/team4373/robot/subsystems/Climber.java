@@ -24,57 +24,46 @@ public class Climber extends Subsystem {
         return instance;
     }
 
-    private WPI_TalonSRX lift1;
-    private WPI_TalonSRX lift2;
+    private WPI_TalonSRX lift;
     private WPI_TalonSRX winch1;
     private WPI_TalonSRX winch2;
-    private WPI_TalonSRX trolley;
 
     /**
      * Constructs a new Climber.
      */
     private Climber() {
-        this.lift1 = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_1_CONFIG.ID);
-        this.lift2 = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_2_CONFIG.ID);
-        this.winch1 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.ID);
-        this.winch2 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.ID);
-        this.trolley = new WPI_TalonSRX(RobotMap.CLIMB_TROLLEY_CONFIG.ID);
+        this.lift = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_CONFIG.id);
+        this.winch1 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
+        this.winch2 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
 
-        this.lift1.setInverted(RobotMap.CLIMB_LIFT_1_CONFIG.inverted);
-        this.lift2.setInverted(RobotMap.CLIMB_LIFT_2_CONFIG.inverted);
+        this.lift.setInverted(RobotMap.CLIMB_LIFT_CONFIG.inverted);
         this.winch1.setInverted(RobotMap.CLIMB_WINCH_1_CONFIG.inverted);
         this.winch2.setInverted(RobotMap.CLIMB_WINCH_2_CONFIG.inverted);
-        this.trolley.setInverted(RobotMap.CLIMB_TROLLEY_CONFIG.inverted);
 
-        this.lift1.setNeutralMode(RobotMap.CLIMB_LIFT_1_CONFIG.neutralMode);
-        this.lift2.setNeutralMode(RobotMap.CLIMB_LIFT_2_CONFIG.neutralMode);
+        this.lift.setNeutralMode(RobotMap.CLIMB_LIFT_CONFIG.neutralMode);
         this.winch1.setNeutralMode(RobotMap.CLIMB_WINCH_1_CONFIG.neutralMode);
         this.winch2.setNeutralMode(RobotMap.CLIMB_WINCH_2_CONFIG.neutralMode);
-        this.trolley.setNeutralMode(RobotMap.CLIMB_TROLLEY_CONFIG.neutralMode);
     }
 
     /**
-     * Sets both lifts to extend (i.e., full power upward).
+     * Sets the lift to extend (i.e., full power upward).
      */
-    public void extendLifts() {
-        this.lift1.set(ControlMode.PercentOutput, 1);
-        this.lift2.set(ControlMode.PercentOutput, 1);
+    public void extendLift() {
+        this.lift.set(ControlMode.PercentOutput, 1);
     }
 
     /**
-     * Sets both lifts to retract (i.e., full power downward).
+     * Sets the lift to retract (i.e., full power downward).
      */
-    public void retractLifts() {
-        this.lift1.set(ControlMode.PercentOutput, -1);
-        this.lift2.set(ControlMode.PercentOutput, -1);
+    public void retractLift() {
+        this.lift.set(ControlMode.PercentOutput, -1);
     }
 
     /**
-     * Stops both lifts (i.e., zero output).
+     * Stops the lift (i.e., zero output).
      */
-    public void stopLifts() {
-        this.lift1.stopMotor();
-        this.lift2.stopMotor();
+    public void stopLift() {
+        this.lift.stopMotor();
     }
 
     /**
@@ -93,15 +82,6 @@ public class Climber extends Subsystem {
     public void raiseWinch2(double power) {
         power = constrainWinchOutput(power);
         this.winch2.set(ControlMode.PercentOutput, power);
-    }
-
-    /**
-     * Sets the power to the trolley.
-     * @param power the percent output at which to move the trolley, [-1, 1].
-     */
-    public void setTrolley(double power) {
-        power = Utils.constrainPercentOutput(power);
-        this.trolley.set(ControlMode.PercentOutput, power);
     }
 
     /**
