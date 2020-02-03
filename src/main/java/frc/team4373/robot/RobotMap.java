@@ -7,53 +7,62 @@ import frc.team4373.swerve.SwerveConfig;
  * Holds various mappings and constants.
  */
 public class RobotMap {
+    /**
+     * Gets the config for the swerve drivetrain.
+     * @return the config for the drivetrain.
+     */
     public static SwerveConfig getSwerveConfig() {
-        return new SwerveConfig(
-                new SwerveConfig.RobotDimensions(30, 30),
-                new SwerveConfig.WheelsConfig(
-                        new SwerveConfig.MotorConfig(17,
-                                true,
-                                NeutralMode.Brake,
-                                true,
-                                new SwerveConfig.PID(0, 0.4, 0, 0)),
-                        new SwerveConfig.MotorConfig(18,
-                                false,
-                                NeutralMode.Brake,
-                                true,
-                                new SwerveConfig.PID(0, 3.5, 0, 3)),
-                        new SwerveConfig.MotorConfig(13,
-                                false,
-                                NeutralMode.Brake,
-                                true,
-                                new SwerveConfig.PID(0, 0.4, 0, 0)),
-                        new SwerveConfig.MotorConfig(14,
-                                false,
-                                NeutralMode.Brake,
-                                true,//FIXME: maybe false, was oscillating
-                                new SwerveConfig.PID(0, 3.5, 0, 3)),
-                        new SwerveConfig.MotorConfig(15,
-                                true,
-                                NeutralMode.Brake,
-                                true,
-                                new SwerveConfig.PID(0, 0.4, 0, 0)),
-                        new SwerveConfig.MotorConfig(16,
-                                false,
-                                NeutralMode.Brake,
-                                true,//FIXME: maybe false, was oscillating
-                                new SwerveConfig.PID(0, 3.5, 0, 3)),
-                        new SwerveConfig.MotorConfig(11,
-                                false,
-                                NeutralMode.Brake,
-                                true,
-                                new SwerveConfig.PID(0, 0.4, 0, 0)),
-                        new SwerveConfig.MotorConfig(12,
-                                false,
-                                NeutralMode.Brake,
-                                true,
-                                new SwerveConfig.PID(0, 3.5, 0, 3)),
-                        8400,
-                        40),
-                19);
+        SwerveConfig.RobotDimensions dimensions = new SwerveConfig.RobotDimensions(30, 30);
+        SwerveConfig.MotorConfig right1Drive = new SwerveConfig.MotorConfig(17,
+                true,
+                NeutralMode.Brake,
+                true,
+                new SwerveConfig.PID(0, 0.4, 0, 0));
+        SwerveConfig.MotorConfig right1Rotate = new SwerveConfig.MotorConfig(18,
+                false,
+                NeutralMode.Brake,
+                true,
+                new SwerveConfig.PID(0, 3.5, 0, 3));
+        SwerveConfig.MotorConfig right2Drive = new SwerveConfig.MotorConfig(13,
+                false,
+                NeutralMode.Brake,
+                true,
+                new SwerveConfig.PID(0, 0.4, 0, 0));
+        SwerveConfig.MotorConfig right2Rotate = new SwerveConfig.MotorConfig(14,
+                false,
+                NeutralMode.Brake,
+                true, // FIXME: maybe false, was oscillating
+                new SwerveConfig.PID(0, 3.5, 0, 3));
+        SwerveConfig.MotorConfig left1Drive = new SwerveConfig.MotorConfig(15,
+                true,
+                NeutralMode.Brake,
+                true,
+                new SwerveConfig.PID(0, 0.4, 0, 0));
+        SwerveConfig.MotorConfig left1Rotate = new SwerveConfig.MotorConfig(16,
+                false,
+                NeutralMode.Brake,
+                true, // FIXME: maybe false, was oscillating
+                new SwerveConfig.PID(0, 3.5, 0, 3));
+        SwerveConfig.MotorConfig left2Drive = new SwerveConfig.MotorConfig(11,
+                false,
+                NeutralMode.Brake,
+                true,
+                new SwerveConfig.PID(0, 0.4, 0, 0));
+        SwerveConfig.MotorConfig left2Rotate = new SwerveConfig.MotorConfig(12,
+                false,
+                NeutralMode.Brake,
+                true,
+                new SwerveConfig.PID(0, 3.5, 0, 3));
+        double maxWheelSpeed = 8400;
+        int ampLimit = 40;
+        SwerveConfig.WheelsConfig wheelsConfig = new SwerveConfig.WheelsConfig(
+                right1Drive, right1Rotate, right2Drive, right2Rotate,
+                left1Drive, left1Rotate, left2Drive, left2Rotate,
+                maxWheelSpeed, ampLimit
+        );
+        int pigeonID = 19;
+
+        return new SwerveConfig(dimensions, wheelsConfig, pigeonID);
     }
 
     // OI devices
@@ -63,6 +72,9 @@ public class RobotMap {
 
     // Buttons and axes
     public static final int OPER_INTAKE_BUTTON = 6;
+
+    // Speed constants
+    public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
 
     // Non-motor devices
     public static final int SHOOTER_RELEASE_SERVO_PORT = 1;

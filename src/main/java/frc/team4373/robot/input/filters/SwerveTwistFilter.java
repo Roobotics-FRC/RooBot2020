@@ -1,7 +1,7 @@
 package frc.team4373.robot.input.filters;
 
 /**
- * A Javadoc template. TODO: Update SwerveTwistFilter Javadoc.
+ * A filter to minimize fiddliness of joystick twist.
  */
 public class SwerveTwistFilter extends DoubleTypeFilter {
     @Override

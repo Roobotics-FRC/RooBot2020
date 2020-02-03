@@ -49,14 +49,14 @@ public class Climber extends Subsystem {
      * Sets the lift to extend (i.e., full power upward).
      */
     public void extendLift() {
-        this.lift.set(ControlMode.PercentOutput, 1);
+        this.lift.set(ControlMode.PercentOutput, RobotMap.CLIMB_ELEVATOR_MOVE_SPEED);
     }
 
     /**
      * Sets the lift to retract (i.e., full power downward).
      */
     public void retractLift() {
-        this.lift.set(ControlMode.PercentOutput, -1);
+        this.lift.set(ControlMode.PercentOutput, -RobotMap.CLIMB_ELEVATOR_MOVE_SPEED);
     }
 
     /**

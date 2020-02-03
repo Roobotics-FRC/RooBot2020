@@ -7,7 +7,7 @@ import frc.team4373.swerve.SwerveDrivetrain;
 import frc.team4373.swerve.commands.SwerveDriveWithJoystick;
 
 /**
- * A Javadoc template. TODO: Update Drivetrain Javadoc.
+ * The swerve drivetrain subsystem.
  */
 public class Drivetrain extends SwerveDrivetrain {
     private static volatile Drivetrain instance;
