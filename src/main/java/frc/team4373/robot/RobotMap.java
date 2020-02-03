@@ -19,9 +19,9 @@ public class RobotMap {
                 true,
                 new SwerveConfig.PID(0, 0.4, 0, 0));
         SwerveConfig.MotorConfig right1Rotate = new SwerveConfig.MotorConfig(18,
-                false,
-                NeutralMode.Brake,
                 true,
+                NeutralMode.Brake,
+                false,
                 new SwerveConfig.PID(0, 3.5, 0, 3));
         SwerveConfig.MotorConfig right2Drive = new SwerveConfig.MotorConfig(13,
                 false,
@@ -29,9 +29,9 @@ public class RobotMap {
                 true,
                 new SwerveConfig.PID(0, 0.4, 0, 0));
         SwerveConfig.MotorConfig right2Rotate = new SwerveConfig.MotorConfig(14,
-                false,
+                true,
                 NeutralMode.Brake,
-                true, // FIXME: maybe false, was oscillating
+                false, // FIXME: maybe false, was oscillating
                 new SwerveConfig.PID(0, 3.5, 0, 3));
         SwerveConfig.MotorConfig left1Drive = new SwerveConfig.MotorConfig(15,
                 true,
@@ -39,9 +39,9 @@ public class RobotMap {
                 true,
                 new SwerveConfig.PID(0, 0.4, 0, 0));
         SwerveConfig.MotorConfig left1Rotate = new SwerveConfig.MotorConfig(16,
-                false,
+                true,
                 NeutralMode.Brake,
-                true, // FIXME: maybe false, was oscillating
+                false, // FIXME: maybe false, was oscillating
                 new SwerveConfig.PID(0, 3.5, 0, 3));
         SwerveConfig.MotorConfig left2Drive = new SwerveConfig.MotorConfig(11,
                 false,
@@ -49,9 +49,9 @@ public class RobotMap {
                 true,
                 new SwerveConfig.PID(0, 0.4, 0, 0));
         SwerveConfig.MotorConfig left2Rotate = new SwerveConfig.MotorConfig(12,
-                false,
-                NeutralMode.Brake,
                 true,
+                NeutralMode.Brake,
+                false,
                 new SwerveConfig.PID(0, 3.5, 0, 3));
         double maxWheelSpeed = 8400;
         int ampLimit = 40;
