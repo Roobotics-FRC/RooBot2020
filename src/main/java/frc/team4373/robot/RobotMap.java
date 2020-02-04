@@ -71,7 +71,10 @@ public class RobotMap {
     public static final double JOYSTICK_DEFAULT_DEADZONE = 0.09;
 
     // Buttons and axes
-    public static final int OPER_INTAKE_BUTTON = 6;
+    public static final int DRIVE_RESET_NORTH_BUTTON = 7;
+    public static final int DRIVE_NORTH_UP_BUTTON = 10;
+    public static final int DRIVE_OWN_SHIP_UP_BUTTON = 12;
+    public static final int OPER_INTAKE_BUTTON = 6; // right bumper
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;

@@ -4,8 +4,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.ResetNorthCommand;
 import frc.team4373.robot.commands.RunIntakeCommand;
+import frc.team4373.robot.commands.SetDriveModeCommand;
 import frc.team4373.robot.input.filters.*;
+import frc.team4373.swerve.SwerveDrivetrain;
 
 /**
  * OI provides access to operator interface devices.
@@ -16,6 +19,9 @@ public final class OI {
     private RooJoystick operatorJoystick;
 
     private Button intakeButton;
+    private Button resetNorthButton;
+    private Button setNorthUpButton;
+    private Button setOwnShipUpButton;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -33,6 +39,20 @@ public final class OI {
 
         this.intakeButton = new JoystickButton(this.driveJoystick, RobotMap.OPER_INTAKE_BUTTON);
         this.intakeButton.whileHeld(new RunIntakeCommand());
+
+        this.resetNorthButton = new JoystickButton(this.driveJoystick,
+                RobotMap.DRIVE_RESET_NORTH_BUTTON);
+        this.resetNorthButton.whenPressed(new ResetNorthCommand());
+
+        this.setNorthUpButton = new JoystickButton(this.driveJoystick,
+                RobotMap.DRIVE_NORTH_UP_BUTTON);
+        this.setNorthUpButton.whenPressed(new SetDriveModeCommand(
+                SwerveDrivetrain.DriveMode.NORTH_UP));
+
+        this.setOwnShipUpButton = new JoystickButton(this.driveJoystick,
+                RobotMap.DRIVE_OWN_SHIP_UP_BUTTON);
+        this.setOwnShipUpButton.whenPressed(new SetDriveModeCommand(
+                SwerveDrivetrain.DriveMode.OWN_SHIP_UP));
     }
 
     /**
