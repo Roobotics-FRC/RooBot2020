@@ -72,6 +72,8 @@ public class RobotMap {
 
     // Buttons and axes
     public static final int OPER_INTAKE_BUTTON = 6;
+    public static final int OPER_RAISE_L_WINCH_AXIS = 2; // L trigger
+    public static final int OPER_RAISE_R_WINCH_AXIS = 3; // R trigger
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
