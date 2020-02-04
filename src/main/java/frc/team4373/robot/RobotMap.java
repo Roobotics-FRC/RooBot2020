@@ -80,6 +80,7 @@ public class RobotMap {
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
+    public static final double CLIMB_WINCH_MAX_SPEED = 0.8;
 
     // Non-motor devices
     public static final int SHOOTER_RELEASE_SERVO_PORT = 1;
