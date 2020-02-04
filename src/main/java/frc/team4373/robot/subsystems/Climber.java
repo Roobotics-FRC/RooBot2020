@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.Utils;
-import frc.team4373.robot.commands.DefaultClimbCommand;
+import frc.team4373.robot.commands.ClimberCommand;
 
 public class Climber extends Subsystem {
     private static volatile Climber instance;
@@ -99,7 +99,7 @@ public class Climber extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new DefaultClimbCommand());
+        setDefaultCommand(new ClimberCommand());
 
     }
 }
