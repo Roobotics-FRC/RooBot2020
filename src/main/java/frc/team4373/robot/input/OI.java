@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.commands.ResetNorthCommand;
-import frc.team4373.robot.commands.RunIntakeCommand;
 import frc.team4373.robot.commands.SetDriveModeCommand;
 import frc.team4373.robot.input.filters.*;
 import frc.team4373.swerve.SwerveDrivetrain;
@@ -18,7 +17,6 @@ public final class OI {
     private RooJoystick driveJoystick;
     private RooJoystick operatorJoystick;
 
-    private Button intakeButton;
     private Button resetNorthButton;
     private Button setNorthUpButton;
     private Button setOwnShipUpButton;
@@ -36,9 +34,6 @@ public final class OI {
         driveJoystick.configureAxis(Joystick.AxisType.kZ.value, new SwerveTwistFilter(), 0.05);
         this.operatorJoystick = new RooJoystick(RobotMap.OPERATOR_JOYSTICK_PORT,
                 new XboxFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
-
-        this.intakeButton = new JoystickButton(this.driveJoystick, RobotMap.OPER_INTAKE_BUTTON);
-        this.intakeButton.whileHeld(new RunIntakeCommand());
 
         this.resetNorthButton = new JoystickButton(this.driveJoystick,
                 RobotMap.DRIVE_RESET_NORTH_BUTTON);
