@@ -80,6 +80,7 @@ public class RobotMap {
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
+    public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 10240;
 
     // Non-motor devices
     public static final int SHOOTER_RELEASE_SERVO_PORT = 1;
@@ -89,6 +90,7 @@ public class RobotMap {
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double INTAKE_GROUND_SPEED = 1;
     public static final double INTAKE_UPTAKE_SPEED = 1;
+
 
     // Motor configurations
     public static final MotorConfig SHOOTER_CONFIG =
