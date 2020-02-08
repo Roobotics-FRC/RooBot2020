@@ -29,6 +29,10 @@ public class ClimberCommand extends Command {
                 climber.stopLift();
                 break;
         }
+        this.climber.raiseLeftWinch(OI.getInstance().getOperatorJoystick()
+                .getAxis(RobotMap.OPER_RAISE_L_WINCH_AXIS));
+        this.climber.raiseRightWinch(OI.getInstance().getOperatorJoystick()
+                .getAxis(RobotMap.OPER_RAISE_R_WINCH_AXIS));
     }
 
     @Override
@@ -39,6 +43,8 @@ public class ClimberCommand extends Command {
     @Override
     protected void end() {
         this.climber.stopLift();
+        this.climber.raiseLeftWinch(0);
+        this.climber.raiseRightWinch(0);
     }
 
     @Override

@@ -2,9 +2,10 @@ package frc.team4373.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.commands.StopIntakeCommand;
+import frc.team4373.robot.commands.IntakeCommand;
 
 public class Intake extends Subsystem {
     private static volatile Intake instance;
@@ -26,6 +27,7 @@ public class Intake extends Subsystem {
 
     private WPI_TalonSRX groundIntake;
     private WPI_TalonSRX uptakeIntake;
+    private Servo servo;
 
     private Intake() {
         this.groundIntake = new WPI_TalonSRX(RobotMap.INTAKE_GROUND_MOTOR.id);
@@ -36,6 +38,8 @@ public class Intake extends Subsystem {
 
         this.groundIntake.setNeutralMode(RobotMap.INTAKE_GROUND_MOTOR.neutralMode);
         this.uptakeIntake.setNeutralMode(RobotMap.INTAKE_UPTAKE_MOTOR.neutralMode);
+
+        this.servo = new Servo(RobotMap.INTAKE_RELEASE_SERVO_PORT);
     }
 
     /**
@@ -52,6 +56,20 @@ public class Intake extends Subsystem {
     public void stop() {
         this.groundIntake.stopMotor();
         this.uptakeIntake.stopMotor();
+    }
+
+    /**
+     * Sets the servo to the ball-release angle.
+     */
+    public void releaseBall() {
+        servo.set(RobotMap.INTAKE_SERVO_RELEASE_ANGLE);
+    }
+
+    /**
+     * Sets the servo to the ball-retention angle.
+     */
+    public void retainBall() {
+        servo.set(RobotMap.INTAKE_SERVO_RETAIN_ANGLE);
     }
 
     /**
@@ -72,6 +90,6 @@ public class Intake extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new StopIntakeCommand());
+        setDefaultCommand(new IntakeCommand());
     }
 }

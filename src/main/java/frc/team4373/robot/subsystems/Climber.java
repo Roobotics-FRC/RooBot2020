@@ -26,24 +26,24 @@ public class Climber extends Subsystem {
     }
 
     private WPI_TalonSRX lift;
-    private WPI_TalonSRX winch1;
-    private WPI_TalonSRX winch2;
+    private WPI_TalonSRX leftWinch;
+    private WPI_TalonSRX rightWinch;
 
     /**
      * Constructs a new Climber.
      */
     private Climber() {
         this.lift = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_CONFIG.id);
-        this.winch1 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
-        this.winch2 = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
+        this.leftWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
+        this.rightWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
 
         this.lift.setInverted(RobotMap.CLIMB_LIFT_CONFIG.inverted);
-        this.winch1.setInverted(RobotMap.CLIMB_WINCH_1_CONFIG.inverted);
-        this.winch2.setInverted(RobotMap.CLIMB_WINCH_2_CONFIG.inverted);
+        this.leftWinch.setInverted(RobotMap.CLIMB_WINCH_1_CONFIG.inverted);
+        this.rightWinch.setInverted(RobotMap.CLIMB_WINCH_2_CONFIG.inverted);
 
         this.lift.setNeutralMode(RobotMap.CLIMB_LIFT_CONFIG.neutralMode);
-        this.winch1.setNeutralMode(RobotMap.CLIMB_WINCH_1_CONFIG.neutralMode);
-        this.winch2.setNeutralMode(RobotMap.CLIMB_WINCH_2_CONFIG.neutralMode);
+        this.leftWinch.setNeutralMode(RobotMap.CLIMB_WINCH_1_CONFIG.neutralMode);
+        this.rightWinch.setNeutralMode(RobotMap.CLIMB_WINCH_2_CONFIG.neutralMode);
     }
 
     /**
@@ -71,29 +71,30 @@ public class Climber extends Subsystem {
      * Raises winch 1 at the specified percent output (or stops it, if power = 0).
      * @param power the percent of full output at which to raise, [0, 1].
      */
-    public void raiseWinch1(double power) {
+    public void raiseLeftWinch(double power) {
         power = constrainWinchOutput(power);
-        this.winch1.set(ControlMode.PercentOutput, power);
+        this.leftWinch.set(ControlMode.PercentOutput, power);
     }
 
     /**
      * Raises winch 2 at the specified percent output (or stops it, if power = 0).
      * @param power the percent of full output at which to raise, [0, 1].
      */
-    public void raiseWinch2(double power) {
+    public void raiseRightWinch(double power) {
         power = constrainWinchOutput(power);
-        this.winch2.set(ControlMode.PercentOutput, power);
+        this.rightWinch.set(ControlMode.PercentOutput, power);
     }
 
     /**
-     * Safety-checks the power to be fed to a winch by clamping it to [-1, 1] and then ensuring
-     * that it is positive (i.e., [0, 1])—winches can only be raised, not lowered.
+     * Safety-checks the power to be fed to a winch by clamping it to [-100%, 100%] of safe range
+     * and then ensuring that it is positive—winches can only be raised, not lowered.
      * @param power the raw, unchecked percent-output value.
      * @return the power, constrained to safe bounds for the winch motors.
      */
     private double constrainWinchOutput(double power) {
         power = Utils.constrainPercentOutput(power);
         if (power < 0) power = 0;
+        power *= RobotMap.CLIMB_WINCH_MAX_SPEED;
         return power;
     }
 
