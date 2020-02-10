@@ -2,6 +2,7 @@ package frc.team4373.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.subsystems.*;
 
 /**
@@ -43,6 +44,11 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
+        SmartDashboard.putNumber("shooter_encoder_vel", Shooter.getInstance().getVelocity());
+        SmartDashboard.putNumber("shooter_21",
+                Shooter.getInstance().getMotor1PercentOutput());
+        SmartDashboard.putNumber("shooter_22",
+                Shooter.getInstance().getMotor2PercentOutput());
     }
 
     /**

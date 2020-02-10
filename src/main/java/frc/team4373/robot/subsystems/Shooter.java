@@ -57,8 +57,12 @@ public class Shooter extends Subsystem {
 
     }
 
-    public double getPercentOutput() {
+    public double getMotor1PercentOutput() {
         return this.shooterMotor1.getMotorOutputPercent();
+    }
+
+    public double getMotor2PercentOutput() {
+        return this.shooterMotor2.getMotorOutputPercent();
     }
     /**
      * Sets the setpoint for velocity closed-loop.
