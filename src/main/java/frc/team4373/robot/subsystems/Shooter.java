@@ -25,8 +25,8 @@ public class Shooter extends Subsystem {
         return instance;
     }
 
-    public WPI_TalonSRX shooterMotor1;
-    public WPI_TalonSRX shooterMotor2;
+    private WPI_TalonSRX shooterMotor1;
+    private WPI_TalonSRX shooterMotor2;
 
     private Shooter() {
         RobotMap.MotorConfig shooterMotor1Config = RobotMap.SHOOTER_MOTOR_1_CONFIG;
