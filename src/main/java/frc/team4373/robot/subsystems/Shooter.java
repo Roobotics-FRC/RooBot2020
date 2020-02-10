@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.ShooterCommand;
 
 public class Shooter extends Subsystem {
     private static volatile Shooter instance;
@@ -84,7 +85,7 @@ public class Shooter extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new ShooterCommand());
     }
 
 }

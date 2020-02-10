@@ -2,15 +2,16 @@ package frc.team4373.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Shooter;
 
 /**
  * Shoots the balls from the shooter.
  */
-public class ShootCommand extends Command {
+public class ShooterShootCommand extends Command {
     private Shooter shooter;
 
-    public ShootCommand() {
+    public ShooterShootCommand() {
         requires(this.shooter = Shooter.getInstance());
     }
 
@@ -21,7 +22,7 @@ public class ShootCommand extends Command {
 
     @Override
     protected void execute() {
-        shooter.setVelocity(.75 * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
+        shooter.setPercentOutput(1);
     }
 
     @Override

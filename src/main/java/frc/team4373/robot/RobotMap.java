@@ -81,8 +81,9 @@ public class RobotMap {
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
-    public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 10240;
     public static final double CLIMB_WINCH_MAX_SPEED = 0.8;
+    public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 100000;
+    public static final double SHOOTER_REUPTAKE_SPEED = 2000;
 
 
     // Non-motor devices
@@ -97,10 +98,10 @@ public class RobotMap {
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =
-            new MotorConfig(21, false, NeutralMode.Brake, true,
-                    new PID(0, 0, 0,0));
+            new MotorConfig(21, false, NeutralMode.Brake, false,
+                    new PID(0, 0.05, 0,0.05));
     public static final MotorConfig SHOOTER_MOTOR_2_CONFIG =
-            new MotorConfig(21, false, NeutralMode.Brake, true,
+            new MotorConfig(22, false, NeutralMode.Brake, false,
                     new PID(0, 0, 0,0));
     public static final MotorConfig CLIMB_LIFT_CONFIG =
             new MotorConfig(41, false, NeutralMode.Brake);
