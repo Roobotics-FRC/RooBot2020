@@ -14,10 +14,8 @@ public class ShooterCommand extends Command {
 
     @Override
     protected void execute() {
-        double slider = OI.getInstance().getDriveJoystick().rooGetThrottle();//[1, -1]
-        slider *= -1;//[-1, 1]
-        slider += 1;//[0, 2]
-        slider /= 2;//[0, 1]
+        // Conversion from [1, -1] to [0, 1] is now in a filter and OI.
+        double slider = OI.getInstance().getDriveJoystick().rooGetThrottle();
         shooter.setVelocity(slider * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
     }
 
