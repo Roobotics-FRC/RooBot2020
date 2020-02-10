@@ -17,42 +17,42 @@ public class RobotMap {
                 true,
                 NeutralMode.Brake,
                 true,
-                new SwerveConfig.PID(0, 0.4, 0, 0));
+                new SwerveConfig.PID(0, 0.2, 0, 0.05));
         SwerveConfig.MotorConfig right1Rotate = new SwerveConfig.MotorConfig(18,
                 true,
                 NeutralMode.Brake,
                 false,
-                new SwerveConfig.PID(0, 3.5, 0, 3));
+                new SwerveConfig.PID(0, 1, 0, 0.05));
         SwerveConfig.MotorConfig right2Drive = new SwerveConfig.MotorConfig(13,
                 false,
                 NeutralMode.Brake,
                 true,
-                new SwerveConfig.PID(0, 0.4, 0, 0));
+                new SwerveConfig.PID(0, 0.2, 0, 0.05));
         SwerveConfig.MotorConfig right2Rotate = new SwerveConfig.MotorConfig(14,
                 true,
                 NeutralMode.Brake,
                 false, // FIXME: maybe false, was oscillating
-                new SwerveConfig.PID(0, 3.5, 0, 3));
+                new SwerveConfig.PID(0, 1, 0, 0.05));
         SwerveConfig.MotorConfig left1Drive = new SwerveConfig.MotorConfig(15,
                 true,
                 NeutralMode.Brake,
                 true,
-                new SwerveConfig.PID(0, 0.4, 0, 0));
+                new SwerveConfig.PID(0, 0.2, 0, 0.05));
         SwerveConfig.MotorConfig left1Rotate = new SwerveConfig.MotorConfig(16,
                 true,
                 NeutralMode.Brake,
                 false, // FIXME: maybe false, was oscillating
-                new SwerveConfig.PID(0, 3.5, 0, 3));
+                new SwerveConfig.PID(0, 1, 0, 0.05));
         SwerveConfig.MotorConfig left2Drive = new SwerveConfig.MotorConfig(11,
                 false,
                 NeutralMode.Brake,
                 true,
-                new SwerveConfig.PID(0, 0.4, 0, 0));
+                new SwerveConfig.PID(0, 0.2, 0, 0.05));
         SwerveConfig.MotorConfig left2Rotate = new SwerveConfig.MotorConfig(12,
                 true,
                 NeutralMode.Brake,
                 false,
-                new SwerveConfig.PID(0, 3.5, 0, 3));
+                new SwerveConfig.PID(0, 1, 0, 0.05));
         double maxWheelSpeed = 8400;
         int ampLimit = 40;
         SwerveConfig.WheelsConfig wheelsConfig = new SwerveConfig.WheelsConfig(
