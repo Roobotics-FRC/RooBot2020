@@ -96,7 +96,10 @@ public class RobotMap {
 
 
     // Motor configurations
-    public static final MotorConfig SHOOTER_CONFIG =
+    public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =
+            new MotorConfig(21, false, NeutralMode.Brake, true,
+                    new PID(0, 0, 0,0));
+    public static final MotorConfig SHOOTER_MOTOR_2_CONFIG =
             new MotorConfig(21, false, NeutralMode.Brake, true,
                     new PID(0, 0, 0,0));
     public static final MotorConfig CLIMB_LIFT_CONFIG =

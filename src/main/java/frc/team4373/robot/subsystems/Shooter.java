@@ -25,34 +25,40 @@ public class Shooter extends Subsystem {
         return instance;
     }
 
-    private WPI_TalonSRX shooterMotor;
+    public WPI_TalonSRX shooterMotor1;
+    public WPI_TalonSRX shooterMotor2;
 
     private Shooter() {
-        RobotMap.MotorConfig shooterMotorConfig = RobotMap.SHOOTER_CONFIG;
-        this.shooterMotor = new WPI_TalonSRX(shooterMotorConfig.id);
-        this.shooterMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+        RobotMap.MotorConfig shooterMotor1Config = RobotMap.SHOOTER_MOTOR_1_CONFIG;
+        RobotMap.MotorConfig shooterMotor2Config = RobotMap.SHOOTER_MOTOR_2_CONFIG;
+        this.shooterMotor1 = new WPI_TalonSRX(shooterMotor1Config.id);
+        this.shooterMotor2 = new WPI_TalonSRX(shooterMotor2Config.id);
+        this.shooterMotor1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
 
-        this.shooterMotor.setInverted(shooterMotorConfig.inverted);
+        this.shooterMotor1.setInverted(shooterMotor1Config.inverted);
+        this.shooterMotor2.setInverted(shooterMotor2Config.inverted);
 
-        this.shooterMotor.setNeutralMode(shooterMotorConfig.neutralMode);
+        this.shooterMotor1.setNeutralMode(shooterMotor1Config.neutralMode);
+        this.shooterMotor2.setNeutralMode(shooterMotor2Config.neutralMode);
 
-        this.shooterMotor.setSensorPhase(shooterMotorConfig.encoderPhase);
+        this.shooterMotor1.setSensorPhase(shooterMotor1Config.encoderPhase);
 
-        this.shooterMotor.config_kF(RobotMap.PID_IDX, shooterMotorConfig.gains.kF);
-        this.shooterMotor.config_kP(RobotMap.PID_IDX, shooterMotorConfig.gains.kP);
-        this.shooterMotor.config_kI(RobotMap.PID_IDX, shooterMotorConfig.gains.kI);
-        this.shooterMotor.config_kD(RobotMap.PID_IDX, shooterMotorConfig.gains.kD);
+        this.shooterMotor1.config_kF(RobotMap.PID_IDX, shooterMotor1Config.gains.kF);
+        this.shooterMotor1.config_kP(RobotMap.PID_IDX, shooterMotor1Config.gains.kP);
+        this.shooterMotor1.config_kI(RobotMap.PID_IDX, shooterMotor1Config.gains.kI);
+        this.shooterMotor1.config_kD(RobotMap.PID_IDX, shooterMotor1Config.gains.kD);
 
+        this.shooterMotor2.follow(this.shooterMotor1);
     }
 
 
     public void setPercentOutput(double speed) {
-        this.shooterMotor.set(ControlMode.PercentOutput, speed);
+        this.shooterMotor1.set(ControlMode.PercentOutput, speed);
 
     }
 
     public double getPercentOutput() {
-        return this.shooterMotor.getMotorOutputPercent();
+        return this.shooterMotor1.getMotorOutputPercent();
     }
     /**
      * Sets the setpoint for velocity closed-loop.
@@ -60,16 +66,16 @@ public class Shooter extends Subsystem {
      */
 
     public void setVelocity(double speed) {
-        this.shooterMotor.set(ControlMode.Velocity, speed);
+        this.shooterMotor1.set(ControlMode.Velocity, speed);
 
     }
     
     public double getVelocity() {
-        return this.shooterMotor.getSelectedSensorVelocity();
+        return this.shooterMotor1.getSelectedSensorVelocity();
     }
 
     public void stopShooter() {
-        this.shooterMotor.stopMotor();
+        this.shooterMotor1.stopMotor();
     }
 
     @Override
