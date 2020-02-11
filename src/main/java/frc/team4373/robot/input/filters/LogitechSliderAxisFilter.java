@@ -6,7 +6,7 @@ package frc.team4373.robot.input.filters;
 public class LogitechSliderAxisFilter extends DoubleTypeFilter {
     @Override
     public Double applyFilter(Double val) {
-        return (1 - val)/2d;
+        return (1 - val) / 2d;
         // return (((val * -1) + 1) / 2);
     }
 }
