@@ -33,8 +33,8 @@ public class Drivetrain extends SwerveDrivetrain {
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new SwerveDriveWithJoystick(
-                OI.getInstance().getDriveJoystick()::rooGetX,
-                OI.getInstance().getDriveJoystick()::rooGetY,
+                OI.getInstance().getDriveJoystick()::rooGetX, () ->
+                -OI.getInstance().getDriveJoystick().rooGetY(),
                 OI.getInstance().getDriveJoystick()::rooGetTwist,
                 this));
     }
