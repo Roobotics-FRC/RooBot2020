@@ -1,6 +1,7 @@
 package frc.team4373.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Drivetrain;
 
@@ -26,6 +27,12 @@ public class DrivetrainCommand extends Command {
         double x = OI.getInstance().getDriveJoystick().rooGetX();
         double y = -OI.getInstance().getDriveJoystick().rooGetY();
         double rotation = OI.getInstance().getDriveJoystick().rooGetTwist();
+
+        if (OI.getInstance().getDriveJoystick().getRawButton(RobotMap.DRIVE_SLOWER_SPEED_BUTTON)) {
+            x /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
+            y /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
+            rotation /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
+        }
 
         if (x != 0 || y != 0 || rotation != 0) {
             this.brakeCountdown = 0;

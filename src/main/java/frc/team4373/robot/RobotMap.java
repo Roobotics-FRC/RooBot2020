@@ -74,6 +74,7 @@ public class RobotMap {
     public static final int DRIVE_RESET_NORTH_BUTTON = 7;
     public static final int DRIVE_NORTH_UP_BUTTON = 10;
     public static final int DRIVE_OWN_SHIP_UP_BUTTON = 12;
+    public static final int DRIVE_SLOWER_SPEED_BUTTON = 2;
     public static final int OPER_BALL_RELEASE_BUTTON = 5; // left bumper
     public static final int OPER_INTAKE_BUTTON = 6; // right bumper
     public static final int OPER_RAISE_L_WINCH_AXIS = 2; // L trigger
@@ -84,6 +85,7 @@ public class RobotMap {
     public static final double CLIMB_WINCH_MAX_SPEED = 0.8;
     public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 100000;
     public static final double SHOOTER_REUPTAKE_SPEED = 2000;
+    public static final double DRIVE_SLOWER_SPEED_FACTOR = 4;
 
 
     // Non-motor devices
