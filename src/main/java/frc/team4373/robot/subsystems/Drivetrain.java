@@ -1,6 +1,7 @@
 package frc.team4373.robot.subsystems;
 
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.DrivetrainCommand;
 import frc.team4373.robot.input.OI;
 import frc.team4373.swerve.SwerveDrivetrain;
 import frc.team4373.swerve.commands.SwerveDriveWithJoystick;
@@ -32,10 +33,6 @@ public class Drivetrain extends SwerveDrivetrain {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new SwerveDriveWithJoystick(
-                OI.getInstance().getDriveJoystick()::rooGetX, () ->
-                -OI.getInstance().getDriveJoystick().rooGetY(),
-                OI.getInstance().getDriveJoystick()::rooGetTwist,
-                this));
+        setDefaultCommand(new DrivetrainCommand());
     }
 }
