@@ -9,7 +9,7 @@ public class DriveAndShootAuton extends CommandGroup {
      */
     public DriveAndShootAuton() {
         addSequential(new TimedDriveAuton(0.5, 1, 0));
-        addSequential(new VisionQuerierCommand("angle_offset", 2, RotateAngleOffsetAuton::new));
+        addSequential(new VisionQuerierCommand("degree_offset", 2, RotateAngleOffsetAuton::new));
         addSequential(new ShooterShootCommand(),5);
     }
 }
