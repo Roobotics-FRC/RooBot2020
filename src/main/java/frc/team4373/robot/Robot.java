@@ -3,7 +3,9 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team4373.robot.subsystems.*;
+import frc.team4373.robot.subsystems.Drivetrain;
+import frc.team4373.robot.subsystems.Shooter;
+import frc.team4373.swerve.SwerveDrivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -58,6 +60,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
+        Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.NONE);
     }
 
     /**
@@ -65,6 +68,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopInit() {
+        Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.IMPLODE);
     }
 
     /**
