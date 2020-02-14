@@ -97,6 +97,9 @@ public class RobotMap {
     public static final double INTAKE_GROUND_SPEED = 1;
     public static final double INTAKE_UPTAKE_SPEED = 1;
 
+    // Vision
+    public static final double VISION_SAMPLE_COUNT = 10;
+    public static final String VISION_TABLE_NAME = "Vision";
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =
