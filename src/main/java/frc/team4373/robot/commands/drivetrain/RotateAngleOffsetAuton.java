@@ -38,6 +38,9 @@ public class RotateAngleOffsetAuton extends PIDCommand {
         this.getPIDController().setOutputRange(
                 -RobotMap.AUTON_TURN_SPEED, RobotMap.AUTON_TURN_SPEED);
         this.finished = false;
+        this.getPIDController().setP(SmartDashboard.getNumber("kP", 0));
+        this.getPIDController().setI(SmartDashboard.getNumber("kI", 0));
+        this.getPIDController().setD(SmartDashboard.getNumber("kD", 0));
     }
 
     @Override

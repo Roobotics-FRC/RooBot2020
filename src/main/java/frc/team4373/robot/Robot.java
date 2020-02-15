@@ -39,6 +39,10 @@ public class Robot extends TimedRobot {
 
         // TODO: For debug purposes only
         SmartDashboard.putNumber("shoot_speed", 0);
+        SmartDashboard.putNumber("manual_rot_angle", 0);
+        SmartDashboard.putNumber("kP", 0);
+        SmartDashboard.putNumber("kI", 0);
+        SmartDashboard.putNumber("kD", 0);
     }
 
     /**

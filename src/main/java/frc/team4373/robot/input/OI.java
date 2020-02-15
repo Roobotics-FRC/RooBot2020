@@ -3,6 +3,8 @@ package frc.team4373.robot.input;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.camera.VisionQuerierCommand;
+import frc.team4373.robot.commands.drivetrain.DoDashboardTurnCommand;
 import frc.team4373.robot.commands.drivetrain.ResetNorthCommand;
 import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
 import frc.team4373.robot.commands.util.ClearSubsystemsCommandGroup;
@@ -21,6 +23,9 @@ public final class OI {
     private Button setNorthUpButton;
     private Button setOwnShipUpButton;
     private Button clearCommandsButton;
+
+    // TODO: For debug only
+    private Button turnButton9;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -55,6 +60,9 @@ public final class OI {
         this.clearCommandsButton = new JoystickButton(this.driveJoystick,
                 RobotMap.CLEAR_COMMANDS_BUTTON);
         this.clearCommandsButton.whenPressed(new ClearSubsystemsCommandGroup());
+
+        this.turnButton9 = new JoystickButton(this.driveJoystick, 9);
+        this.turnButton9.whenPressed(new DoDashboardTurnCommand());
     }
 
     /**
