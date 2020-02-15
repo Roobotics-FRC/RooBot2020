@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
         // Shooter.getInstance();
         Drivetrain.getInstance();
 
+        // TODO: For debug purposes only
         SmartDashboard.putNumber("shoot_speed", 0);
     }
 
@@ -50,22 +51,22 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
-        SmartDashboard.putNumber("shooter_encoder_vel", Shooter.getInstance().getVelocity());
-        SmartDashboard.putNumber("shooter_21",
+        SmartDashboard.putNumber("shooter/encoder_vel", Shooter.getInstance().getVelocity());
+        SmartDashboard.putNumber("shooter/motor1_output",
                 Shooter.getInstance().getMotor1PercentOutput());
-        SmartDashboard.putNumber("shooter_22",
+        SmartDashboard.putNumber("shooter/motor2_output",
                 Shooter.getInstance().getMotor2PercentOutput());
 
-        SmartDashboard.putNumber("lift_percent_output",
+        SmartDashboard.putNumber("climber/lift_output",
                 Climber.getInstance().getLiftPercentOutput());
-        SmartDashboard.putNumber("right_winch_percent_output",
+        SmartDashboard.putNumber("climber/right_winch_output",
                 Climber.getInstance().getRightWinchPercentOutput());
-        SmartDashboard.putNumber("left_winch_percent_output",
+        SmartDashboard.putNumber("climber/left_winch_output",
                 Climber.getInstance().getLeftWinchPercentOutput());
 
-        SmartDashboard.putNumber("ground_intake_percent_output",
+        SmartDashboard.putNumber("intake/ground_intake_output",
                 Intake.getInstance().getGroundIntakePercentOutput());
-        SmartDashboard.putNumber("uptake_intake_percent_output",
+        SmartDashboard.putNumber("intake/uptake_intake_output",
                 Intake.getInstance().getUptakeIntakePercentOutput());
     }
 
