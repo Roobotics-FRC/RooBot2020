@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.subsystems.Drivetrain;
 
 import java.util.function.Function;
 
