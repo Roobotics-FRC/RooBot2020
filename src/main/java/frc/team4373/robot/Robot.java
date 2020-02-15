@@ -3,10 +3,7 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team4373.robot.subsystems.Climber;
 import frc.team4373.robot.subsystems.Drivetrain;
-import frc.team4373.robot.subsystems.Intake;
-import frc.team4373.robot.subsystems.Shooter;
 import frc.team4373.swerve.SwerveDrivetrain;
 
 /**
@@ -32,9 +29,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        // Climber.getInstance();
-        // Intake.getInstance();
-        // Shooter.getInstance();
         Drivetrain.getInstance();
 
         // TODO: For debug purposes only
@@ -55,23 +49,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
-        SmartDashboard.putNumber("shooter/encoder_vel", Shooter.getInstance().getVelocity());
-        SmartDashboard.putNumber("shooter/motor1_output",
-                Shooter.getInstance().getMotor1PercentOutput());
-        SmartDashboard.putNumber("shooter/motor2_output",
-                Shooter.getInstance().getMotor2PercentOutput());
-
-        SmartDashboard.putNumber("climber/lift_output",
-                Climber.getInstance().getLiftPercentOutput());
-        SmartDashboard.putNumber("climber/right_winch_output",
-                Climber.getInstance().getRightWinchPercentOutput());
-        SmartDashboard.putNumber("climber/left_winch_output",
-                Climber.getInstance().getLeftWinchPercentOutput());
-
-        SmartDashboard.putNumber("intake/ground_intake_output",
-                Intake.getInstance().getGroundIntakePercentOutput());
-        SmartDashboard.putNumber("intake/uptake_intake_output",
-                Intake.getInstance().getUptakeIntakePercentOutput());
     }
 
     /**

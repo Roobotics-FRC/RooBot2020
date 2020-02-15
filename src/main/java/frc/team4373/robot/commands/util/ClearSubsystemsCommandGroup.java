@@ -13,7 +13,5 @@ public class ClearSubsystemsCommandGroup extends CommandGroup {
     public ClearSubsystemsCommandGroup() {
         addParallel(new ClearSubsystemCommand(Camera.getInstance()));
         addParallel(new ClearSubsystemCommand(Drivetrain.getInstance()));
-        addParallel(new ClearSubsystemCommand(Intake.getInstance()));
-        addParallel(new ClearSubsystemCommand(Shooter.getInstance()));
     }
 }
