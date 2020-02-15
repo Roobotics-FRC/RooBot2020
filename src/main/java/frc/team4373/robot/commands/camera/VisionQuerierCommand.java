@@ -1,4 +1,4 @@
-package frc.team4373.robot.commands.drivetrain;
+package frc.team4373.robot.commands.camera;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.subsystems.Camera;
 
 import java.util.function.Function;
 
@@ -47,6 +48,8 @@ public class VisionQuerierCommand extends Command {
      */
     public VisionQuerierCommand(String visionField, double tolerance,
                                 Function<Double, PIDCommand> constructor) {
+        requires(Camera.getInstance());
+
         this.visionField = visionField;
         this.tolerance = tolerance;
         this.constructor = constructor;
