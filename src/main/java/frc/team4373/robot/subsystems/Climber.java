@@ -98,6 +98,30 @@ public class Climber extends Subsystem {
         return power;
     }
 
+    /**
+     * Gets the percent output of the lift.
+     * @return the percent output of the lift.
+     */
+    public double getLiftPercentOutput() {
+        return lift.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the right winch motor.
+     * @return the percent output of the right winch motor.
+     */
+    public double getRightWinchPercentOutput() {
+        return rightWinch.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the left winch motor.
+     * @return the percent output of the left winch motor.
+     */
+    public double getLeftWinchPercentOutput() {
+        return leftWinch.getMotorOutputPercent();
+    }
+
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new ClimberCommand());

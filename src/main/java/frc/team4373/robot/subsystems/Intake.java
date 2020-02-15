@@ -88,6 +88,22 @@ public class Intake extends Subsystem {
         uptakeIntake.set(ControlMode.PercentOutput, speed);
     }
 
+    /**
+     * Gets the percent output of the ground intake motor motor.
+     * @return the percent output of the ground intake motor.
+     */
+    public double getGroundIntakePercentOutput() {
+        return groundIntake.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the uptake intake motor motor.
+     * @return the percent output of the uptake intake motor.
+     */
+    public double getUptakeIntakePercentOutput() {
+        return uptakeIntake.getMotorOutputPercent();
+    }
+
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new IntakeCommand());
