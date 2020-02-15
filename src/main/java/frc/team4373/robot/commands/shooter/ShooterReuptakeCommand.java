@@ -1,4 +1,4 @@
-package frc.team4373.robot.commands;
+package frc.team4373.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4373.robot.RobotMap;

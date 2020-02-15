@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.commands.IntakeCommand;
+import frc.team4373.robot.commands.intake.IntakeCommand;
 
 public class Intake extends Subsystem {
     private static volatile Intake instance;

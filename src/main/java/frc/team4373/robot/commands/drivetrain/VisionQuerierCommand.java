@@ -1,4 +1,4 @@
-package frc.team4373.robot.commands;
+package frc.team4373.robot.commands.drivetrain;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;

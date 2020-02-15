@@ -1,11 +1,10 @@
 package frc.team4373.robot.input;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.commands.ResetNorthCommand;
-import frc.team4373.robot.commands.SetDriveModeCommand;
+import frc.team4373.robot.commands.drivetrain.ResetNorthCommand;
+import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
 import frc.team4373.robot.input.filters.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 

@@ -1,28 +1,24 @@
-package frc.team4373.robot.commands;
+package frc.team4373.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Shooter;
 
-/**
- * Shoots the balls from the shooter.
- */
-public class ShooterShootCommand extends Command {
+public class ShooterCommand extends Command {
     private Shooter shooter;
 
-    public ShooterShootCommand() {
+    public ShooterCommand() {
         requires(this.shooter = Shooter.getInstance());
     }
 
     @Override
-    protected void initialize() {
-
-    }
-
-    @Override
     protected void execute() {
-        shooter.setPercentOutput(1);
+        // Conversion from [1, -1] to [0, 1] is now in a filter and OI.
+        // double slider = OI.getInstance().getDriveJoystick().rooGetThrottle();
+        double speed = SmartDashboard.getNumber("shoot_speed", 0);
+        shooter.setVelocity(speed * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
     }
 
     @Override
@@ -38,5 +34,6 @@ public class ShooterShootCommand extends Command {
     @Override
     protected void interrupted() {
         this.end();
+
     }
 }
