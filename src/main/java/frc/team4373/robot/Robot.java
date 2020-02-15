@@ -3,7 +3,9 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team4373.robot.subsystems.Climber;
 import frc.team4373.robot.subsystems.Drivetrain;
+import frc.team4373.robot.subsystems.Intake;
 import frc.team4373.robot.subsystems.Shooter;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -53,6 +55,18 @@ public class Robot extends TimedRobot {
                 Shooter.getInstance().getMotor1PercentOutput());
         SmartDashboard.putNumber("shooter_22",
                 Shooter.getInstance().getMotor2PercentOutput());
+
+        SmartDashboard.putNumber("lift_percent_output",
+                Climber.getInstance().getLiftPercentOutput());
+        SmartDashboard.putNumber("right_winch_percent_output",
+                Climber.getInstance().getRightWinchPercentOutput());
+        SmartDashboard.putNumber("left_winch_percent_output",
+                Climber.getInstance().getLeftWinchPercentOutput());
+
+        SmartDashboard.putNumber("ground_intake_percent_output",
+                Intake.getInstance().getGroundIntakePercentOutput());
+        SmartDashboard.putNumber("uptake_intake_percent_output",
+                Intake.getInstance().getUptakeIntakePercentOutput());
     }
 
     /**
