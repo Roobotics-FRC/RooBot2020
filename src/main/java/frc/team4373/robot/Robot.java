@@ -32,8 +32,8 @@ public class Robot extends TimedRobot {
         Drivetrain.getInstance();
 
         // TODO: For debug purposes only
-        SmartDashboard.putNumber("shoot_speed", 0);
         SmartDashboard.putNumber("manual_rot_angle", 0);
+        SmartDashboard.putNumber("rot_max_speed", RobotMap.AUTON_TURN_SPEED);
         SmartDashboard.putNumber("kP", 0);
         SmartDashboard.putNumber("kI", 0);
         SmartDashboard.putNumber("kD", 0);

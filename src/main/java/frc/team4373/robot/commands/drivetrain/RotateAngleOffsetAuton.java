@@ -35,8 +35,9 @@ public class RotateAngleOffsetAuton extends PIDCommand {
     protected void initialize() {
         targetAngle = drivetrain.getPigeonYawRaw() + offset;
         this.setSetpoint(targetAngle);
+        double maxSpeed = SmartDashboard.getNumber("rot_max_speed", RobotMap.AUTON_TURN_SPEED);
         this.getPIDController().setOutputRange(
-                -RobotMap.AUTON_TURN_SPEED, RobotMap.AUTON_TURN_SPEED);
+                -maxSpeed, maxSpeed);
         this.finished = false;
         this.getPIDController().setP(SmartDashboard.getNumber("kP", 0));
         this.getPIDController().setI(SmartDashboard.getNumber("kI", 0));
