@@ -11,7 +11,7 @@ import frc.team4373.robot.subsystems.Drivetrain;
  */
 public class RotateAngleOffsetAuton extends PIDCommand {
     private static final double MOTOR_OUTPUT_THRESHOLD = 0.0625;
-    private static final RobotMap.PID pid = new RobotMap.PID(0, 0.09, 0.05, 0.31);
+    private static final RobotMap.PID pid = new RobotMap.PID(0, 0.08, 0.05, 0.15);
 
     private Drivetrain drivetrain;
     private double offset;
@@ -35,12 +35,13 @@ public class RotateAngleOffsetAuton extends PIDCommand {
         this.getPIDController().setOutputRange(
                 -RobotMap.AUTON_TURN_SPEED, RobotMap.AUTON_TURN_SPEED);
         this.finished = false;
+        setTimeout(RobotMap.MAX_TURN_AUTON_TIME_SEC);
     }
 
     @Override
     protected boolean isFinished() {
         SmartDashboard.putNumber("targetAngle", targetAngle);
-        return this.finished;
+        return this.finished || this.isTimedOut();
     }
 
     @Override

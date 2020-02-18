@@ -107,6 +107,7 @@ public class RobotMap {
     public static final String VISION_TABLE_NAME = "Vision";
     public static final String VISION_ANG_OFFSET_FIELD = "degree_offset";
     public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 2;
+    public static final double MAX_TURN_AUTON_TIME_SEC = 3;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =

@@ -4,6 +4,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTableType;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -30,6 +31,8 @@ public class VisionQuerierCommand extends Command {
     private double accumulator = 0;
     private double iterationCount = 0;
     private boolean finished = false;
+
+    private double waitStart;
 
     /**
      * Constructs a command responsible for managing repeated querying of a vision
@@ -75,6 +78,7 @@ public class VisionQuerierCommand extends Command {
     protected void execute() {
         switch (state) {
             case POLLING:
+                this.waitStart = -1;
                 SmartDashboard.putString("v/state", "polling");
                 if (this.iterationCount >= RobotMap.VISION_SAMPLE_COUNT) {
                     this.state = State.SETTING;
@@ -116,7 +120,11 @@ public class VisionQuerierCommand extends Command {
                     SmartDashboard.putString("v/auton_cmd_state", "running");
                 } else {
                     SmartDashboard.putString("v/auton_cmd_state", "done");
-                    this.state = State.POLLING;
+                    if (this.waitStart == -1) {
+                        this.waitStart = Timer.getFPGATimestamp();
+                    } else if (Timer.getFPGATimestamp() > this.waitStart + 0.45) {
+                        this.state = State.POLLING;
+                    }
                 }
                 break;
             default:
