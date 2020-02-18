@@ -104,6 +104,14 @@ public class Intake extends Subsystem {
         return uptakeIntake.getMotorOutputPercent();
     }
 
+    /**
+     * Returns whether the balls are currently being retained.
+     * @return whether the servo is in the retain state.
+     */
+    public boolean getBallsAreRetained() {
+        return servo.get() == RobotMap.INTAKE_SERVO_RETAIN_ANGLE;
+    }
+
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new IntakeCommand());
