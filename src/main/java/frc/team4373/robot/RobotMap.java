@@ -75,11 +75,15 @@ public class RobotMap {
     public static final int DRIVE_NORTH_UP_BUTTON = 10;
     public static final int DRIVE_OWN_SHIP_UP_BUTTON = 12;
     public static final int DRIVE_SLOWER_SPEED_BUTTON = 2;
-    public static final int CLEAR_COMMANDS_BUTTON = 11;
+    public static final int DRIVE_CLEAR_COMMANDS_BUTTON = 11;
+    public static final int DRIVE_VISION_ALIGN_BUTTON = 4;
     public static final int OPER_BALL_RELEASE_BUTTON = 5; // left bumper
     public static final int OPER_INTAKE_BUTTON = 6; // right bumper
     public static final int OPER_RAISE_L_WINCH_AXIS = 2; // L trigger
     public static final int OPER_RAISE_R_WINCH_AXIS = 3; // R trigger
+    public static final int OPER_SHOOT_BUTTON = 4; // Y button
+    public static final int OPER_REUPTAKE_BUTTON = 1; // A button
+    public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
@@ -101,14 +105,15 @@ public class RobotMap {
     // Vision
     public static final double VISION_SAMPLE_COUNT = 10;
     public static final String VISION_TABLE_NAME = "Vision";
+    public static final String VISION_ANG_OFFSET_FIELD = "degree_offset";
+    public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 2;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =
             new MotorConfig(21, false, NeutralMode.Brake, false,
                     new PID(0, 0.05, 0,0.05));
     public static final MotorConfig SHOOTER_MOTOR_2_CONFIG =
-            new MotorConfig(22, false, NeutralMode.Brake, false,
-                    new PID(0, 0, 0,0));
+            new MotorConfig(22, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_LIFT_CONFIG =
             new MotorConfig(41, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_WINCH_1_CONFIG =
