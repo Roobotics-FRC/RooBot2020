@@ -93,7 +93,7 @@ public class RobotMap {
     public static final int INTAKE_RELEASE_SERVO_PORT = 1;
 
     // Physical state constants
-    public static final double INTAKE_SERVO_RELEASE_ANGLE = 1;
+    public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double INTAKE_GROUND_SPEED = 1;
     public static final double INTAKE_UPTAKE_SPEED = 1;
