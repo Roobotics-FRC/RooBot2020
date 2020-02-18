@@ -4,8 +4,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.commands.camera.CameraCommand;
 
 /**
- * A placeholder subsystem that allows for tracking and killing commands that require only the
- * camera.
+ * A symbolic subsystem that allows for tracking and killing commands that require only the camera.
  */
 public class Camera extends Subsystem {
     private static volatile Camera instance;
