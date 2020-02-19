@@ -85,6 +85,8 @@ public class RobotMap {
     public static final int OPER_REUPTAKE_BUTTON = 1; // A button
     public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
 
+    public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
+
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
     public static final double CLIMB_WINCH_MAX_SPEED = 0.8;
@@ -106,8 +108,9 @@ public class RobotMap {
     public static final double VISION_SAMPLE_COUNT = 10;
     public static final String VISION_TABLE_NAME = "Vision";
     public static final String VISION_ANG_OFFSET_FIELD = "degree_offset";
-    public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 2;
+    public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 1;
     public static final double MAX_TURN_AUTON_TIME_SEC = 3;
+    public static final double INTER_QUERY_DELAY_SEC = 0.45;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =

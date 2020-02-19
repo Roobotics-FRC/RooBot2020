@@ -10,7 +10,7 @@ import frc.team4373.robot.subsystems.Drivetrain;
  * Rotates the robot a specified number of degrees.
  */
 public class RotateAngleOffsetAuton extends PIDCommand {
-    private static final double MOTOR_OUTPUT_THRESHOLD = 0.0625;
+    private static final double MOTOR_OUTPUT_THRESHOLD = 0.2;
     private static final RobotMap.PID pid = new RobotMap.PID(0, 0.08, 0.05, 0.15);
 
     private Drivetrain drivetrain;
@@ -32,8 +32,6 @@ public class RotateAngleOffsetAuton extends PIDCommand {
     protected void initialize() {
         targetAngle = drivetrain.getPigeonYawRaw() + offset;
         this.setSetpoint(targetAngle);
-        this.getPIDController().setOutputRange(
-                -RobotMap.AUTON_TURN_SPEED, RobotMap.AUTON_TURN_SPEED);
         this.finished = false;
         setTimeout(RobotMap.MAX_TURN_AUTON_TIME_SEC);
     }
@@ -56,7 +54,7 @@ public class RotateAngleOffsetAuton extends PIDCommand {
             this.finished = true;
             return;
         }
-        drivetrain.drive(output, 0, 0);
+        drivetrain.drive(output * RobotMap.AUTON_TURN_SPEED, 0, 0);
     }
 
     @Override
