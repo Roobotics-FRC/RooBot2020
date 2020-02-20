@@ -73,7 +73,7 @@ public final class OI {
 
         this.shootButton = new JoystickButton(this.operatorJoystick,
                 RobotMap.OPER_SHOOT_BUTTON);
-        this.shootButton.whenPressed(new ShooterShootCommand());
+        this.shootButton.whenPressed(new ShooterShootCommand(1));
 
         this.fallbackShootButton = new JoystickButton(this.operatorJoystick,
                 RobotMap.OPER_FALLBACK_SHOOT_BUTTON);
