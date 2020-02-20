@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Camera;
+import frc.team4373.robot.subsystems.Drivetrain;
 
 import java.util.function.Function;
 
@@ -54,6 +55,7 @@ public class VisionQuerierCommand extends Command {
     public VisionQuerierCommand(String visionField, double tolerance,
                                 Function<Double, PIDCommand> constructor) {
         requires(Camera.getInstance());
+        requires(Drivetrain.getInstance());
 
         this.visionField = visionField;
         this.tolerance = tolerance;

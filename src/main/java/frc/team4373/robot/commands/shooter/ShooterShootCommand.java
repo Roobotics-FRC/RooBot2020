@@ -23,6 +23,7 @@ public class ShooterShootCommand extends Command {
     @Override
     protected void execute() {
         shooter.setPercentOutput(1);
+        shooter.setVelocity(0.715 * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
     }
 
     @Override

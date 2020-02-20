@@ -3,6 +3,7 @@ package frc.team4373.robot.input;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.DriveAndShootAuton;
 import frc.team4373.robot.commands.camera.VisionQuerierCommand;
 import frc.team4373.robot.commands.drivetrain.ResetNorthCommand;
 import frc.team4373.robot.commands.drivetrain.RotateAngleOffsetAuton;
@@ -30,6 +31,8 @@ public final class OI {
     private Button shootButton;
     private Button fallbackShootButton;
     private Button reuptakeButton;
+
+    private Button b;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -82,6 +85,9 @@ public final class OI {
         this.reuptakeButton = new JoystickButton(this.operatorJoystick,
                 RobotMap.OPER_REUPTAKE_BUTTON);
         this.reuptakeButton.whenPressed(new ShooterReuptakeCommand());
+
+        b = new JoystickButton(driveJoystick, 9);
+        b.whenPressed(new DriveAndShootAuton());
     }
 
     /**

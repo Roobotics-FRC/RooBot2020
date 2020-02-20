@@ -23,8 +23,15 @@ public class RotateAngleOffsetAuton extends PIDCommand {
      * @param offset the angle offset by which to rotate, in degrees.
      */
     public RotateAngleOffsetAuton(double offset) {
+        this(offset, false);
+    }
+
+    public RotateAngleOffsetAuton(double offset, boolean noRequirements) {
         super("RotateAngleAuton", pid.kP, pid.kI, pid.kD);
-        requires(this.drivetrain = Drivetrain.getInstance());
+        this.drivetrain = Drivetrain.getInstance();
+        if (!noRequirements) {
+            requires(this.drivetrain);
+        }
         this.offset = offset;
     }
 
