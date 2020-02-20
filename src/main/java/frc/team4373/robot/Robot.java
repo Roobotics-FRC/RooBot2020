@@ -3,7 +3,11 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team4373.robot.subsystems.*;
+import frc.team4373.robot.subsystems.Climber;
+import frc.team4373.robot.subsystems.Drivetrain;
+import frc.team4373.robot.subsystems.Intake;
+import frc.team4373.robot.subsystems.Shooter;
+import frc.team4373.swerve.SwerveDrivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,6 +37,7 @@ public class Robot extends TimedRobot {
         // Shooter.getInstance();
         Drivetrain.getInstance();
 
+        // TODO: For debug purposes only
         SmartDashboard.putNumber("shoot_speed", 0);
     }
 
@@ -46,11 +51,25 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotPeriodic() {
-        SmartDashboard.putNumber("shooter_encoder_vel", Shooter.getInstance().getVelocity());
-        SmartDashboard.putNumber("shooter_21",
+        SmartDashboard.putNumber("shooter/encoder_vel", Shooter.getInstance().getVelocity());
+        SmartDashboard.putNumber("shooter/motor1_output",
                 Shooter.getInstance().getMotor1PercentOutput());
-        SmartDashboard.putNumber("shooter_22",
+        SmartDashboard.putNumber("shooter/motor2_output",
                 Shooter.getInstance().getMotor2PercentOutput());
+
+        SmartDashboard.putNumber("climber/lift_out",
+                Climber.getInstance().getLiftPercentOutput());
+        SmartDashboard.putNumber("climber/right_winch_out",
+                Climber.getInstance().getRightWinchPercentOutput());
+        SmartDashboard.putNumber("climber/left_winch_out",
+                Climber.getInstance().getLeftWinchPercentOutput());
+
+        SmartDashboard.putNumber("intake/ground_intake_out",
+                Intake.getInstance().getGroundIntakePercentOutput());
+        SmartDashboard.putNumber("intake/uptake_intake_out",
+                Intake.getInstance().getUptakeIntakePercentOutput());
+        SmartDashboard.putBoolean("intake/balls_retained",
+                Intake.getInstance().getBallsAreRetained());
     }
 
     /**
@@ -58,6 +77,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
+        Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.NONE);
     }
 
     /**
@@ -65,6 +85,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopInit() {
+        Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.IMPLODE);
     }
 
     /**

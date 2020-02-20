@@ -1,11 +1,16 @@
 package frc.team4373.robot.input;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.commands.ResetNorthCommand;
-import frc.team4373.robot.commands.SetDriveModeCommand;
+import frc.team4373.robot.commands.camera.VisionQuerierCommand;
+import frc.team4373.robot.commands.drivetrain.ResetNorthCommand;
+import frc.team4373.robot.commands.drivetrain.RotateAngleOffsetAuton;
+import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
+import frc.team4373.robot.commands.shooter.ShooterFallbackShootCommand;
+import frc.team4373.robot.commands.shooter.ShooterReuptakeCommand;
+import frc.team4373.robot.commands.shooter.ShooterShootCommand;
+import frc.team4373.robot.commands.util.ClearSubsystemsCommandGroup;
 import frc.team4373.robot.input.filters.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -20,6 +25,11 @@ public final class OI {
     private Button resetNorthButton;
     private Button setNorthUpButton;
     private Button setOwnShipUpButton;
+    private Button clearCommandsButton;
+    private Button alignToTargetButton;
+    private Button shootButton;
+    private Button fallbackShootButton;
+    private Button reuptakeButton;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -50,6 +60,28 @@ public final class OI {
                 RobotMap.DRIVE_OWN_SHIP_UP_BUTTON);
         this.setOwnShipUpButton.whenPressed(new SetDriveModeCommand(
                 SwerveDrivetrain.DriveMode.OWN_SHIP_UP));
+
+        this.clearCommandsButton = new JoystickButton(this.driveJoystick,
+                RobotMap.DRIVE_CLEAR_COMMANDS_BUTTON);
+        this.clearCommandsButton.whenPressed(new ClearSubsystemsCommandGroup());
+
+        this.alignToTargetButton = new JoystickButton(this.driveJoystick,
+                RobotMap.DRIVE_VISION_ALIGN_BUTTON);
+        this.alignToTargetButton.whenPressed(new VisionQuerierCommand(
+                RobotMap.VISION_ANG_OFFSET_FIELD, RobotMap.VISION_ALIGN_ALLOWABLE_OFFSET_DEG,
+                RotateAngleOffsetAuton::new));
+
+        this.shootButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_SHOOT_BUTTON);
+        this.shootButton.whenPressed(new ShooterShootCommand());
+
+        this.fallbackShootButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_FALLBACK_SHOOT_BUTTON);
+        this.fallbackShootButton.whenPressed(new ShooterFallbackShootCommand());
+
+        this.reuptakeButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_REUPTAKE_BUTTON);
+        this.reuptakeButton.whenPressed(new ShooterReuptakeCommand());
     }
 
     /**

@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.commands.IntakeCommand;
+import frc.team4373.robot.commands.intake.IntakeCommand;
 
 public class Intake extends Subsystem {
     private static volatile Intake instance;
@@ -86,6 +86,30 @@ public class Intake extends Subsystem {
      */
     private void setUptakeIntakeMotor(double speed) {
         uptakeIntake.set(ControlMode.PercentOutput, speed);
+    }
+
+    /**
+     * Gets the percent output of the ground intake motor motor.
+     * @return the percent output of the ground intake motor.
+     */
+    public double getGroundIntakePercentOutput() {
+        return groundIntake.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the uptake intake motor motor.
+     * @return the percent output of the uptake intake motor.
+     */
+    public double getUptakeIntakePercentOutput() {
+        return uptakeIntake.getMotorOutputPercent();
+    }
+
+    /**
+     * Returns whether the balls are currently being retained.
+     * @return whether the servo is in the retain state.
+     */
+    public boolean getBallsAreRetained() {
+        return servo.get() == RobotMap.INTAKE_SERVO_RETAIN_ANGLE;
     }
 
     @Override

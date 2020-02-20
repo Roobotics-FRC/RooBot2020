@@ -1,15 +1,18 @@
-package frc.team4373.robot.commands;
+package frc.team4373.robot.commands.camera;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTableType;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.subsystems.Drivetrain;
+import frc.team4373.robot.input.OI;
+import frc.team4373.robot.subsystems.Camera;
 
 import java.util.function.Function;
 
@@ -31,6 +34,8 @@ public class VisionQuerierCommand extends Command {
     private double iterationCount = 0;
     private boolean finished = false;
 
+    private double waitStart;
+
     /**
      * Constructs a command responsible for managing repeated querying of a vision
      * Network Table field and corresponding PID commands to attain a state
@@ -48,6 +53,8 @@ public class VisionQuerierCommand extends Command {
      */
     public VisionQuerierCommand(String visionField, double tolerance,
                                 Function<Double, PIDCommand> constructor) {
+        requires(Camera.getInstance());
+
         this.visionField = visionField;
         this.tolerance = tolerance;
         this.constructor = constructor;
@@ -67,12 +74,17 @@ public class VisionQuerierCommand extends Command {
             resetStateVars();
             this.finished = false;
         }
+        OI.getInstance().getOperatorJoystick().setRumble(GenericHID.RumbleType.kRightRumble,
+                RobotMap.OPER_ROTATE_VIB_INTENSITY);
+        OI.getInstance().getOperatorJoystick().setRumble(GenericHID.RumbleType.kLeftRumble,
+                RobotMap.OPER_ROTATE_VIB_INTENSITY);
     }
 
     @Override
     protected void execute() {
         switch (state) {
             case POLLING:
+                this.waitStart = -1;
                 SmartDashboard.putString("v/state", "polling");
                 if (this.iterationCount >= RobotMap.VISION_SAMPLE_COUNT) {
                     this.state = State.SETTING;
@@ -114,7 +126,12 @@ public class VisionQuerierCommand extends Command {
                     SmartDashboard.putString("v/auton_cmd_state", "running");
                 } else {
                     SmartDashboard.putString("v/auton_cmd_state", "done");
-                    this.state = State.POLLING;
+                    if (this.waitStart == -1) {
+                        this.waitStart = Timer.getFPGATimestamp();
+                    } else if (Timer.getFPGATimestamp()
+                            > this.waitStart + RobotMap.INTER_QUERY_DELAY_SEC) {
+                        this.state = State.POLLING;
+                    }
                 }
                 break;
             default:
@@ -137,5 +154,16 @@ public class VisionQuerierCommand extends Command {
         this.state = State.POLLING;
         this.accumulator = 0;
         this.iterationCount = 0;
+    }
+
+    @Override
+    protected void end() {
+        OI.getInstance().getOperatorJoystick().setRumble(GenericHID.RumbleType.kRightRumble, 0);
+        OI.getInstance().getOperatorJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, 0);
+    }
+
+    @Override
+    protected void interrupted() {
+        this.end();
     }
 }

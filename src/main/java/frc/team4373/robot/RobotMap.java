@@ -54,7 +54,7 @@ public class RobotMap {
                 false,
                 new SwerveConfig.PID(0, 1, 0, 0.05));
         double maxWheelSpeed = 8400;
-        int ampLimit = 40;
+        int ampLimit = 35;
         SwerveConfig.WheelsConfig wheelsConfig = new SwerveConfig.WheelsConfig(
                 right1Drive, right1Rotate, right2Drive, right2Rotate,
                 left1Drive, left1Rotate, left2Drive, left2Rotate,
@@ -75,10 +75,17 @@ public class RobotMap {
     public static final int DRIVE_NORTH_UP_BUTTON = 10;
     public static final int DRIVE_OWN_SHIP_UP_BUTTON = 12;
     public static final int DRIVE_SLOWER_SPEED_BUTTON = 2;
+    public static final int DRIVE_CLEAR_COMMANDS_BUTTON = 11;
+    public static final int DRIVE_VISION_ALIGN_BUTTON = 4;
     public static final int OPER_BALL_RELEASE_BUTTON = 5; // left bumper
     public static final int OPER_INTAKE_BUTTON = 6; // right bumper
     public static final int OPER_RAISE_L_WINCH_AXIS = 2; // L trigger
     public static final int OPER_RAISE_R_WINCH_AXIS = 3; // R trigger
+    public static final int OPER_SHOOT_BUTTON = 4; // Y button
+    public static final int OPER_REUPTAKE_BUTTON = 1; // A button
+    public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
+
+    public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
@@ -92,7 +99,7 @@ public class RobotMap {
     public static final int INTAKE_RELEASE_SERVO_PORT = 1;
 
     // Physical state constants
-    public static final double INTAKE_SERVO_RELEASE_ANGLE = 1;
+    public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double INTAKE_GROUND_SPEED = 1;
     public static final double INTAKE_UPTAKE_SPEED = 1;
@@ -100,14 +107,17 @@ public class RobotMap {
     // Vision
     public static final double VISION_SAMPLE_COUNT = 10;
     public static final String VISION_TABLE_NAME = "Vision";
+    public static final String VISION_ANG_OFFSET_FIELD = "degree_offset";
+    public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 1;
+    public static final double MAX_TURN_AUTON_TIME_SEC = 3;
+    public static final double INTER_QUERY_DELAY_SEC = 0.45;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =
             new MotorConfig(21, false, NeutralMode.Brake, false,
                     new PID(0, 0.05, 0,0.05));
     public static final MotorConfig SHOOTER_MOTOR_2_CONFIG =
-            new MotorConfig(22, false, NeutralMode.Brake, false,
-                    new PID(0, 0, 0,0));
+            new MotorConfig(22, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_LIFT_CONFIG =
             new MotorConfig(41, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_WINCH_1_CONFIG =

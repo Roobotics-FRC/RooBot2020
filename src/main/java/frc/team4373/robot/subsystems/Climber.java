@@ -5,7 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.Utils;
-import frc.team4373.robot.commands.ClimberCommand;
+import frc.team4373.robot.commands.climber.ClimberCommand;
 
 public class Climber extends Subsystem {
     private static volatile Climber instance;
@@ -96,6 +96,30 @@ public class Climber extends Subsystem {
         if (power < 0) power = 0;
         power *= RobotMap.CLIMB_WINCH_MAX_SPEED;
         return power;
+    }
+
+    /**
+     * Gets the percent output of the lift.
+     * @return the percent output of the lift.
+     */
+    public double getLiftPercentOutput() {
+        return lift.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the right winch motor.
+     * @return the percent output of the right winch motor.
+     */
+    public double getRightWinchPercentOutput() {
+        return rightWinch.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the left winch motor.
+     * @return the percent output of the left winch motor.
+     */
+    public double getLeftWinchPercentOutput() {
+        return leftWinch.getMotorOutputPercent();
     }
 
     @Override

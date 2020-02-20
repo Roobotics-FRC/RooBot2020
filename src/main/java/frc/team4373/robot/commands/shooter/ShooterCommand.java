@@ -1,4 +1,4 @@
-package frc.team4373.robot.commands;
+package frc.team4373.robot.commands.shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,10 +15,7 @@ public class ShooterCommand extends Command {
 
     @Override
     protected void execute() {
-        // Conversion from [1, -1] to [0, 1] is now in a filter and OI.
-        // double slider = OI.getInstance().getDriveJoystick().rooGetThrottle();
-        double speed = SmartDashboard.getNumber("shoot_speed", 0);
-        shooter.setVelocity(speed * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
+        shooter.stopShooter();
     }
 
     @Override
