@@ -1,6 +1,7 @@
 package frc.team4373.robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Drivetrain;
@@ -33,6 +34,10 @@ public class DrivetrainCommand extends Command {
             y /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             rotation /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
         }
+
+        SmartDashboard.putNumber("swerve/input_x", x);
+        SmartDashboard.putNumber("swerve/input_y", y);
+        SmartDashboard.putNumber("swerve/input_twist", rotation);
 
         if (x != 0 || y != 0 || rotation != 0) {
             this.brakeCountdown = 0;
