@@ -2,6 +2,7 @@ package frc.team4373.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.Utils;
@@ -28,6 +29,8 @@ public class Climber extends Subsystem {
     private WPI_TalonSRX lift;
     private WPI_TalonSRX leftWinch;
     private WPI_TalonSRX rightWinch;
+    private DigitalInput bottomLimitSwitch;
+    private DigitalInput topLimitSwitch;
 
     /**
      * Constructs a new Climber.
@@ -36,6 +39,8 @@ public class Climber extends Subsystem {
         this.lift = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_CONFIG.id);
         this.leftWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
         this.rightWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
+        this.bottomLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_DIO_PORT);
+        this.bottomLimitSwitch = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_DIO_PORT);
 
         this.lift.setInverted(RobotMap.CLIMB_LIFT_CONFIG.inverted);
         this.leftWinch.setInverted(RobotMap.CLIMB_WINCH_1_CONFIG.inverted);
@@ -83,6 +88,22 @@ public class Climber extends Subsystem {
     public void raiseRightWinch(double power) {
         power = constrainWinchOutput(power);
         this.rightWinch.set(ControlMode.PercentOutput, power);
+    }
+
+    /**
+     * Gets the state of the bottom limit switch.
+     * @return true if the switch is activated, false otherwise.
+     */
+    public boolean getBottomLimitSwitch() {
+        return this.bottomLimitSwitch.get();
+    }
+
+    /**
+     * Gets the state of the top limit switch.
+     * @return true if the switch is activated, false otherwise.
+     */
+    public boolean getTopLimitSwitch() {
+        return this.topLimitSwitch.get();
     }
 
     /**

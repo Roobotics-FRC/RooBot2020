@@ -18,12 +18,20 @@ public class ClimberCommand extends Command {
             case 0:
             case 45:
             case 315:
-                climber.extendLift();
+                if (!climber.getTopLimitSwitch()) {
+                    climber.extendLift();
+                } else {
+                    climber.stopLift();
+                }
                 break;
             case 135:
             case 180:
             case 225:
-                climber.retractLift();
+                if (!climber.getBottomLimitSwitch()) {
+                    climber.retractLift();
+                } else {
+                    climber.stopLift();
+                }
                 break;
             default:
                 climber.stopLift();

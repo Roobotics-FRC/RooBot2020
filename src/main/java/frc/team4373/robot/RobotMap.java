@@ -97,6 +97,8 @@ public class RobotMap {
 
     // Non-motor devices
     public static final int INTAKE_RELEASE_SERVO_PORT = 1;
+    public static final int BOTTOM_LIMIT_SWITCH_DIO_PORT = 0;
+    public static final int TOP_LIMIT_SWITCH_DIO_PORT = 1;
 
     // Physical state constants
     public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
