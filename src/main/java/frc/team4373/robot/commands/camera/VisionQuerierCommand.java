@@ -1,18 +1,13 @@
 package frc.team4373.robot.commands.camera;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.NetworkTableType;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.networktables.*;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Camera;
+import frc.team4373.robot.subsystems.Drivetrain;
 
 import java.util.function.Function;
 
@@ -54,6 +49,7 @@ public class VisionQuerierCommand extends Command {
     public VisionQuerierCommand(String visionField, double tolerance,
                                 Function<Double, PIDCommand> constructor) {
         requires(Camera.getInstance());
+        requires(Drivetrain.getInstance());
 
         this.visionField = visionField;
         this.tolerance = tolerance;

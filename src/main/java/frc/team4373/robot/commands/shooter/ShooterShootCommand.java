@@ -11,8 +11,22 @@ import frc.team4373.robot.subsystems.Shooter;
 public class ShooterShootCommand extends Command {
     private Shooter shooter;
 
-    public ShooterShootCommand() {
+    private double velocity;
+
+    /**
+     * Shoots the balls from the shooter at the specified velocity.
+     * @param velocity the velocity to shoot the balls at.
+     */
+    public ShooterShootCommand(double velocity) {
         requires(this.shooter = Shooter.getInstance());
+        this.velocity = velocity;
+    }
+
+    /**
+     * Shoots the ball from the shooter at max speed.
+     */
+    public ShooterShootCommand() {
+        this(1);
     }
 
     @Override
@@ -22,7 +36,7 @@ public class ShooterShootCommand extends Command {
 
     @Override
     protected void execute() {
-        shooter.setPercentOutput(1);
+        shooter.setVelocity(velocity * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
     }
 
     @Override
