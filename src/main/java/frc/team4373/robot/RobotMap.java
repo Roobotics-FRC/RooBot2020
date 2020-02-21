@@ -108,6 +108,7 @@ public class RobotMap {
     public static final double VISION_SAMPLE_COUNT = 10;
     public static final String VISION_TABLE_NAME = "Vision";
     public static final String VISION_ANG_OFFSET_FIELD = "degree_offset";
+    public static final String VISION_DIST_FIELD = "current_distance";
     public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 1;
     public static final double MAX_TURN_AUTON_TIME_SEC = 3;
     public static final double INTER_QUERY_DELAY_SEC = 0.45;
