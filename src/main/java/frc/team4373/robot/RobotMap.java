@@ -1,6 +1,7 @@
 package frc.team4373.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import edu.wpi.first.wpilibj.I2C;
 import frc.team4373.swerve.SwerveConfig;
 
 /**
@@ -84,6 +85,7 @@ public class RobotMap {
     public static final int OPER_SHOOT_BUTTON = 4; // Y button
     public static final int OPER_REUPTAKE_BUTTON = 1; // A button
     public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
+    public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 
