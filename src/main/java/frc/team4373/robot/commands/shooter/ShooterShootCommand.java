@@ -4,6 +4,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.Utils;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Shooter;
 
@@ -76,10 +77,11 @@ public class ShooterShootCommand extends Command {
      * @return the percent of full velocity at which to shoot.
      */
     private double percentVelocityForDistance(double distance) {
-        return 2.2e-5 * Math.pow(distance, 4)
-                - 1.5e-3 * Math.pow(distance, 3)
-                + 0.0373 * Math.pow(distance, 2)
-                - 0.388 * distance
+        double raw = 1.06e-9 * Math.pow(distance, 4)
+                - 8.68e-7 * Math.pow(distance, 3)
+                + 2.59e-4 * Math.pow(distance, 2)
+                - 0.0323 * distance
                 + 2.13;
+        return Utils.constrainPercentOutput(raw);
     }
 }
