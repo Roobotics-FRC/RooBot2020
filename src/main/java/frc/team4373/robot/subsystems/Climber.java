@@ -40,7 +40,7 @@ public class Climber extends Subsystem {
         this.leftWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
         this.rightWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
         this.bottomLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_DIO_PORT);
-        this.bottomLimitSwitch = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_DIO_PORT);
+        this.topLimitSwitch = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_DIO_PORT);
 
         this.lift.setInverted(RobotMap.CLIMB_LIFT_CONFIG.inverted);
         this.leftWinch.setInverted(RobotMap.CLIMB_WINCH_1_CONFIG.inverted);
