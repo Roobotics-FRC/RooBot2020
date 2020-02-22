@@ -54,6 +54,10 @@ public class WheelSpinner extends Subsystem {
 
     }
 
+    public void stopSpinner() {
+        wheelSpinnerMotor.set(ControlMode.PercentOutput, 0);
+    }
+
     public double getWheelSpinnerPercentOutput() {
         return this.wheelSpinnerMotor.getMotorOutputPercent();
     }
@@ -64,7 +68,7 @@ public class WheelSpinner extends Subsystem {
 
     }
 
-    public void retractSpinnerServo(double retractAngle){ //FIXME: Add actual Angle (in RobotMap)
+    public void retractSpinnerServo(double retractAngle) { //FIXME: Add actual Angle (in RobotMap)
         servo.set(retractAngle);
 
     }

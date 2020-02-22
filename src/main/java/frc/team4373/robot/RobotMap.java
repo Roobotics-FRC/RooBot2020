@@ -104,6 +104,13 @@ public class RobotMap {
     public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double INTAKE_SPEED = 1;
+    public static final double ENCODER_TICKS = 4096;
+    public static final double COLOR_WHEEL_DIAMETER = 32;
+    public static final double WHEEL_SPINNER_DIAMETER = -1; //FIXME: Add diameter
+    public static final double SPINNER_CONVERSION_FACTOR =
+            COLOR_WHEEL_DIAMETER / WHEEL_SPINNER_DIAMETER;
+    public static final double WHEEL_SPINNER_OFFSET = 3 * ENCODER_TICKS * SPINNER_CONVERSION_FACTOR;
+
 
     // Vision
     public static final double VISION_SAMPLE_COUNT = 10;
