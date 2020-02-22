@@ -128,6 +128,10 @@ public class RobotMap {
             new MotorConfig(44, false, NeutralMode.Brake);
     public static final MotorConfig INTAKE_MOTOR_CONFIG =
             new MotorConfig(31, false, NeutralMode.Coast);
+    public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =
+            new MotorConfig(51, // FIXME: update id
+                    false, NeutralMode.Brake, false,
+                        new PID(0,0,0,0));
 
 
     // Talon constants
