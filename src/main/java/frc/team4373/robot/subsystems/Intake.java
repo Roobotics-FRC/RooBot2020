@@ -25,19 +25,15 @@ public class Intake extends Subsystem {
         return instance;
     }
 
-    private WPI_TalonSRX groundIntake;
-    private WPI_TalonSRX uptakeIntake;
+    private WPI_TalonSRX intake;
     private Servo servo;
 
     private Intake() {
-        this.groundIntake = new WPI_TalonSRX(RobotMap.INTAKE_GROUND_MOTOR.id);
-        this.uptakeIntake = new WPI_TalonSRX(RobotMap.INTAKE_UPTAKE_MOTOR.id);
+        this.intake = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR_CONFIG.id);
 
-        this.uptakeIntake.setInverted(RobotMap.INTAKE_GROUND_MOTOR.inverted);
-        this.groundIntake.setInverted(RobotMap.INTAKE_UPTAKE_MOTOR.inverted);
+        this.intake.setInverted(RobotMap.INTAKE_MOTOR_CONFIG.inverted);
 
-        this.groundIntake.setNeutralMode(RobotMap.INTAKE_GROUND_MOTOR.neutralMode);
-        this.uptakeIntake.setNeutralMode(RobotMap.INTAKE_UPTAKE_MOTOR.neutralMode);
+        this.intake.setNeutralMode(RobotMap.INTAKE_MOTOR_CONFIG.neutralMode);
 
         this.servo = new Servo(RobotMap.INTAKE_RELEASE_SERVO_PORT);
     }
@@ -46,16 +42,14 @@ public class Intake extends Subsystem {
      * Intakes a ball from the ground by running the ground and uptake motors.
      */
     public void intake() {
-        this.setGroundIntakeMotor(RobotMap.INTAKE_GROUND_SPEED);
-        this.setUptakeIntakeMotor(RobotMap.INTAKE_UPTAKE_SPEED);
+        this.setIntakeMotor(RobotMap.INTAKE_SPEED);
     }
 
     /**
      * Stops all (ground and uptake) intake motors.
      */
     public void stop() {
-        this.groundIntake.stopMotor();
-        this.uptakeIntake.stopMotor();
+        this.intake.stopMotor();
     }
 
     /**
@@ -73,35 +67,19 @@ public class Intake extends Subsystem {
     }
 
     /**
-     * Sets the percent output of the ground intake motor.
+     * Sets the percent output of the intake motor.
      * @param speed the percent output of the motor.
      */
-    private void setGroundIntakeMotor(double speed) {
-        groundIntake.set(ControlMode.PercentOutput, speed);
+    private void setIntakeMotor(double speed) {
+        intake.set(ControlMode.PercentOutput, speed);
     }
 
     /**
-     * Sets the percent output of the ground intake motor.
-     * @param speed the percent output of the motor.
+     * Gets the percent output of the intake motor motor.
+     * @return the percent output of the intake motor.
      */
-    private void setUptakeIntakeMotor(double speed) {
-        uptakeIntake.set(ControlMode.PercentOutput, speed);
-    }
-
-    /**
-     * Gets the percent output of the ground intake motor motor.
-     * @return the percent output of the ground intake motor.
-     */
-    public double getGroundIntakePercentOutput() {
-        return groundIntake.getMotorOutputPercent();
-    }
-
-    /**
-     * Gets the percent output of the uptake intake motor motor.
-     * @return the percent output of the uptake intake motor.
-     */
-    public double getUptakeIntakePercentOutput() {
-        return uptakeIntake.getMotorOutputPercent();
+    public double getIntakePercentOutput() {
+        return intake.getMotorOutputPercent();
     }
 
     /**

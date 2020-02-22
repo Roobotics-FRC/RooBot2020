@@ -103,8 +103,7 @@ public class RobotMap {
     // Physical state constants
     public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
-    public static final double INTAKE_GROUND_SPEED = 1;
-    public static final double INTAKE_UPTAKE_SPEED = 1;
+    public static final double INTAKE_SPEED = 1;
 
     // Vision
     public static final double VISION_SAMPLE_COUNT = 10;
@@ -127,10 +126,9 @@ public class RobotMap {
             new MotorConfig(42, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_WINCH_2_CONFIG =
             new MotorConfig(44, false, NeutralMode.Brake);
-    public static final MotorConfig INTAKE_GROUND_MOTOR =
+    public static final MotorConfig INTAKE_MOTOR_CONFIG =
             new MotorConfig(31, false, NeutralMode.Coast);
-    public static final MotorConfig INTAKE_UPTAKE_MOTOR =
-            new MotorConfig(32, false, NeutralMode.Brake);
+
 
     // Talon constants
     public static final int PID_IDX = 0;
