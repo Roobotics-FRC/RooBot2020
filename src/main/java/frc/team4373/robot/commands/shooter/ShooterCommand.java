@@ -31,6 +31,5 @@ public class ShooterCommand extends Command {
     @Override
     protected void interrupted() {
         this.end();
-
     }
 }

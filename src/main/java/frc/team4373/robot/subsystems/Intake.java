@@ -25,15 +25,13 @@ public class Intake extends Subsystem {
         return instance;
     }
 
-    private WPI_TalonSRX intake;
+    private WPI_TalonSRX intakeMotor;
     private Servo servo;
 
     private Intake() {
-        this.intake = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR_CONFIG.id);
-
-        this.intake.setInverted(RobotMap.INTAKE_MOTOR_CONFIG.inverted);
-
-        this.intake.setNeutralMode(RobotMap.INTAKE_MOTOR_CONFIG.neutralMode);
+        this.intakeMotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR_CONFIG.id);
+        this.intakeMotor.setInverted(RobotMap.INTAKE_MOTOR_CONFIG.inverted);
+        this.intakeMotor.setNeutralMode(RobotMap.INTAKE_MOTOR_CONFIG.neutralMode);
 
         this.servo = new Servo(RobotMap.INTAKE_RELEASE_SERVO_PORT);
     }
@@ -49,7 +47,7 @@ public class Intake extends Subsystem {
      * Stops all (ground and uptake) intake motors.
      */
     public void stop() {
-        this.intake.stopMotor();
+        this.intakeMotor.stopMotor();
     }
 
     /**
@@ -71,7 +69,7 @@ public class Intake extends Subsystem {
      * @param speed the percent output of the motor.
      */
     private void setIntakeMotor(double speed) {
-        intake.set(ControlMode.PercentOutput, speed);
+        intakeMotor.set(ControlMode.PercentOutput, speed);
     }
 
     /**
@@ -79,7 +77,7 @@ public class Intake extends Subsystem {
      * @return the percent output of the intake motor.
      */
     public double getIntakePercentOutput() {
-        return intake.getMotorOutputPercent();
+        return intakeMotor.getMotorOutputPercent();
     }
 
     /**

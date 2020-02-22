@@ -24,15 +24,13 @@ public class TimedDriveAuton extends Command {
         this.time = time;
 
         WheelVector autonVector = new WheelVector(speed, angle);
-        autonSetpoint = new WheelVector.VectorSet(autonVector, autonVector, autonVector,
-                autonVector);
-
+        autonSetpoint =
+                new WheelVector.VectorSet(autonVector, autonVector, autonVector, autonVector);
     }
 
     @Override
     protected void initialize() {
         setTimeout(time);
-
     }
 
     @Override
@@ -53,6 +51,5 @@ public class TimedDriveAuton extends Command {
     @Override
     protected void interrupted() {
         this.end();
-
     }
 }

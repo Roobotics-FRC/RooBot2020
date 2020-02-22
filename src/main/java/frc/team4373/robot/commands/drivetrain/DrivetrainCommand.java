@@ -43,8 +43,7 @@ public class DrivetrainCommand extends Command {
             this.brakeCountdown = 0;
             this.drivetrain.drive(rotation, x, y);
         } else {
-            ++this.brakeCountdown;
-            if (this.brakeCountdown > BRAKE_DELAY_COUNTS) {
+            if (++this.brakeCountdown > BRAKE_DELAY_COUNTS) {
                 this.drivetrain.brake();
             } else {
                 this.drivetrain.stop();
