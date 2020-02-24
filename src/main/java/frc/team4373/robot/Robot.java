@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.subsystems.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -19,7 +18,6 @@ public class Robot extends TimedRobot {
      * Constructor for the Robot class. Variable initialization occurs here;
      * WPILib-related setup should occur in {@link #robotInit}.
      */
-
     public Robot() {
     }
 

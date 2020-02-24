@@ -156,7 +156,6 @@ public class RobotMap {
         public final boolean encoderPhase;
         public final PID gains;
 
-
         /**
          * Constructs a new MotorConfig for a motor using closed-loop control.
          * @param id the CAN ID of the motor.
