@@ -16,7 +16,6 @@ import frc.team4373.swerve.SwerveDrivetrain;
  * project.
  */
 public class Robot extends TimedRobot {
-    ColorSensorV3 sensor = null;
     /**
      * Constructor for the Robot class. Variable initialization occurs here;
      * WPILib-related setup should occur in {@link #robotInit}.
