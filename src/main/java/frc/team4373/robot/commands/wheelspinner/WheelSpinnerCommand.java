@@ -1,8 +1,6 @@
 package frc.team4373.robot.commands.wheelspinner;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PIDCommand;
-import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.subsystems.WheelSpinner;
 
 public class WheelSpinnerCommand extends Command {

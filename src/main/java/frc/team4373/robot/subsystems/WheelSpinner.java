@@ -1,14 +1,11 @@
 package frc.team4373.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.RobotMap;
-import frc.team4373.robot.Utils;
 import frc.team4373.robot.commands.wheelspinner.WheelSpinnerCommand;
 
 public class WheelSpinner extends Subsystem {
