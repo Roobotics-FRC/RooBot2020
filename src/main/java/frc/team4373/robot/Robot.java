@@ -4,12 +4,8 @@ import com.revrobotics.*;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team4373.robot.subsystems.Climber;
-import frc.team4373.robot.subsystems.Drivetrain;
-import frc.team4373.robot.subsystems.Intake;
-import frc.team4373.robot.subsystems.Shooter;
+import frc.team4373.robot.subsystems.*;
 import frc.team4373.swerve.SwerveDrivetrain;
-import edu.wpi.first.wpilibj.util.Color;
 
 
 /**
@@ -20,7 +16,7 @@ import edu.wpi.first.wpilibj.util.Color;
  * project.
  */
 public class Robot extends TimedRobot {
-    ColorSensorV3 sensor = new ColorSensorV3(RobotMap.COLOR_SENSOR_PORT);
+    ColorSensorV3 sensor = null;
     /**
      * Constructor for the Robot class. Variable initialization occurs here;
      * WPILib-related setup should occur in {@link #robotInit}.
@@ -74,29 +70,10 @@ public class Robot extends TimedRobot {
         SmartDashboard.putBoolean("intake/balls_retained",
                 Intake.getInstance().getBallsAreRetained());
 
-        double red = sensor.getRed();
-        double blue = sensor.getBlue();
-        double green = sensor.getGreen();
-        double maxVal = (red + blue + green);
-
-        SmartDashboard.putNumber("Red", red);
-        SmartDashboard.putNumber("Blue", blue);
-        SmartDashboard.putNumber("Green", green);
-        SmartDashboard.putNumber("Green Norm", green / maxVal);
-        SmartDashboard.putNumber("Red Norm", red / maxVal);
-        SmartDashboard.putNumber("Blue Norm", blue / maxVal);
-
-        if (red / maxVal > 0.4) {
-            SmartDashboard.putString("Color", "red");
-        } else if (blue / maxVal > 0.2) {
-            if (green / maxVal > 0.5) {
-                SmartDashboard.putString("Color", "green");
-            } else {
-                SmartDashboard.putString("Color", "blue");
-            }
-        } else {
-            SmartDashboard.putString("Color", "yellow");
-        }
+        SmartDashboard.putString("spinner/color",
+                WheelSpinner.getInstance().getColor().toString());
+        SmartDashboard.putNumber("spinner/spinner_out",
+                WheelSpinner.getInstance().getWheelSpinnerPercentOutput());
 
     }
 

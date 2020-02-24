@@ -85,7 +85,6 @@ public class RobotMap {
     public static final int OPER_SHOOT_BUTTON = 4; // Y button
     public static final int OPER_REUPTAKE_BUTTON = 1; // A button
     public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
-    public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 
@@ -98,21 +97,24 @@ public class RobotMap {
     public static final double AUTON_TURN_SPEED = 0.25;
 
     // Non-motor devices
-    public static final int INTAKE_RELEASE_SERVO_PORT = 1;
     public static final int BOTTOM_LIMIT_SWITCH_DIO_PORT = 0;
     public static final int TOP_LIMIT_SWITCH_DIO_PORT = 1;
+    public static final int INTAKE_RELEASE_SERVO_PORT = 1;
+    public static final int WHEEL_SPINNER_DEPLOY_SERVO_PORT = 2;
+    public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     // Physical state constants
     public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
+    public static final double SPINNER_SERVO_DEPLOY_ANGLE = 0.5;
+    public static final double SPINNER_SERVO_RETRACT_ANGLE = 0;
     public static final double INTAKE_SPEED = 1;
-    public static final double ENCODER_TICKS = 4096;
-    public static final double COLOR_WHEEL_DIAMETER = 32;
-    public static final double WHEEL_SPINNER_DIAMETER = -1; //FIXME: Add diameter
-    public static final double SPINNER_CONVERSION_FACTOR =
-            COLOR_WHEEL_DIAMETER / WHEEL_SPINNER_DIAMETER;
-    public static final double WHEEL_SPINNER_OFFSET = 3 * ENCODER_TICKS * SPINNER_CONVERSION_FACTOR;
+    public static final double SPINNER_SPEED = 0.2;
 
+    // Colors
+    public static final double RED_THRESHOLD = 0.4;
+    public static final double BLUE_THRESHOLD = 0.2;
+    public static final double GREEN_THRESHOLD = 0.5;
 
     // Vision
     public static final double VISION_SAMPLE_COUNT = 10;
