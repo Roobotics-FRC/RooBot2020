@@ -80,7 +80,6 @@ public class WheelSpinner extends Subsystem {
      */
     public void deploySpinner() {
         deployServo.set(RobotMap.SPINNER_SERVO_DEPLOY_ANGLE);
-
     }
 
     /**

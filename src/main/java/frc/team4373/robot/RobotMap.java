@@ -144,9 +144,11 @@ public class RobotMap {
                     false, NeutralMode.Brake, false,
                         new PID(0,0,0,0));
 
-
     // Talon constants
     public static final int PID_IDX = 0;
+
+    // Timeouts
+    public static final double SPINNER_DEPLOY_TIME_SEC = 1.5;
 
     // Utility classes
     public static final class MotorConfig {

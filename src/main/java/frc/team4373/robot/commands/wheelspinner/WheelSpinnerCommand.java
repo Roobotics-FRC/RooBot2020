@@ -18,6 +18,7 @@ public class WheelSpinnerCommand extends Command {
     @Override
     protected void execute() {
         this.wheelSpinner.stopSpinner();
+        this.wheelSpinner.retractSpinner();
     }
 
     @Override
@@ -28,6 +29,7 @@ public class WheelSpinnerCommand extends Command {
     @Override
     protected void end() {
         this.wheelSpinner.stopSpinner();
+        this.wheelSpinner.retractSpinner();
     }
 
     @Override
