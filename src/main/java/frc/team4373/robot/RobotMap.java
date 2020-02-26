@@ -134,9 +134,9 @@ public class RobotMap {
     public static final MotorConfig CLIMB_LEFT_WINCH_CONFIG =
             new MotorConfig(42, false, NeutralMode.Brake);
     public static final MotorConfig CLIMB_RIGHT_WINCH_CONFIG =
-            new MotorConfig(43, true, NeutralMode.Brake);
+            new MotorConfig(43, false, NeutralMode.Brake);
     public static final MotorConfig INTAKE_MOTOR_CONFIG =
-            new MotorConfig(31, false, NeutralMode.Coast);
+            new MotorConfig(31, true, NeutralMode.Coast);
     public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =
             new MotorConfig(51, false, NeutralMode.Brake);
 
