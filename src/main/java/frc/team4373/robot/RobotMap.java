@@ -97,9 +97,9 @@ public class RobotMap {
     public static final double AUTON_TURN_SPEED = 0.25;
 
     // Non-motor devices
+    public static final int INTAKE_RELEASE_SERVO_PORT = 9;
     public static final int BOTTOM_LIMIT_SWITCH_DIO_PORT = 0;
     public static final int TOP_LIMIT_SWITCH_DIO_PORT = 1;
-    public static final int INTAKE_RELEASE_SERVO_PORT = 1;
     public static final int WHEEL_SPINNER_DEPLOY_SERVO_PORT = 8;
     public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
@@ -127,16 +127,16 @@ public class RobotMap {
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =
-            new MotorConfig(21, false, NeutralMode.Brake, false,
+            new MotorConfig(21, true, NeutralMode.Brake, false,
                     new PID(0, 0.05, 0,0.05));
     public static final MotorConfig SHOOTER_MOTOR_2_CONFIG =
-            new MotorConfig(22, false, NeutralMode.Brake);
+            new MotorConfig(22, true, NeutralMode.Brake);
     public static final MotorConfig CLIMB_LIFT_CONFIG =
-            new MotorConfig(41, false, NeutralMode.Brake);
-    public static final MotorConfig CLIMB_WINCH_1_CONFIG =
+            new MotorConfig(41, true, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_LEFT_WINCH_CONFIG =
             new MotorConfig(42, false, NeutralMode.Brake);
-    public static final MotorConfig CLIMB_WINCH_2_CONFIG =
-            new MotorConfig(44, false, NeutralMode.Brake);
+    public static final MotorConfig CLIMB_RIGHT_WINCH_CONFIG =
+            new MotorConfig(43, true, NeutralMode.Brake);
     public static final MotorConfig INTAKE_MOTOR_CONFIG =
             new MotorConfig(31, false, NeutralMode.Coast);
     public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =

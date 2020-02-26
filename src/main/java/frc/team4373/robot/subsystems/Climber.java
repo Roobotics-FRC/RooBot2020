@@ -37,18 +37,18 @@ public class Climber extends Subsystem {
      */
     private Climber() {
         this.lift = new WPI_TalonSRX(RobotMap.CLIMB_LIFT_CONFIG.id);
-        this.leftWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_1_CONFIG.id);
-        this.rightWinch = new WPI_TalonSRX(RobotMap.CLIMB_WINCH_2_CONFIG.id);
+        this.leftWinch = new WPI_TalonSRX(RobotMap.CLIMB_LEFT_WINCH_CONFIG.id);
+        this.rightWinch = new WPI_TalonSRX(RobotMap.CLIMB_RIGHT_WINCH_CONFIG.id);
         this.bottomLimitSwitch = new DigitalInput(RobotMap.BOTTOM_LIMIT_SWITCH_DIO_PORT);
         this.topLimitSwitch = new DigitalInput(RobotMap.TOP_LIMIT_SWITCH_DIO_PORT);
 
         this.lift.setInverted(RobotMap.CLIMB_LIFT_CONFIG.inverted);
-        this.leftWinch.setInverted(RobotMap.CLIMB_WINCH_1_CONFIG.inverted);
-        this.rightWinch.setInverted(RobotMap.CLIMB_WINCH_2_CONFIG.inverted);
+        this.leftWinch.setInverted(RobotMap.CLIMB_LEFT_WINCH_CONFIG.inverted);
+        this.rightWinch.setInverted(RobotMap.CLIMB_RIGHT_WINCH_CONFIG.inverted);
 
         this.lift.setNeutralMode(RobotMap.CLIMB_LIFT_CONFIG.neutralMode);
-        this.leftWinch.setNeutralMode(RobotMap.CLIMB_WINCH_1_CONFIG.neutralMode);
-        this.rightWinch.setNeutralMode(RobotMap.CLIMB_WINCH_2_CONFIG.neutralMode);
+        this.leftWinch.setNeutralMode(RobotMap.CLIMB_LEFT_WINCH_CONFIG.neutralMode);
+        this.rightWinch.setNeutralMode(RobotMap.CLIMB_RIGHT_WINCH_CONFIG.neutralMode);
     }
 
     /**
