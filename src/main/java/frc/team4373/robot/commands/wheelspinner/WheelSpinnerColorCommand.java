@@ -45,6 +45,7 @@ public class WheelSpinnerColorCommand extends Command {
         this.spinner.spin();
         if (this.spinner.getColor() == targetColor) {
             this.finished = true;
+            this.spinner.stopSpinner();
         }
     }
 
