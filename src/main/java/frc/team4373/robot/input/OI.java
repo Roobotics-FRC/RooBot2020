@@ -8,7 +8,6 @@ import frc.team4373.robot.commands.drivetrain.ResetNorthCommand;
 import frc.team4373.robot.commands.drivetrain.RotateAngleOffsetAuton;
 import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
 import frc.team4373.robot.commands.shooter.ShooterFallbackShootCommand;
-import frc.team4373.robot.commands.shooter.ShooterReuptakeCommand;
 import frc.team4373.robot.commands.shooter.ShooterShootCommand;
 import frc.team4373.robot.commands.util.ClearSubsystemsCommandGroup;
 import frc.team4373.robot.input.filters.*;
@@ -29,7 +28,6 @@ public final class OI {
     private Button alignToTargetButton;
     private Button shootButton;
     private Button fallbackShootButton;
-    private Button reuptakeButton;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -77,11 +75,7 @@ public final class OI {
 
         this.fallbackShootButton = new JoystickButton(this.operatorJoystick,
                 RobotMap.OPER_FALLBACK_SHOOT_BUTTON);
-        this.fallbackShootButton.whenPressed(new ShooterFallbackShootCommand());
-
-        this.reuptakeButton = new JoystickButton(this.operatorJoystick,
-                RobotMap.OPER_REUPTAKE_BUTTON);
-        this.reuptakeButton.whenPressed(new ShooterReuptakeCommand());
+        this.fallbackShootButton.whileHeld(new ShooterFallbackShootCommand());
     }
 
     /**

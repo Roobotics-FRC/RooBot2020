@@ -83,7 +83,6 @@ public class RobotMap {
     public static final int OPER_RAISE_L_WINCH_AXIS = 2; // L trigger
     public static final int OPER_RAISE_R_WINCH_AXIS = 3; // R trigger
     public static final int OPER_SHOOT_BUTTON = 4; // Y button
-    public static final int OPER_REUPTAKE_BUTTON = 1; // A button
     public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
@@ -92,7 +91,6 @@ public class RobotMap {
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
     public static final double CLIMB_WINCH_MAX_SPEED = 0.8;
     public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 100000;
-    public static final double SHOOTER_REUPTAKE_SPEED = 2000;
     public static final double DRIVE_SLOWER_SPEED_FACTOR = 4;
     public static final double AUTON_TURN_SPEED = 0.25;
 
