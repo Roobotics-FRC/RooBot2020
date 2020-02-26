@@ -3,10 +3,7 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team4373.robot.subsystems.Climber;
-import frc.team4373.robot.subsystems.Drivetrain;
-import frc.team4373.robot.subsystems.Intake;
-import frc.team4373.robot.subsystems.Shooter;
+import frc.team4373.robot.subsystems.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
 /**
@@ -68,6 +65,12 @@ public class Robot extends TimedRobot {
                 Intake.getInstance().getIntakePercentOutput());
         SmartDashboard.putBoolean("intake/balls_retained",
                 Intake.getInstance().getBallsAreRetained());
+
+        SmartDashboard.putString("spinner/color",
+                WheelSpinner.getInstance().getColor().toString());
+        SmartDashboard.putNumber("spinner/spinner_out",
+                WheelSpinner.getInstance().getWheelSpinnerPercentOutput());
+
     }
 
     /**

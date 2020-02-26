@@ -1,6 +1,7 @@
 package frc.team4373.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import edu.wpi.first.wpilibj.I2C;
 import frc.team4373.swerve.SwerveConfig;
 
 /**
@@ -99,11 +100,21 @@ public class RobotMap {
     public static final int INTAKE_RELEASE_SERVO_PORT = 9;
     public static final int BOTTOM_LIMIT_SWITCH_DIO_PORT = 0;
     public static final int TOP_LIMIT_SWITCH_DIO_PORT = 1;
+    public static final int WHEEL_SPINNER_DEPLOY_SERVO_PORT = 8;
+    public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     // Physical state constants
     public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
+    public static final double SPINNER_SERVO_DEPLOY_ANGLE = 0.5;
+    public static final double SPINNER_SERVO_RETRACT_ANGLE = 0;
     public static final double INTAKE_SPEED = 1;
+    public static final double SPINNER_SPEED = 0.2;
+
+    // Colors
+    public static final double RED_THRESHOLD = 0.4;
+    public static final double BLUE_THRESHOLD = 0.2;
+    public static final double GREEN_THRESHOLD = 0.5;
 
     // Vision
     public static final double VISION_SAMPLE_COUNT = 10;
@@ -128,10 +139,14 @@ public class RobotMap {
             new MotorConfig(43, true, NeutralMode.Brake);
     public static final MotorConfig INTAKE_MOTOR_CONFIG =
             new MotorConfig(31, false, NeutralMode.Coast);
-
+    public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =
+            new MotorConfig(51, false, NeutralMode.Brake);
 
     // Talon constants
     public static final int PID_IDX = 0;
+
+    // Timeouts
+    public static final double SPINNER_DEPLOY_TIME_SEC = 1.5;
 
     // Utility classes
     public static final class MotorConfig {
@@ -140,7 +155,6 @@ public class RobotMap {
         public final NeutralMode neutralMode;
         public final boolean encoderPhase;
         public final PID gains;
-
 
         /**
          * Constructs a new MotorConfig for a motor using closed-loop control.
