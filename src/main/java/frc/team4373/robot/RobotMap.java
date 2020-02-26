@@ -100,7 +100,7 @@ public class RobotMap {
     public static final int BOTTOM_LIMIT_SWITCH_DIO_PORT = 0;
     public static final int TOP_LIMIT_SWITCH_DIO_PORT = 1;
     public static final int INTAKE_RELEASE_SERVO_PORT = 1;
-    public static final int WHEEL_SPINNER_DEPLOY_SERVO_PORT = 2;
+    public static final int WHEEL_SPINNER_DEPLOY_SERVO_PORT = 8;
     public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     // Physical state constants
@@ -140,9 +140,7 @@ public class RobotMap {
     public static final MotorConfig INTAKE_MOTOR_CONFIG =
             new MotorConfig(31, false, NeutralMode.Coast);
     public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =
-            new MotorConfig(51, // FIXME: update id
-                    false, NeutralMode.Brake, false,
-                        new PID(0,0,0,0));
+            new MotorConfig(51, false, NeutralMode.Brake);
 
     // Talon constants
     public static final int PID_IDX = 0;
