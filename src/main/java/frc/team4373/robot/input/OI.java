@@ -10,6 +10,9 @@ import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
 import frc.team4373.robot.commands.shooter.ShooterFallbackShootCommand;
 import frc.team4373.robot.commands.shooter.ShooterShootCommand;
 import frc.team4373.robot.commands.util.ClearSubsystemsCommandGroup;
+import frc.team4373.robot.commands.wheelspinner.ToggleSpinnerCommand;
+import frc.team4373.robot.commands.wheelspinner.WheelSpinnerColorCommand;
+import frc.team4373.robot.commands.wheelspinner.WheelSpinnerRevolutionsCommand;
 import frc.team4373.robot.input.filters.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -28,6 +31,9 @@ public final class OI {
     private Button alignToTargetButton;
     private Button shootButton;
     private Button fallbackShootButton;
+    private Button toggleSpinnerButton;
+    private Button spinnerRevsButton;
+    private Button spinnerColorButton;
 
     private OI() {
         //FIXME: These filters need to be tested.
@@ -76,6 +82,19 @@ public final class OI {
         this.fallbackShootButton = new JoystickButton(this.operatorJoystick,
                 RobotMap.OPER_FALLBACK_SHOOT_BUTTON);
         this.fallbackShootButton.whileHeld(new ShooterFallbackShootCommand());
+
+        this.toggleSpinnerButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_TOGGLE_SPINNER_BUTTON);
+        this.toggleSpinnerButton.whenPressed(new ToggleSpinnerCommand());
+
+        this.spinnerRevsButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_SPINNER_REVS_BUTTON);
+        this.spinnerRevsButton.whenPressed(new WheelSpinnerRevolutionsCommand(
+                RobotMap.SPINNER_TARGET_REVS));
+
+        this.spinnerColorButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_SPINNER_COLOR_BUTTON);
+        this.spinnerColorButton.whenPressed(new WheelSpinnerColorCommand());
     }
 
     /**

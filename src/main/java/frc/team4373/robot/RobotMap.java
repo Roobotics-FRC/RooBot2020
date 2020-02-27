@@ -84,6 +84,9 @@ public class RobotMap {
     public static final int OPER_RAISE_R_WINCH_AXIS = 3; // R trigger
     public static final int OPER_SHOOT_BUTTON = 4; // Y button
     public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
+    public static final int OPER_TOGGLE_SPINNER_BUTTON = 10; // right stick click
+    public static final int OPER_SPINNER_REVS_BUTTON = 7;
+    public static final int OPER_SPINNER_COLOR_BUTTON = 8;
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 
@@ -108,6 +111,7 @@ public class RobotMap {
     public static final double SPINNER_SERVO_RETRACT_ANGLE = 0;
     public static final double INTAKE_SPEED = 1;
     public static final double SPINNER_SPEED = 0.2;
+    public static final int SPINNER_TARGET_REVS = 4;
 
     // Colors
     public static final double RED_THRESHOLD = 0.4;
