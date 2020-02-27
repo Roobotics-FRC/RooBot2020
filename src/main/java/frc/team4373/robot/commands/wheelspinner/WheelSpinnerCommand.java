@@ -6,7 +6,6 @@ import frc.team4373.robot.subsystems.WheelSpinner;
 public class WheelSpinnerCommand extends Command {
     private WheelSpinner wheelSpinner;
 
-
     public WheelSpinnerCommand() {
         requires(this.wheelSpinner = WheelSpinner.getInstance());
     }
@@ -17,8 +16,7 @@ public class WheelSpinnerCommand extends Command {
 
     @Override
     protected void execute() {
-        this.wheelSpinner.stopSpinner();
-        this.wheelSpinner.retractSpinner();
+
     }
 
     @Override
@@ -28,8 +26,6 @@ public class WheelSpinnerCommand extends Command {
 
     @Override
     protected void end() {
-        this.wheelSpinner.stopSpinner();
-        this.wheelSpinner.retractSpinner();
     }
 
     @Override

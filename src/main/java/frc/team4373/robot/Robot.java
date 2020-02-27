@@ -3,6 +3,7 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team4373.robot.commands.wheelspinner.ResetSpinnerStateCommand;
 import frc.team4373.robot.subsystems.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -29,9 +30,10 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void robotInit() {
-        // Climber.getInstance();
-        // Intake.getInstance();
-        // Shooter.getInstance();
+        Climber.getInstance();
+        Intake.getInstance();
+        Shooter.getInstance();
+        WheelSpinner.getInstance();
         Drivetrain.getInstance();
 
         // TODO: For debug purposes only
@@ -87,6 +89,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
         Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.IMPLODE);
+        // Ensure subsystems are in a known, safe state
+        new ResetSpinnerStateCommand().start();
     }
 
     /**
