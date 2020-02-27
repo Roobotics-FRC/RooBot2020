@@ -126,6 +126,7 @@ public class RobotMap {
     public static final double VISION_ALIGN_ALLOWABLE_OFFSET_DEG = 1;
     public static final double MAX_TURN_AUTON_TIME_SEC = 3;
     public static final double INTER_QUERY_DELAY_SEC = 0.45;
+    public static final int MAX_ALLOWABLE_VISION_ITERATIONS = 4;
 
     // Motor configurations
     public static final MotorConfig SHOOTER_MOTOR_1_CONFIG =

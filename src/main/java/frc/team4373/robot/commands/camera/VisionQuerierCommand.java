@@ -26,8 +26,10 @@ public class VisionQuerierCommand extends Command {
     private NetworkTable visionTable;
 
     private double accumulator = 0;
-    private double iterationCount = 0;
+    private int pollingIterationCount = 0; // # of polls in POLLING state
     private boolean finished = false;
+
+    private int rotationExecutionCount = 0; // total # of rotation adjustments
 
     private double waitStart;
 
@@ -82,14 +84,14 @@ public class VisionQuerierCommand extends Command {
             case POLLING:
                 this.waitStart = -1;
                 SmartDashboard.putString("v/state", "polling");
-                if (this.iterationCount >= RobotMap.VISION_SAMPLE_COUNT) {
+                if (this.pollingIterationCount >= RobotMap.VISION_SAMPLE_COUNT) {
                     this.state = State.SETTING;
                     break;
                 }
                 double sample = visionTable.getEntry(visionField).getDouble(0);
                 SmartDashboard.putNumber("v/sample", sample);
                 this.accumulator += sample;
-                ++this.iterationCount;
+                ++this.pollingIterationCount;
                 break;
             case SETTING:
                 SmartDashboard.putString("v/state", "setting");
@@ -97,7 +99,7 @@ public class VisionQuerierCommand extends Command {
                 // Compute setpoint by taking polling average
                 // The Network Tables field gives us the amount by which we're off,
                 // so we want to move opposite that direction to reach 0
-                double setpoint = -(this.accumulator / this.iterationCount);
+                double setpoint = -(this.accumulator / this.pollingIterationCount);
                 SmartDashboard.putNumber("v/setpt", setpoint);
 
                 // Reset all variables for next iteration before we spin up the new command
@@ -115,6 +117,7 @@ public class VisionQuerierCommand extends Command {
                 this.command = this.constructor.apply(setpoint);
                 Scheduler.getInstance().add(this.command);
                 this.state = State.WAITING;
+                ++this.rotationExecutionCount;
                 break;
             case WAITING:
                 SmartDashboard.putString("v/state", "waiting");
@@ -140,7 +143,8 @@ public class VisionQuerierCommand extends Command {
 
     @Override
     protected boolean isFinished() {
-        return this.finished;
+        return this.finished
+                || this.rotationExecutionCount >= RobotMap.MAX_ALLOWABLE_VISION_ITERATIONS;
     }
 
     /**
@@ -149,7 +153,7 @@ public class VisionQuerierCommand extends Command {
     private void resetStateVars() {
         this.state = State.POLLING;
         this.accumulator = 0;
-        this.iterationCount = 0;
+        this.pollingIterationCount = 0;
     }
 
     @Override
