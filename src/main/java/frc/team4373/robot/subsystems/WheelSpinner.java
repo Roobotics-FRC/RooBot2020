@@ -112,6 +112,15 @@ public class WheelSpinner extends Subsystem {
         }
     }
 
+    /**
+     * Whether the servo is currently deployed.
+     * @return true if the servo is retracted and false otherwise.
+     */
+    public boolean isRetracted() {
+        return Math.abs(deployServo.get() - RobotMap.SPINNER_SERVO_DEPLOY_ANGLE)
+                < RobotMap.FP_EQUALITY_THRESHOLD;
+    }
+
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new WheelSpinnerCommand());
