@@ -29,15 +29,17 @@ public class DrivetrainCommand extends Command {
         double y = -OI.getInstance().getDriveJoystick().rooGetY();
         double rotation = OI.getInstance().getDriveJoystick().rooGetTwist();
 
+        SmartDashboard.putNumber("swerve/input_x", x);
+        SmartDashboard.putNumber("swerve/input_y", y);
+        SmartDashboard.putNumber("swerve/input_twist", rotation);
+
         if (OI.getInstance().getDriveJoystick().getRawButton(RobotMap.DRIVE_SLOWER_SPEED_BUTTON)) {
             x /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             y /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             rotation /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
+            this.drivetrain.drive(rotation, x, y);
+            return;
         }
-
-        SmartDashboard.putNumber("swerve/input_x", x);
-        SmartDashboard.putNumber("swerve/input_y", y);
-        SmartDashboard.putNumber("swerve/input_twist", rotation);
 
         if (x != 0 || y != 0 || rotation != 0) {
             this.brakeCountdown = 0;
