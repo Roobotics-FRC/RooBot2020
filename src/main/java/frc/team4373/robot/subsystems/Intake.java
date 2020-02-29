@@ -25,13 +25,18 @@ public class Intake extends Subsystem {
         return instance;
     }
 
-    private WPI_TalonSRX intakeMotor;
+    private WPI_TalonSRX groundIntakeMotor;
+    private WPI_TalonSRX transferIntakeMotor;
     private Servo servo;
 
     private Intake() {
-        this.intakeMotor = new WPI_TalonSRX(RobotMap.INTAKE_MOTOR_CONFIG.id);
-        this.intakeMotor.setInverted(RobotMap.INTAKE_MOTOR_CONFIG.inverted);
-        this.intakeMotor.setNeutralMode(RobotMap.INTAKE_MOTOR_CONFIG.neutralMode);
+        this.groundIntakeMotor = new WPI_TalonSRX(RobotMap.GROUND_INTAKE_MOTOR_CONFIG.id);
+        this.groundIntakeMotor.setInverted(RobotMap.GROUND_INTAKE_MOTOR_CONFIG.inverted);
+        this.groundIntakeMotor.setNeutralMode(RobotMap.GROUND_INTAKE_MOTOR_CONFIG.neutralMode);
+
+        this.transferIntakeMotor = new WPI_TalonSRX(RobotMap.TRANSFER_INTAKE_MOTOR_CONFIG.id);
+        this.transferIntakeMotor.setInverted(RobotMap.TRANSFER_INTAKE_MOTOR_CONFIG.inverted);
+        this.transferIntakeMotor.setNeutralMode(RobotMap.TRANSFER_INTAKE_MOTOR_CONFIG.neutralMode);
 
         this.servo = new Servo(RobotMap.INTAKE_RELEASE_SERVO_PORT);
     }
@@ -47,7 +52,8 @@ public class Intake extends Subsystem {
      * Stops all (ground and uptake) intake motors.
      */
     public void stop() {
-        this.intakeMotor.stopMotor();
+        this.groundIntakeMotor.stopMotor();
+        this.transferIntakeMotor.stopMotor();
     }
 
     /**
@@ -69,15 +75,24 @@ public class Intake extends Subsystem {
      * @param speed the percent output of the motor.
      */
     private void setIntakeMotor(double speed) {
-        intakeMotor.set(ControlMode.PercentOutput, speed);
+        groundIntakeMotor.set(ControlMode.PercentOutput, speed);
+        transferIntakeMotor.set(ControlMode.PercentOutput, speed);
     }
 
     /**
-     * Gets the percent output of the intake motor motor.
-     * @return the percent output of the intake motor.
+     * Gets the percent output of the ground intake motor motor.
+     * @return the percent output of the ground intake motor.
      */
-    public double getIntakePercentOutput() {
-        return intakeMotor.getMotorOutputPercent();
+    public double getGroundIntakePercentOutput() {
+        return groundIntakeMotor.getMotorOutputPercent();
+    }
+
+    /**
+     * Gets the percent output of the ground intake motor motor.
+     * @return the percent output of the ground intake motor.
+     */
+    public double getTransferIntakePercentOutput() {
+        return transferIntakeMotor.getMotorOutputPercent();
     }
 
     /**

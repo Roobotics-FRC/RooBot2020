@@ -63,8 +63,10 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("climber/left_winch_out",
                 Climber.getInstance().getLeftWinchPercentOutput());
 
-        SmartDashboard.putNumber("intake/intake_out",
-                Intake.getInstance().getIntakePercentOutput());
+        SmartDashboard.putNumber("intake/ground_intake_out",
+                Intake.getInstance().getGroundIntakePercentOutput());
+        SmartDashboard.putNumber("intake/transfer_intake_out",
+                Intake.getInstance().getTransferIntakePercentOutput());
         SmartDashboard.putBoolean("intake/balls_retained",
                 Intake.getInstance().getBallsAreRetained());
 
