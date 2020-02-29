@@ -35,9 +35,6 @@ public class Robot extends TimedRobot {
         Shooter.getInstance();
         WheelSpinner.getInstance();
         Drivetrain.getInstance();
-
-        // TODO: For debug purposes only
-        SmartDashboard.putNumber("shoot_speed", 0);
     }
 
     /**

@@ -32,7 +32,7 @@ public class RobotMap {
         SwerveConfig.MotorConfig right2Rotate = new SwerveConfig.MotorConfig(14,
                 true,
                 NeutralMode.Brake,
-                false, // FIXME: maybe false, was oscillating
+                false,
                 new SwerveConfig.PID(0, 1, 0, 0.05));
         SwerveConfig.MotorConfig left1Drive = new SwerveConfig.MotorConfig(15,
                 true,
@@ -42,7 +42,7 @@ public class RobotMap {
         SwerveConfig.MotorConfig left1Rotate = new SwerveConfig.MotorConfig(16,
                 true,
                 NeutralMode.Brake,
-                false, // FIXME: maybe false, was oscillating
+                false,
                 new SwerveConfig.PID(0, 1, 0, 0.05));
         SwerveConfig.MotorConfig left2Drive = new SwerveConfig.MotorConfig(11,
                 false,
