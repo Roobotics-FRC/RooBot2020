@@ -142,7 +142,7 @@ public class RobotMap {
             new MotorConfig(43, false, NeutralMode.Brake);
     public static final MotorConfig GROUND_INTAKE_MOTOR_CONFIG =
             new MotorConfig(31, true, NeutralMode.Coast);
-    public static final MotorConfig TRANSFER_INTAKE_MOTOR_CONFIG =
+    public static final MotorConfig UPTAKE_INTAKE_MOTOR_CONFIG =
             new MotorConfig(32, true, NeutralMode.Coast);
     public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =
             new MotorConfig(51, false, NeutralMode.Brake);
