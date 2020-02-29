@@ -96,6 +96,8 @@ public class RobotMap {
     public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 100000;
     public static final double DRIVE_SLOWER_SPEED_FACTOR = 4;
     public static final double AUTON_TURN_SPEED = 0.25;
+    public static final double AUTON_LINE_SHOOT_SPEED = 0.715;
+    public static final double AUTON_DRIVE_SPEED = 0.2;
 
     // Non-motor devices
     public static final int INTAKE_RELEASE_SERVO_PORT = 9;
@@ -113,6 +115,16 @@ public class RobotMap {
     public static final double UPTAKE_INTAKE_SPEED = 0.4;
     public static final double SPINNER_SPEED = 0.2;
     public static final int SPINNER_TARGET_REVS = 4;
+    public static final double DRIVE_WHEEL_DIAMETER_IN = 4;
+    public static final double DRIVE_GEARBOX_RATIO = 20 / 3d;
+
+    // Talon constants
+    public static final int PID_IDX = 0;
+    public static final double DRIVE_ENCODER_COUNTS_PER_REV = 4096;
+
+    // Conversion factors
+    public static final double ENCODER_UNITS_TO_INCHES = DRIVE_WHEEL_DIAMETER_IN * Math.PI
+            / DRIVE_ENCODER_COUNTS_PER_REV / DRIVE_GEARBOX_RATIO;
 
     // Colors
     public static final double RED_THRESHOLD = 0.4;
@@ -147,9 +159,6 @@ public class RobotMap {
             new MotorConfig(32, false, NeutralMode.Coast);
     public static final MotorConfig WHEEL_SPINNER_MOTOR_CONFIG =
             new MotorConfig(51, false, NeutralMode.Brake);
-
-    // Talon constants
-    public static final int PID_IDX = 0;
 
     // Timeouts
     public static final double SPINNER_DEPLOY_TIME_SEC = 1.5;

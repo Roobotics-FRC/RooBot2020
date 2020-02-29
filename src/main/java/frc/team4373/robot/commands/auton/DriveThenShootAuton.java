@@ -1,4 +1,4 @@
-package frc.team4373.robot.commands;
+package frc.team4373.robot.commands.auton;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.team4373.robot.RobotMap;
@@ -15,18 +15,19 @@ import frc.team4373.robot.commands.shooter.ShooterShootCommand;
  *     <li>Shoot for 5 seconds.
  * </ol>
  */
-public class DriveAndShootAuton extends CommandGroup {
+public class DriveThenShootAuton extends CommandGroup {
 
     /**
      * Drives off the initiation line, turns to the target, and shoots.
      *
      * <p>See the class documentation for details.
      */
-    public DriveAndShootAuton() {
+    public DriveThenShootAuton() {
         addSequential(new TimedDriveAuton(0.5, 1, 90));
         addSequential(new VisionQuerierCommand(RobotMap.VISION_ANG_OFFSET_FIELD, 2,
                 RequirementFreeRotateAngleOffsetAuton::new));
+        // FIXME: Change camera angle to include offset, then remove this line
         addSequential(new TimedDriveAuton(0.25, 0.55, 0));
-        addSequential(new ShooterShootCommand(0.715), 5);
+        addSequential(new ShooterShootCommand(RobotMap.AUTON_LINE_SHOOT_SPEED), 5);
     }
 }
