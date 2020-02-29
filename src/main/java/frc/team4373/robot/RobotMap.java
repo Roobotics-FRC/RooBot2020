@@ -55,11 +55,11 @@ public class RobotMap {
                 false,
                 new SwerveConfig.PID(0, 1, 0, 0.05));
         double maxWheelSpeed = 8400;
-        int ampLimit = 35;
+        SwerveConfig.CurrentLimitConfig currentLimitConfig = SwerveConfig.CurrentLimitConfig.NONE;
         SwerveConfig.WheelsConfig wheelsConfig = new SwerveConfig.WheelsConfig(
                 right1Drive, right1Rotate, right2Drive, right2Rotate,
                 left1Drive, left1Rotate, left2Drive, left2Rotate,
-                maxWheelSpeed, ampLimit
+                maxWheelSpeed, currentLimitConfig
         );
         int pigeonID = 19;
 
