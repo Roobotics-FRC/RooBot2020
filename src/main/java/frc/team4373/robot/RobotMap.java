@@ -109,7 +109,8 @@ public class RobotMap {
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double SPINNER_SERVO_DEPLOY_ANGLE = 0.5;
     public static final double SPINNER_SERVO_RETRACT_ANGLE = 0;
-    public static final double INTAKE_SPEED = 1;
+    public static final double GROUND_INTAKE_SPEED = 1;
+    public static final double UPTAKE_INTAKE_SPEED = 0.4;
     public static final double SPINNER_SPEED = 0.2;
     public static final int SPINNER_TARGET_REVS = 4;
 

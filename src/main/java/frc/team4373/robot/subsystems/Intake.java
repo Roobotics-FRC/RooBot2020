@@ -45,7 +45,7 @@ public class Intake extends Subsystem {
      * Intakes a ball from the ground by running the ground and uptake motors.
      */
     public void intake() {
-        this.setIntakeMotors(RobotMap.INTAKE_SPEED);
+        this.setIntakeMotors(RobotMap.GROUND_INTAKE_SPEED, RobotMap.UPTAKE_INTAKE_SPEED);
     }
 
     /**
@@ -74,9 +74,9 @@ public class Intake extends Subsystem {
      * Sets the percent output of the intake motors.
      * @param speed the percent output of the motor.
      */
-    private void setIntakeMotors(double speed) {
-        groundIntakeMotor.set(ControlMode.PercentOutput, speed);
-        uptakeIntakeMotor.set(ControlMode.PercentOutput, speed);
+    private void setIntakeMotors(double groundSpeed, double uptakeSpeed) {
+        groundIntakeMotor.set(ControlMode.PercentOutput, groundSpeed);
+        uptakeIntakeMotor.set(ControlMode.PercentOutput, uptakeSpeed);
     }
 
     /**
