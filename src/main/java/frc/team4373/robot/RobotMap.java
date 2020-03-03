@@ -162,6 +162,7 @@ public class RobotMap {
 
     // Timeouts
     public static final double SPINNER_DEPLOY_TIME_SEC = 1.5;
+    public static final double AUTON_SHOOT_TIME_SEC = 5;
 
     // Programmatic resources
     public static final double FP_EQUALITY_THRESHOLD = 1e-5;
