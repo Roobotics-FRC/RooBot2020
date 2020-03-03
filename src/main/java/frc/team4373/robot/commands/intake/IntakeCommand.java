@@ -17,9 +17,12 @@ public class IntakeCommand extends Command {
 
     @Override
     protected void execute() {
-        // Ball intake from ground
+        // Ball intake/dislodgment from ground
         if (OI.getInstance().getOperatorJoystick().getRawButton(RobotMap.OPER_INTAKE_BUTTON)) {
             this.intake.intake();
+        } else if (OI.getInstance().getOperatorJoystick().getRawButton(
+                RobotMap.OPER_REVERSE_INTAKE_BUTTON)) {
+            this.intake.reverseGroundIntake();
         } else {
             this.intake.stop();
         }

@@ -85,8 +85,9 @@ public class RobotMap {
     public static final int OPER_SHOOT_BUTTON = 4; // Y button
     public static final int OPER_FALLBACK_SHOOT_BUTTON = 2; // B button
     public static final int OPER_TOGGLE_SPINNER_BUTTON = 10; // right stick click
-    public static final int OPER_SPINNER_REVS_BUTTON = 7;
-    public static final int OPER_SPINNER_COLOR_BUTTON = 8;
+    public static final int OPER_SPINNER_REVS_BUTTON = 7; // back button
+    public static final int OPER_SPINNER_COLOR_BUTTON = 8; // start button
+    public static final int OPER_REVERSE_INTAKE_BUTTON = 1; // A button
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 

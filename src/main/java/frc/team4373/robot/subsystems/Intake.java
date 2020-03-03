@@ -45,7 +45,8 @@ public class Intake extends Subsystem {
      * Intakes a ball from the ground by running the ground and uptake motors.
      */
     public void intake() {
-        this.setIntakeMotors(RobotMap.GROUND_INTAKE_SPEED, RobotMap.UPTAKE_INTAKE_SPEED);
+        groundIntakeMotor.set(ControlMode.PercentOutput, RobotMap.GROUND_INTAKE_SPEED);
+        uptakeIntakeMotor.set(ControlMode.PercentOutput, RobotMap.UPTAKE_INTAKE_SPEED);
     }
 
     /**
@@ -53,6 +54,14 @@ public class Intake extends Subsystem {
      */
     public void stop() {
         this.groundIntakeMotor.stopMotor();
+        this.uptakeIntakeMotor.stopMotor();
+    }
+
+    /**
+     * Runs the ground intake motor in reverse to clear stuck balls. Also stops top intake.
+     */
+    public void reverseGroundIntake() {
+        this.groundIntakeMotor.set(ControlMode.PercentOutput, -RobotMap.GROUND_INTAKE_SPEED);
         this.uptakeIntakeMotor.stopMotor();
     }
 
@@ -68,15 +77,6 @@ public class Intake extends Subsystem {
      */
     public void retainBall() {
         servo.set(RobotMap.INTAKE_SERVO_RETAIN_ANGLE);
-    }
-
-    /**
-     * Sets the percent output of the intake motors.
-     * @param speed the percent output of the motor.
-     */
-    private void setIntakeMotors(double groundSpeed, double uptakeSpeed) {
-        groundIntakeMotor.set(ControlMode.PercentOutput, groundSpeed);
-        uptakeIntakeMotor.set(ControlMode.PercentOutput, uptakeSpeed);
     }
 
     /**
