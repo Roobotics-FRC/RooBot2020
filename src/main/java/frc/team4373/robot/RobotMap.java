@@ -54,7 +54,7 @@ public class RobotMap {
                 NeutralMode.Brake,
                 false,
                 new SwerveConfig.PID(0, 1, 0, 0.05));
-        double maxWheelSpeed = 8400;
+        double maxWheelSpeed = 7000;
         SwerveConfig.CurrentLimitConfig currentLimitConfig = SwerveConfig.CurrentLimitConfig.NONE;
         SwerveConfig.WheelsConfig wheelsConfig = new SwerveConfig.WheelsConfig(
                 right1Drive, right1Rotate, right2Drive, right2Rotate,
@@ -94,7 +94,7 @@ public class RobotMap {
     // Speed constants
     public static final double CLIMB_ELEVATOR_MOVE_SPEED = 1;
     public static final double CLIMB_WINCH_MAX_SPEED = 0.8;
-    public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 100000;
+    public static final double SHOOTER_MAX_SPEED_NATIVE_UNITS = 87000;
     public static final double DRIVE_SLOWER_SPEED_FACTOR = 4;
     public static final double AUTON_TURN_SPEED = 0.25;
     public static final double AUTON_LINE_SHOOT_SPEED = 0.715;
