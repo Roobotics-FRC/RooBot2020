@@ -118,7 +118,7 @@ dependencies {
     implementation wpi.deps.wpilib()
     nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
-    implementation 'frc.team4373:rooswerve:2.0.0'
+    implementation 'frc.team4373:rooswerve:2.0.1'
 
 
     implementation wpi.deps.vendor.java()

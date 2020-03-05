@@ -27,6 +27,7 @@ public class Drivetrain extends SwerveDrivetrain {
 
     protected Drivetrain() {
         super(RobotMap.getSwerveConfig());
+        // Robot starts with shooter (right side) facing forward—compensate with 90° offset
         this.setPigeonYaw(-90);
     }
 
