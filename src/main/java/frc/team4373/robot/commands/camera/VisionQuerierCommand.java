@@ -154,6 +154,7 @@ public class VisionQuerierCommand extends Command {
         this.state = State.POLLING;
         this.accumulator = 0;
         this.pollingIterationCount = 0;
+        this.rotationExecutionCount = 0;
     }
 
     @Override
