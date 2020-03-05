@@ -14,46 +14,24 @@ public class RobotMap {
      */
     public static SwerveConfig getSwerveConfig() {
         SwerveConfig.RobotDimensions dimensions = new SwerveConfig.RobotDimensions(30, 30);
+        SwerveConfig.PID drivePID = new SwerveConfig.PID(0, 0.5, 0, 0.2);
+        SwerveConfig.PID rotatePID = new SwerveConfig.PID(0, 1, 0, 0.05);
         SwerveConfig.MotorConfig right1Drive = new SwerveConfig.MotorConfig(17,
-                true,
-                NeutralMode.Brake,
-                true,
-                new SwerveConfig.PID(0, 0.2, 0, 0.05));
+                true, NeutralMode.Brake, true, drivePID);
         SwerveConfig.MotorConfig right1Rotate = new SwerveConfig.MotorConfig(18,
-                true,
-                NeutralMode.Brake,
-                false,
-                new SwerveConfig.PID(0, 1, 0, 0.05));
+                true, NeutralMode.Brake, false, rotatePID);
         SwerveConfig.MotorConfig right2Drive = new SwerveConfig.MotorConfig(13,
-                false,
-                NeutralMode.Brake,
-                true,
-                new SwerveConfig.PID(0, 0.2, 0, 0.05));
+                false, NeutralMode.Brake, true, drivePID);
         SwerveConfig.MotorConfig right2Rotate = new SwerveConfig.MotorConfig(14,
-                true,
-                NeutralMode.Brake,
-                false,
-                new SwerveConfig.PID(0, 1, 0, 0.05));
+                true, NeutralMode.Brake, false, rotatePID);
         SwerveConfig.MotorConfig left1Drive = new SwerveConfig.MotorConfig(15,
-                true,
-                NeutralMode.Brake,
-                true,
-                new SwerveConfig.PID(0, 0.2, 0, 0.05));
+                true, NeutralMode.Brake, true, drivePID);
         SwerveConfig.MotorConfig left1Rotate = new SwerveConfig.MotorConfig(16,
-                true,
-                NeutralMode.Brake,
-                false,
-                new SwerveConfig.PID(0, 1, 0, 0.05));
+                true, NeutralMode.Brake, false, rotatePID);
         SwerveConfig.MotorConfig left2Drive = new SwerveConfig.MotorConfig(11,
-                false,
-                NeutralMode.Brake,
-                true,
-                new SwerveConfig.PID(0, 0.2, 0, 0.05));
+                false, NeutralMode.Brake, true, drivePID);
         SwerveConfig.MotorConfig left2Rotate = new SwerveConfig.MotorConfig(12,
-                true,
-                NeutralMode.Brake,
-                false,
-                new SwerveConfig.PID(0, 1, 0, 0.05));
+                true, NeutralMode.Brake, false, rotatePID);
         double maxWheelSpeed = 7000;
         SwerveConfig.CurrentLimitConfig currentLimitConfig = SwerveConfig.CurrentLimitConfig.NONE;
         SwerveConfig.WheelsConfig wheelsConfig = new SwerveConfig.WheelsConfig(
