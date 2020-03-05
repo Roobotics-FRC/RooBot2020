@@ -27,6 +27,7 @@ public class Drivetrain extends SwerveDrivetrain {
 
     protected Drivetrain() {
         super(RobotMap.getSwerveConfig());
+        this.setPigeonYaw(-90);
     }
 
     @Override
