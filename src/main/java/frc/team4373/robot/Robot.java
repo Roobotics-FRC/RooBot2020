@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
         Climber.getInstance();
         Intake.getInstance();
         Shooter.getInstance();
-        WheelSpinner.getInstance();
+        // WheelSpinner.getInstance();
         Drivetrain.getInstance();
     }
 
@@ -67,10 +67,10 @@ public class Robot extends TimedRobot {
         SmartDashboard.putBoolean("intake/balls_retained",
                 Intake.getInstance().getBallsAreRetained());
 
-        SmartDashboard.putString("spinner/color",
-                WheelSpinner.getInstance().getColor().toString());
-        SmartDashboard.putNumber("spinner/spinner_out",
-                WheelSpinner.getInstance().getWheelSpinnerPercentOutput());
+        // SmartDashboard.putString("spinner/color",
+        //         WheelSpinner.getInstance().getColor().toString());
+        // SmartDashboard.putNumber("spinner/spinner_out",
+        //         WheelSpinner.getInstance().getWheelSpinnerPercentOutput());
 
     }
 
@@ -89,7 +89,7 @@ public class Robot extends TimedRobot {
     public void teleopInit() {
         Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.IMPLODE);
         // Ensure subsystems are in a known, safe state
-        new ResetSpinnerStateCommand().start();
+        // new ResetSpinnerStateCommand().start();
     }
 
     /**

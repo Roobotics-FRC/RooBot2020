@@ -83,18 +83,18 @@ public final class OI {
                 RobotMap.OPER_FALLBACK_SHOOT_BUTTON);
         this.fallbackShootButton.whileHeld(new ShooterFallbackShootCommand());
 
-        this.toggleSpinnerButton = new JoystickButton(this.operatorJoystick,
-                RobotMap.OPER_TOGGLE_SPINNER_BUTTON);
-        this.toggleSpinnerButton.whenPressed(new ToggleSpinnerCommand());
-
-        this.spinnerRevsButton = new JoystickButton(this.operatorJoystick,
-                RobotMap.OPER_SPINNER_REVS_BUTTON);
-        this.spinnerRevsButton.whenPressed(new WheelSpinnerRevolutionsCommand(
-                RobotMap.SPINNER_TARGET_REVS));
-
-        this.spinnerColorButton = new JoystickButton(this.operatorJoystick,
-                RobotMap.OPER_SPINNER_COLOR_BUTTON);
-        this.spinnerColorButton.whenPressed(new WheelSpinnerColorCommand());
+        // this.toggleSpinnerButton = new JoystickButton(this.operatorJoystick,
+        //         RobotMap.OPER_TOGGLE_SPINNER_BUTTON);
+        // this.toggleSpinnerButton.whenPressed(new ToggleSpinnerCommand());
+        //
+        // this.spinnerRevsButton = new JoystickButton(this.operatorJoystick,
+        //         RobotMap.OPER_SPINNER_REVS_BUTTON);
+        // this.spinnerRevsButton.whenPressed(new WheelSpinnerRevolutionsCommand(
+        //         RobotMap.SPINNER_TARGET_REVS));
+        //
+        // this.spinnerColorButton = new JoystickButton(this.operatorJoystick,
+        //         RobotMap.OPER_SPINNER_COLOR_BUTTON);
+        // this.spinnerColorButton.whenPressed(new WheelSpinnerColorCommand());
     }
 
     /**
