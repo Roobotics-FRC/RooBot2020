@@ -108,7 +108,7 @@ public class RobotMap {
     public static final I2C.Port COLOR_SENSOR_PORT = I2C.Port.kOnboard;
 
     // Physical state constants
-    public static final double INTAKE_SERVO_RELEASE_ANGLE = 0.5;
+    public static final double INTAKE_SERVO_RELEASE_ANGLE = 1;
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double SPINNER_SERVO_DEPLOY_ANGLE = 0.5;
     public static final double SPINNER_SERVO_RETRACT_ANGLE = 0;
