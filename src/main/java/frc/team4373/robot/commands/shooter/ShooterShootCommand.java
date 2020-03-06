@@ -11,9 +11,9 @@ import frc.team4373.robot.subsystems.Shooter;
  * Shoots the balls from the shooter.
  */
 public class ShooterShootCommand extends Command {
-    private Shooter shooter;
+    protected Shooter shooter;
 
-    private double velocity;
+    protected double velocity;
     private boolean vision;
 
     /**

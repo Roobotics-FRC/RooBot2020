@@ -66,6 +66,8 @@ public class RobotMap {
     public static final int OPER_SPINNER_REVS_BUTTON = 7; // back button
     public static final int OPER_SPINNER_COLOR_BUTTON = 8; // start button
     public static final int OPER_REVERSE_INTAKE_BUTTON = 1; // A button
+    public static final int OPERATOR_JOYSTICK_LEFT_STICK_Y_AXIS = -1;
+    //TODO: find above axis
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 

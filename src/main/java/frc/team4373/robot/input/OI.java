@@ -50,6 +50,8 @@ public final class OI {
                 new LogitechSliderAxisFilter(), 0.01);
         this.operatorJoystick = new RooJoystick(RobotMap.OPERATOR_JOYSTICK_PORT,
                 new XboxFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
+        operatorJoystick.configureAxis(RobotMap.OPERATOR_JOYSTICK_LEFT_STICK_Y_AXIS,
+                new OperatorJoystickLeftYAxisFilter(), 0.05);
 
         this.resetNorthButton = new JoystickButton(this.driveJoystick,
                 RobotMap.DRIVE_RESET_NORTH_BUTTON);
