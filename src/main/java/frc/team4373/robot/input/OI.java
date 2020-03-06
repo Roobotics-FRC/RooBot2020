@@ -10,9 +10,6 @@ import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
 import frc.team4373.robot.commands.shooter.ShooterFallbackShootCommand;
 import frc.team4373.robot.commands.shooter.ShooterShootCommand;
 import frc.team4373.robot.commands.util.ClearSubsystemsCommandGroup;
-import frc.team4373.robot.commands.wheelspinner.ToggleSpinnerCommand;
-import frc.team4373.robot.commands.wheelspinner.WheelSpinnerColorCommand;
-import frc.team4373.robot.commands.wheelspinner.WheelSpinnerRevolutionsCommand;
 import frc.team4373.robot.input.filters.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -50,6 +47,8 @@ public final class OI {
                 new LogitechSliderAxisFilter(), 0.01);
         this.operatorJoystick = new RooJoystick(RobotMap.OPERATOR_JOYSTICK_PORT,
                 new XboxFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
+        operatorJoystick.configureAxis(RobotMap.OPER_ADJUST_SHOOT_SPEED_AXIS,
+                new XboxThrottleFilter(), RobotMap.JOYSTICK_DEFAULT_DEADZONE);
 
         this.resetNorthButton = new JoystickButton(this.driveJoystick,
                 RobotMap.DRIVE_RESET_NORTH_BUTTON);
