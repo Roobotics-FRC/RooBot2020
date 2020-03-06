@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.Utils;
+import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Shooter;
 
 /**
@@ -13,7 +14,7 @@ import frc.team4373.robot.subsystems.Shooter;
 public class ShooterShootCommand extends Command {
     protected Shooter shooter;
 
-    protected double velocity;
+    private double velocity;
     private boolean vision;
 
     /**
@@ -52,7 +53,10 @@ public class ShooterShootCommand extends Command {
 
     @Override
     protected void execute() {
-        this.shooter.setVelocity(velocity * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
+        double adjustedVelocity = velocity
+                + OI.getInstance().getOperatorJoystick().getAxis(
+                        RobotMap.OPER_ADJUST_SHOOT_SPEED_AXIS) / 10d;
+        this.shooter.setVelocity(adjustedVelocity * RobotMap.SHOOTER_MAX_SPEED_NATIVE_UNITS);
     }
 
     @Override
