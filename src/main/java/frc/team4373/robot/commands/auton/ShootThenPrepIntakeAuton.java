@@ -1,10 +1,12 @@
 package frc.team4373.robot.commands.auton;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.commands.camera.VisionQuerierCommand;
 import frc.team4373.robot.commands.drivetrain.DriveDistanceAuton;
 import frc.team4373.robot.commands.drivetrain.RequirementFreeRotateAngleOffsetAuton;
+import frc.team4373.robot.commands.intake.IntakeReleaseCommand;
 import frc.team4373.robot.commands.shooter.ShooterShootCommand;
 
 /**
@@ -27,6 +29,8 @@ public class ShootThenPrepIntakeAuton extends CommandGroup {
                 RequirementFreeRotateAngleOffsetAuton::new));
         addSequential(new ShooterShootCommand(RobotMap.AUTON_LINE_SHOOT_SPEED),
                 RobotMap.AUTON_SHOOT_TIME_SEC);
+        addSequential(new WaitCommand(RobotMap.SHOOTER_TIME_TO_SPIN_UP_SEC));
+        addSequential(new IntakeReleaseCommand());
         addSequential(new DriveDistanceAuton(100, 180));
     }
 }

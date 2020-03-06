@@ -96,6 +96,7 @@ public class RobotMap {
     public static final int SPINNER_TARGET_REVS = 4;
     public static final double DRIVE_WHEEL_DIAMETER_IN = 4;
     public static final double DRIVE_GEARBOX_RATIO = 20 / 3d;
+    public static final double SHOOTER_TIME_TO_SPIN_UP_SEC = 1d;
 
     // Talon constants
     public static final int PID_IDX = 0;
