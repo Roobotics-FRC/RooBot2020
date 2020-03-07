@@ -79,6 +79,8 @@ public class RobotMap {
     public static final double AUTON_TURN_SPEED = 0.25;
     public static final double AUTON_LINE_SHOOT_SPEED = 0.715;
     public static final double AUTON_DRIVE_SPEED = 0.2;
+    public static final double GROUND_INTAKE_SPEED = 1;
+    public static final double UPTAKE_INTAKE_SPEED = 0.3;
 
     // Non-motor devices
     public static final int INTAKE_RELEASE_SERVO_PORT = 9;
@@ -92,8 +94,6 @@ public class RobotMap {
     public static final double INTAKE_SERVO_RETAIN_ANGLE = 0;
     public static final double SPINNER_SERVO_DEPLOY_ANGLE = 0.5;
     public static final double SPINNER_SERVO_RETRACT_ANGLE = 0;
-    public static final double GROUND_INTAKE_SPEED = 1;
-    public static final double UPTAKE_INTAKE_SPEED = 0.4;
     public static final double SPINNER_SPEED = 0.2;
     public static final int SPINNER_TARGET_REVS = 4;
     public static final double DRIVE_WHEEL_DIAMETER_IN = 4;
