@@ -55,7 +55,7 @@ public class RobotMap {
     public static final int DRIVE_OWN_SHIP_UP_BUTTON = 12;
     public static final int DRIVE_SLOWER_SPEED_BUTTON = 2;
     public static final int DRIVE_CLEAR_COMMANDS_BUTTON = 11;
-    public static final int DRIVE_VISION_ALIGN_BUTTON = 4;
+    public static final int DRIVE_VISION_ALIGN_BUTTON = 6;
     public static final int DRIVE_DISABLE_BRAKE_BUTTON = 1; // drive trigger
     public static final int OPER_BALL_RELEASE_BUTTON = 5; // left bumper
     public static final int OPER_INTAKE_BUTTON = 6; // right bumper
