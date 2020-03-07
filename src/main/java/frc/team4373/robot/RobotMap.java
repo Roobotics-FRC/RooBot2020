@@ -151,6 +151,9 @@ public class RobotMap {
     // Programmatic resources
     public static final double FP_EQUALITY_THRESHOLD = 1e-5;
 
+    // PID
+    public static final PID DRIVE_STRAIGHT_ROTATE_GAINS = new RobotMap.PID(0, 0.1, 0, 0);
+
     // Utility classes
     public static final class MotorConfig {
         public final int id;
