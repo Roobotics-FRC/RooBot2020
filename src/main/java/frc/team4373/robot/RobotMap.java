@@ -56,6 +56,7 @@ public class RobotMap {
     public static final int DRIVE_SLOWER_SPEED_BUTTON = 2;
     public static final int DRIVE_CLEAR_COMMANDS_BUTTON = 11;
     public static final int DRIVE_VISION_ALIGN_BUTTON = 4;
+    public static final int DRIVE_DISABLE_BRAKE_BUTTON = 1; // drive trigger
     public static final int OPER_BALL_RELEASE_BUTTON = 5; // left bumper
     public static final int OPER_INTAKE_BUTTON = 6; // right bumper
     public static final int OPER_RAISE_L_WINCH_AXIS = 2; // L trigger
@@ -67,7 +68,6 @@ public class RobotMap {
     public static final int OPER_SPINNER_COLOR_BUTTON = 8; // start button
     public static final int OPER_REVERSE_INTAKE_BUTTON = 1; // A button
     public static final int OPER_ADJUST_SHOOT_SPEED_AXIS = 1; // left stick Y
-    //TODO: find above axis
 
     public static final double OPER_ROTATE_VIB_INTENSITY = 0.5;
 

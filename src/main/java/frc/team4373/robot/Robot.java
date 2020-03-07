@@ -73,8 +73,15 @@ public class Robot extends TimedRobot {
         SmartDashboard.putBoolean("intake/balls_retained",
                 Intake.getInstance().getBallsAreRetained());
 
-        SmartDashboard.putNumber("throttle_value",
+        SmartDashboard.putNumber("joysticks/throttle_value",
                 OI.getInstance().getDriveJoystick().rooGetThrottle());
+        SmartDashboard.putNumber("joysticks/input_x",
+                OI.getInstance().getDriveJoystick().rooGetX());
+        SmartDashboard.putNumber("joysticks/input_y",
+                OI.getInstance().getDriveJoystick().rooGetY());
+        SmartDashboard.putNumber("joysticks/input_twist",
+                OI.getInstance().getDriveJoystick().rooGetTwist());
+
 
         // SmartDashboard.putString("spinner/color",
         //         WheelSpinner.getInstance().getColor().toString());
