@@ -61,6 +61,10 @@ public class Robot extends TimedRobot {
                 Climber.getInstance().getRightWinchPercentOutput());
         SmartDashboard.putNumber("climber/left_winch_out",
                 Climber.getInstance().getLeftWinchPercentOutput());
+        SmartDashboard.putBoolean("climber/bottom_limit_switch",
+                Climber.getInstance().getBottomLimitSwitch());
+        SmartDashboard.putBoolean("climber/top_limit_switch",
+                Climber.getInstance().getTopLimitSwitch());
 
         SmartDashboard.putNumber("intake/ground_intake_out",
                 Intake.getInstance().getGroundMotorPercentOutput());
