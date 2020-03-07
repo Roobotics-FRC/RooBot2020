@@ -99,7 +99,7 @@ public class RobotMap {
     public static final double DRIVE_WHEEL_DIAMETER_IN = 4;
     public static final double DRIVE_GEARBOX_RATIO = 20 / 3d;
     public static final double SHOOTER_TIME_TO_SPIN_UP_SEC = 1d;
-    // the below offset necessitates a COUNTERCLOCKWISE (negative) rotation
+    // the below offset necessitates a CLOCKWISE (positive) rotation
     public static final double INTER_CAMERA_SHOOTER_DIST_IN = 4.25;
 
     // Talon constants
