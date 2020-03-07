@@ -6,10 +6,10 @@ import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Drivetrain;
 
+import static frc.team4373.robot.Utils.isZero;
+
 public class DrivetrainCommand extends Command {
     private Drivetrain drivetrain;
-
-    private double brakeCountdown;
 
     public DrivetrainCommand() {
         requires(this.drivetrain = Drivetrain.getInstance());
@@ -34,8 +34,7 @@ public class DrivetrainCommand extends Command {
             return;
         }
 
-        if (x != 0 || y != 0 || rotation != 0) {
-            this.brakeCountdown = 0;
+        if (!isZero(x) || !isZero(y) || !isZero(rotation)) {
             this.drivetrain.drive(rotation, x, y);
         } else if (OI.getInstance().getDriveJoystick().getRawButton(
                 RobotMap.DRIVE_DISABLE_BRAKE_BUTTON)) {

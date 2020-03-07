@@ -6,6 +6,8 @@ import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.Drivetrain;
 
+import static frc.team4373.robot.Utils.isZero;
+
 public class DelayedBrakeDriveCommand extends Command {
     // Represents the number of 50-millisecond intervals to wait before braking
     private static final int BRAKE_DELAY_COUNTS = 40;
@@ -37,7 +39,7 @@ public class DelayedBrakeDriveCommand extends Command {
             return;
         }
 
-        if (x != 0 || y != 0 || rotation != 0) {
+        if (!isZero(x) || !isZero(y) || !isZero(rotation)) {
             this.brakeCountdown = 0;
             this.drivetrain.drive(rotation, x, y);
         } else {
