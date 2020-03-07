@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.commands.util.ClearSubsystemCommand;
 import frc.team4373.robot.commands.wheelspinner.ResetSpinnerStateCommand;
+import frc.team4373.robot.input.OI;
 import frc.team4373.robot.subsystems.*;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -67,6 +68,9 @@ public class Robot extends TimedRobot {
                 Intake.getInstance().getUptakeMotorPercentOutput());
         SmartDashboard.putBoolean("intake/balls_retained",
                 Intake.getInstance().getBallsAreRetained());
+
+        SmartDashboard.putNumber("throttle_value",
+                OI.getInstance().getDriveJoystick().rooGetThrottle());
 
         // SmartDashboard.putString("spinner/color",
         //         WheelSpinner.getInstance().getColor().toString());
