@@ -1,6 +1,7 @@
 package frc.team4373.robot.subsystems;
 
 import frc.team4373.robot.RobotMap;
+import frc.team4373.robot.commands.drivetrain.DriveStraightCommand;
 import frc.team4373.robot.commands.drivetrain.DrivetrainCommand;
 import frc.team4373.swerve.SwerveDrivetrain;
 
@@ -33,6 +34,6 @@ public class Drivetrain extends SwerveDrivetrain {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new DrivetrainCommand());
+        setDefaultCommand(new DriveStraightCommand());
     }
 }
