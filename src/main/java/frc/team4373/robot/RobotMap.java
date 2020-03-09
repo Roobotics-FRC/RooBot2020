@@ -54,6 +54,7 @@ public class RobotMap {
     public static final int DRIVE_NORTH_UP_BUTTON = 10;
     public static final int DRIVE_OWN_SHIP_UP_BUTTON = 12;
     public static final int DRIVE_SLOWER_SPEED_BUTTON = 2;
+    public static final int DRIVE_WITH_DRIVETRAIN_BUTTON = 5;
     public static final int DRIVE_CLEAR_COMMANDS_BUTTON = 11;
     public static final int DRIVE_VISION_ALIGN_BUTTON = 6;
     public static final int DRIVE_DISABLE_BRAKE_BUTTON = 1; // drive trigger
@@ -81,6 +82,7 @@ public class RobotMap {
     public static final double AUTON_DRIVE_SPEED = 0.2;
     public static final double GROUND_INTAKE_SPEED = 1;
     public static final double UPTAKE_INTAKE_SPEED = 0.4;
+    public static final double DRIVE_ASSIST_MAX_TURN_SPEED = 0.2;
 
     // Non-motor devices
     public static final int INTAKE_RELEASE_SERVO_PORT = 9;
@@ -150,6 +152,9 @@ public class RobotMap {
 
     // Programmatic resources
     public static final double FP_EQUALITY_THRESHOLD = 1e-5;
+
+    // PID
+    public static final PID DRIVE_STRAIGHT_ROTATE_GAINS = new RobotMap.PID(0, 0.1, 0, 0);
 
     // Utility classes
     public static final class MotorConfig {

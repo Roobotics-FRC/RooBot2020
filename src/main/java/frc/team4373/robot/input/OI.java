@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.commands.camera.VisionQuerierCommand;
+import frc.team4373.robot.commands.drivetrain.DrivetrainCommand;
 import frc.team4373.robot.commands.drivetrain.ResetNorthCommand;
 import frc.team4373.robot.commands.drivetrain.RotateAngleOffsetAuton;
 import frc.team4373.robot.commands.drivetrain.SetDriveModeCommand;
@@ -24,6 +25,7 @@ public final class OI {
     private Button resetNorthButton;
     private Button setNorthUpButton;
     private Button setOwnShipUpButton;
+    private Button setDriveTrainButton;
     private Button clearCommandsButton;
     private Button alignToTargetButton;
     private Button shootButton;
@@ -63,6 +65,10 @@ public final class OI {
                 RobotMap.DRIVE_OWN_SHIP_UP_BUTTON);
         this.setOwnShipUpButton.whenPressed(new SetDriveModeCommand(
                 SwerveDrivetrain.DriveMode.OWN_SHIP_UP));
+
+        this.setDriveTrainButton = new JoystickButton(this.driveJoystick,
+                RobotMap.DRIVE_WITH_DRIVETRAIN_BUTTON);
+        this.setDriveTrainButton.whileHeld(new DrivetrainCommand());
 
         this.clearCommandsButton = new JoystickButton(this.driveJoystick,
                 RobotMap.DRIVE_CLEAR_COMMANDS_BUTTON);
