@@ -27,6 +27,7 @@ public class DriveDistanceAuton extends PIDCommand {
     private Drivetrain drivetrain;
 
     private double distance;
+    private double speed;
     private double angle;
 
     private boolean finished = false;
@@ -36,11 +37,12 @@ public class DriveDistanceAuton extends PIDCommand {
      * @param distance the distance to drive in inches.
      * @param angle the angle at which to drive.
      */
-    public DriveDistanceAuton(double distance, double angle) {
+    public DriveDistanceAuton(double distance, double speed, double angle) {
         super(DRIVE_GAINS.kP, DRIVE_GAINS.kI, DRIVE_GAINS.kD);
         requires(this.drivetrain = Drivetrain.getInstance());
 
         this.distance = distance;
+        this.speed = speed;
         this.angle = angle;
 
         this.rotationSource = new PIDSource() {
@@ -94,8 +96,8 @@ public class DriveDistanceAuton extends PIDCommand {
             this.finished = true;
             return;
         }
-        double x = Math.cos(Math.toRadians(this.angle)) * RobotMap.AUTON_DRIVE_SPEED;
-        double y = Math.sin(Math.toRadians(this.angle)) * RobotMap.AUTON_DRIVE_SPEED;
+        double x = Math.cos(Math.toRadians(this.angle)) * speed;
+        double y = Math.sin(Math.toRadians(this.angle)) * speed;
         this.drivetrain.drive(rotationPIDOutput, x, y);
     }
 

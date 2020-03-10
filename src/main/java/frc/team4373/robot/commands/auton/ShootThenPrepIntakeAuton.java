@@ -31,6 +31,6 @@ public class ShootThenPrepIntakeAuton extends CommandGroup {
                 RobotMap.AUTON_SHOOT_TIME_SEC);
         addSequential(new WaitCommand(RobotMap.SHOOTER_TIME_TO_SPIN_UP_SEC));
         addSequential(new IntakeReleaseCommand());
-        addSequential(new DriveDistanceAuton(100, 90)); // -90 is forward at start
+        addSequential(new DriveDistanceAuton(100, 0.2, 90)); // -90 is forward at start
     }
 }
