@@ -30,6 +30,7 @@ public final class OI {
     private Button alignToTargetButton;
     private Button shootButton;
     private Button fallbackShootButton;
+    private Button shootFromWallButton;
     private Button toggleSpinnerButton;
     private Button spinnerRevsButton;
     private Button spinnerColorButton;
