@@ -67,8 +67,8 @@ public final class OI {
                 SwerveDrivetrain.DriveMode.OWN_SHIP_UP));
 
         this.setDriveTrainButton = new JoystickButton(this.driveJoystick,
-                RobotMap.DRIVE_WITH_DRIVETRAIN_BUTTON);
-        this.setDriveTrainButton.whileHeld(new DrivetrainCommand());
+                RobotMap.DRIVE_DISABLE_ASSIST_BUTTON);
+        this.setDriveTrainButton.whenPressed(new DrivetrainCommand());
 
         this.clearCommandsButton = new JoystickButton(this.driveJoystick,
                 RobotMap.DRIVE_CLEAR_COMMANDS_BUTTON);
