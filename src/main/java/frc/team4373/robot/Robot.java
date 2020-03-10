@@ -3,6 +3,7 @@ package frc.team4373.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team4373.robot.commands.auton.RamThenShootAuton;
 import frc.team4373.robot.commands.util.ClearSubsystemCommand;
 import frc.team4373.robot.commands.wheelspinner.ResetSpinnerStateCommand;
 import frc.team4373.robot.input.OI;
@@ -96,6 +97,8 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
         Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.NONE);
+        RamThenShootAuton autonCommand = new RamThenShootAuton();
+        autonCommand.start();
     }
 
     /**
