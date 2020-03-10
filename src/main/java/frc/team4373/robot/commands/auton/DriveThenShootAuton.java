@@ -25,12 +25,12 @@ public class DriveThenShootAuton extends CommandGroup {
      * <p>See the class documentation for details.
      */
     public DriveThenShootAuton() {
-        addSequential(new TimedDriveAuton(0.5, 1, 90));
+        addSequential(new TimedDriveAuton(1, 0.5, 90));
         addSequential(new VisionQuerierCommand(RobotMap.VISION_ANG_OFFSET_FIELD,
                 RobotMap.VISION_ALIGN_ALLOWABLE_OFFSET_DEG,
                 RequirementFreeRotateAngleOffsetAuton::new));
         // FIXME: Change camera angle to include offset, then remove this line
-        addSequential(new TimedDriveAuton(0.25, 0.55, 0));
+        addSequential(new TimedDriveAuton(0.55, 0.25, 0));
         addSequential(new ShooterShootCommand(RobotMap.AUTON_LINE_SHOOT_SPEED),
                 RobotMap.AUTON_SHOOT_TIME_SEC);
         addSequential(new WaitCommand(RobotMap.SHOOTER_TIME_TO_SPIN_UP_SEC));

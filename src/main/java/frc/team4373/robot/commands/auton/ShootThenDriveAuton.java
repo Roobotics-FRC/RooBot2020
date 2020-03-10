@@ -25,6 +25,6 @@ public class ShootThenDriveAuton extends CommandGroup {
                 RobotMap.AUTON_SHOOT_TIME_SEC);
         addSequential(new WaitCommand(RobotMap.SHOOTER_TIME_TO_SPIN_UP_SEC));
         addSequential(new IntakeReleaseCommand());
-        addSequential(new TimedDriveAuton(0.5, 1, 90));
+        addSequential(new TimedDriveAuton(1, 0.5, 90));
     }
 }
