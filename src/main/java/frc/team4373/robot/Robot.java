@@ -1,6 +1,7 @@
 package frc.team4373.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team4373.robot.commands.auton.RamThenShootAuton;
@@ -18,6 +19,8 @@ import frc.team4373.swerve.SwerveDrivetrain;
  * project.
  */
 public class Robot extends TimedRobot {
+    Command autonCommand;
+
     /**
      * Constructor for the Robot class. Variable initialization occurs here;
      * WPILib-related setup should occur in {@link #robotInit}.
@@ -97,7 +100,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
         Drivetrain.getInstance().setBrakeMode(SwerveDrivetrain.BrakeMode.NONE);
-        RamThenShootAuton autonCommand = new RamThenShootAuton();
+        this.autonCommand = new RamThenShootAuton();
         autonCommand.start();
     }
 
