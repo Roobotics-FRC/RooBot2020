@@ -81,7 +81,7 @@ public class RobotMap {
     public static final double AUTON_LINE_SHOOT_SPEED = 0.715;
     public static final double AUTON_DRIVE_SPEED = 0.2;
     public static final double GROUND_INTAKE_SPEED = 1;
-    public static final double UPTAKE_INTAKE_SPEED = 0.4;
+    public static final double UPTAKE_INTAKE_SPEED = 0.45;
     public static final double DRIVE_ASSIST_MAX_TURN_SPEED = 0.2;
 
     // Non-motor devices
