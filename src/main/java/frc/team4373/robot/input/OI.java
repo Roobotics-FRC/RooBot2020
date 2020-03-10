@@ -89,6 +89,10 @@ public final class OI {
                 RobotMap.OPER_FALLBACK_SHOOT_BUTTON);
         this.fallbackShootButton.whileHeld(new ShooterFallbackShootCommand());
 
+        this.shootFromWallButton = new JoystickButton(this.operatorJoystick,
+                RobotMap.OPER_SHOOT_FROM_WALL_BUTTON);
+        this.shootFromWallButton.whileHeld(new ShooterShootCommand(
+                RobotMap.SHOOT_FROM_WALL_SPEED));
         // this.toggleSpinnerButton = new JoystickButton(this.operatorJoystick,
         //         RobotMap.OPER_TOGGLE_SPINNER_BUTTON);
         // this.toggleSpinnerButton.whenPressed(new ToggleSpinnerCommand());
