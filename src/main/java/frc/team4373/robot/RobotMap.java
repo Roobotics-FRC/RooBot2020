@@ -84,7 +84,7 @@ public class RobotMap {
     public static final double GROUND_INTAKE_SPEED = 1;
     public static final double UPTAKE_INTAKE_SPEED = 0.45;
     public static final double DRIVE_ASSIST_MAX_TURN_SPEED = 0.2;
-    public static final double SHOOT_FROM_WALL_SPEED = 0.62;
+    public static final double SHOOT_FROM_WALL_SPEED = 0.63;
 
     // Non-motor devices
     public static final int INTAKE_RELEASE_SERVO_PORT = 9;
