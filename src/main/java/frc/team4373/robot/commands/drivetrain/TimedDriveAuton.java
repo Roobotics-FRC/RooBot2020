@@ -3,7 +3,6 @@ package frc.team4373.robot.commands.drivetrain;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import frc.team4373.robot.RobotMap;
 import frc.team4373.robot.subsystems.Drivetrain;
-import frc.team4373.swerve.WheelVector;
 
 public class TimedDriveAuton extends PIDCommand {
     private Drivetrain drivetrain;
@@ -11,8 +10,6 @@ public class TimedDriveAuton extends PIDCommand {
     private double speed;
     private double time;
     private double angle;
-
-    private WheelVector.VectorSet autonSetpoint;
 
     /**
      * Constructs a time based, driving auton.
@@ -26,10 +23,8 @@ public class TimedDriveAuton extends PIDCommand {
         requires(this.drivetrain = Drivetrain.getInstance());
 
         this.time = time;
-
-        WheelVector autonVector = new WheelVector(speed, angle);
-        autonSetpoint =
-                new WheelVector.VectorSet(autonVector, autonVector, autonVector, autonVector);
+        this.speed = speed;
+        this.angle = angle;
     }
 
     @Override
@@ -44,8 +39,10 @@ public class TimedDriveAuton extends PIDCommand {
     }
 
     @Override
-    protected void usePIDOutput(double output) {
-        this.drivetrain.setWheelsPID(autonSetpoint);
+    protected void usePIDOutput(double rotOutput) {
+        double x = Math.cos(Math.toRadians(this.angle)) * speed;
+        double y = Math.sin(Math.toRadians(this.angle)) * speed;
+        this.drivetrain.drive(rotOutput * RobotMap.DRIVE_ASSIST_MAX_TURN_SPEED, x, y);
     }
 
     @Override

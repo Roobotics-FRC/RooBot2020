@@ -8,8 +8,6 @@ import frc.team4373.robot.subsystems.Drivetrain;
 import static frc.team4373.robot.Utils.isZero;
 
 public class DriveStraightCommand extends PIDCommand {
-    private static final long COOLDOWN = 500; // time to wait before engaging assist (ms)
-
     private long lastManualRot = 0;
 
     private Drivetrain drivetrain;
@@ -50,7 +48,8 @@ public class DriveStraightCommand extends PIDCommand {
         boolean translating = !isZero(x) || !isZero(y);
         boolean rotating = !isZero(rotation);
 
-        if (!rotating && translating && System.currentTimeMillis() > lastManualRot + COOLDOWN) {
+        if (!rotating && translating && System.currentTimeMillis()
+                > lastManualRot + RobotMap.DRIVE_STRAIGHT_COOLDOWN_MS) {
             // Not rotating & it's been long enough that we have a stable setpoint. Drive straight.
             double rotAssist = rotPIDOutput * RobotMap.DRIVE_ASSIST_MAX_TURN_SPEED;
             this.drivetrain.drive(rotAssist, x, y);
