@@ -37,31 +37,34 @@ public class DriveStraightCommand extends PIDCommand {
         double y = -OI.getInstance().getDriveJoystick().rooGetY();
         double rotation = OI.getInstance().getDriveJoystick().rooGetTwist();
 
-        if (OI.getInstance().getDriveJoystick().getRawButton(RobotMap.DRIVE_SLOWER_SPEED_BUTTON)) {
+        boolean slowMode = OI.getInstance().getDriveJoystick().getRawButton(
+                RobotMap.DRIVE_SLOWER_SPEED_BUTTON);
+
+        if (slowMode) {
             x /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             y /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             rotation /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
-            this.drivetrain.drive(rotation, x, y);
-            return;
         }
 
         boolean translating = !isZero(x) || !isZero(y);
         boolean rotating = !isZero(rotation);
+        boolean cooledDown = System.currentTimeMillis()
+                > lastManualRot + RobotMap.DRIVE_STRAIGHT_COOLDOWN_MS;
+        boolean brakeDisabled = OI.getInstance().getDriveJoystick().getRawButton(
+                RobotMap.DRIVE_DISABLE_BRAKE_BUTTON);
 
-        if (!rotating && translating && System.currentTimeMillis()
-                > lastManualRot + RobotMap.DRIVE_STRAIGHT_COOLDOWN_MS) {
-            // Not rotating & it's been long enough that we have a stable setpoint. Drive straight.
+        if (!rotating && !slowMode && translating && cooledDown) {
+            // Not rotating or in slow mode & it's been long enough that we have a stable setpoint.
+            // Drive straight.
             double rotAssist = rotPIDOutput * RobotMap.DRIVE_ASSIST_MAX_TURN_SPEED;
             this.drivetrain.drive(rotAssist, x, y);
-
-            // We want to maintain the existing setpoint, so break out so we don't set a new one.
-            return;
+            return; // Break out to avoid setting a new setpoint—we want to maintain this one.
         } else if (rotating || translating) {
-            // We haven't cooled down long enough or we're still rotating. Drive normally.
+            // We haven't cooled down, we're moving in slow mode, or we're still rotating.
+            // Drive normally.
             this.lastManualRot = System.currentTimeMillis();
             this.drivetrain.drive(rotation, x, y);
-        } else if (OI.getInstance().getDriveJoystick().getRawButton(
-                RobotMap.DRIVE_DISABLE_BRAKE_BUTTON)) {
+        } else if (brakeDisabled || slowMode) {
             // We're not moving, but the driver doesn't want to brake. Just stop.
             this.drivetrain.stop();
         } else {

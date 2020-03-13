@@ -26,18 +26,20 @@ public class DrivetrainCommand extends Command {
         double y = -OI.getInstance().getDriveJoystick().rooGetY();
         double rotation = OI.getInstance().getDriveJoystick().rooGetTwist();
 
-        if (OI.getInstance().getDriveJoystick().getRawButton(RobotMap.DRIVE_SLOWER_SPEED_BUTTON)) {
+        boolean slowMode = OI.getInstance().getDriveJoystick().getRawButton(
+                RobotMap.DRIVE_SLOWER_SPEED_BUTTON);
+        boolean brakeDisabled = OI.getInstance().getDriveJoystick().getRawButton(
+                RobotMap.DRIVE_DISABLE_BRAKE_BUTTON);
+
+        if (slowMode) {
             x /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             y /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
             rotation /= RobotMap.DRIVE_SLOWER_SPEED_FACTOR;
-            this.drivetrain.drive(rotation, x, y);
-            return;
         }
 
         if (!isZero(x) || !isZero(y) || !isZero(rotation)) {
             this.drivetrain.drive(rotation, x, y);
-        } else if (OI.getInstance().getDriveJoystick().getRawButton(
-                RobotMap.DRIVE_DISABLE_BRAKE_BUTTON)) {
+        } else if (brakeDisabled || slowMode) {
             this.drivetrain.stop();
         } else {
             this.drivetrain.brake();
