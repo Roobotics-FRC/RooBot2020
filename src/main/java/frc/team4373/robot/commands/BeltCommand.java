@@ -13,7 +13,8 @@ public class BeltCommand extends Command {
 
     @Override
     protected void execute() {
-        double speed = OI.getInstance().getOperatorJoystick().getAxis(-1);
+        double speed = OI.getInstance().getOperatorJoystick().getAxis(5);
+        //Xbox controller, right stick Y
         this.belt.setSpeed(speed);
     }
 

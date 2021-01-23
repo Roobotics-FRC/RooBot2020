@@ -27,7 +27,7 @@ public class Belt extends Subsystem {
 
     private WPI_TalonSRX motor;
     private Belt(){
-        this.motor = new WPI_TalonSRX(20)
+        this.motor = new WPI_TalonSRX(20);
         this.motor.setInverted(false);
         this.motor.setNeutralMode(NeutralMode.Brake);
     }
