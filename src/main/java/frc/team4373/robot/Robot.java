@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
         Shooter.getInstance();
         // WheelSpinner.getInstance();
         Drivetrain.getInstance();
+        Belt.getInstance();
     }
 
     /**
