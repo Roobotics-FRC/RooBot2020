@@ -80,11 +80,11 @@ public class ShooterShootCommand extends Command {
      * @return the percent of full velocity at which to shoot.
      */
     private double percentVelocityForDistance(double distance) {
-        double raw = 1.06e-9 * Math.pow(distance, 4)
-                - 8.68e-7 * Math.pow(distance, 3)
-                + 2.59e-4 * Math.pow(distance, 2)
-                - 0.0323 * distance
-                + 2.13;
-        return Utils.constrainPercentOutput(raw);
+        double raw = 0.000000105 * Math.pow(distance, 4)
+                - 0.0000857 * Math.pow(distance, 3)
+                + 0.0255 * Math.pow(distance, 2)
+                - 3.13 * distance
+                + 201;
+        return Utils.constrainPercentOutput(raw / 100);
     }
 }
