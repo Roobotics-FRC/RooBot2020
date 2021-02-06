@@ -1,5 +1,6 @@
 package frc.team4373.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -92,6 +93,22 @@ public class Robot extends TimedRobot {
         // SmartDashboard.putNumber("spinner/spinner_out",
         //         WheelSpinner.getInstance().getWheelSpinnerPercentOutput());
 
+
+        double distance = NetworkTableInstance.getDefault()
+                .getTable(RobotMap.VISION_TABLE_NAME).getEntry(RobotMap.VISION_DIST_FIELD)
+                .getDouble(-1);
+        SmartDashboard.putNumber("shooter/distance", distance);
+        SmartDashboard.putNumber("shooter/percent_vel",
+                percentVelocityForDistance(distance));
+    }
+
+    private double percentVelocityForDistance(double distance) {
+        double raw = 0.000000105 * Math.pow(distance, 4)
+                - 0.0000857 * Math.pow(distance, 3)
+                + 0.0255 * Math.pow(distance, 2)
+                - 3.13 * distance
+                + 201;
+        return raw / 100;
     }
 
     /**
