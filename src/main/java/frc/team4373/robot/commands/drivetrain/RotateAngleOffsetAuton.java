@@ -11,7 +11,7 @@ import frc.team4373.robot.subsystems.Drivetrain;
  */
 public class RotateAngleOffsetAuton extends PIDCommand {
     private static final double MOTOR_OUTPUT_THRESHOLD = 0.2;
-    private static final RobotMap.PID pid = new RobotMap.PID(0, 0.08, 0.05, 0.15);
+    private static final RobotMap.PID pid = new RobotMap.PID(0, 0.1, 0, 0);
 
     private Drivetrain drivetrain;
     private double offset;
